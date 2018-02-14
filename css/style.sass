@@ -95,11 +95,16 @@ content .wrapper
 .article
     display: flex
     flex-flow: row
+    @include tabletorless
+        flex-flow: column
     > .info
         flex-grow: 0
         flex-shrink: 0
         width: 14em
         margin-right: 1.7em
+        @include tabletorless
+            width: 100%
+            margin-right: 0
         h1
             font-size: 2.4em
             font-weight: 600
@@ -125,6 +130,8 @@ content .wrapper
         line-height: 1.3
         letter-spacing: .013em
         color: #15314a
+        @include tabletorless
+            margin-top: 1.6em
 
 .authordetails
     display: flex
@@ -163,6 +170,13 @@ content .wrapper
                 height: 2em
     &:not(:first-child) .content h2
         margin-top: 1.6em
+
+@include tabletorless
+    body.authors .sidebar
+        display: none
+@include mobile
+    .sidebar
+        display: none
 
 .sidebar
     margin-left: 2em

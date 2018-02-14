@@ -10,6 +10,10 @@ $desktop-width: 63rem
   @media (min-width: #{$tablet-width + 0.001rem})
     @content
 
+@mixin tabletorless
+  @media (max-width: $desktop-width)
+    @content
+
 @mixin tablet
   @media (min-width: #{$tablet-width + 0.001rem}) and (max-width: $desktop-width)
     @content
