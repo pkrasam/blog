@@ -30,11 +30,12 @@
             </header>
             <content>
                 <div class="wrapper">
+                    {% assign current = page.path | downcase | split: '/' %}
                     <ul class="breadcrumbs">
-                        <li><a href="/">Blog</a></li>
-                        <li><a href="/">News</a></li>
-                        <li><a href="/">Article</a></li>
-                        <li><a href="/">Authors</a></li>
+                        <li><a {% if current[0] == 'index.html' %}class="active"{% endif %} href="/">Blog</a></li>
+                        <li><a {% if current[0] == 'news.html' %}class="active"{% endif %} href="/">News</a></li>
+                        <li><a {% if current[0] == 'article' %}class="active"{% endif %} href="/">Article</a></li>
+                        <li><a {% if current[0] == 'authors.html' %}class="active"{% endif %} href="/authors">Authors</a></li>
                     </ul>
 
                     {{ content }}

@@ -1,15 +1,4 @@
 <span class="author">
-        {{ site.data.authors[include.author].name }}
+        <a href="/authors#{{include.author}}">{{ site.data.authors[include.author].name }}</a>
 </span>
-<span class="authorlinks">
-    {% assign identities = site.data.authors[include.author].identities %}
-    {% if identities.github %}
-    <a href="https://github.com/{{ identities.github }}"><img class="icon" src="/img/icons/github.svg"/></a>
-    {% endif %}
-    {% if identities.twitter %}
-    <a href="https://twitter.com/{{ identities.twitter }}"><img class="icon" src="/img/icons/twitter.svg"/></a>
-    {% endif %}
-    {% if identities.site %}
-    <a href="{{ identities.site }}"><img class="icon" src="/img/icons/link.svg"/></a>
-    {% endif %}
-</span>
+{% include authoridentities.html author=include.author %}

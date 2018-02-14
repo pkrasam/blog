@@ -1,0 +1,51 @@
+---
+title: Handshake Blog Authors
+html_title: Handshake Blog Authors
+layout: default
+---
+
+<div class="withsidebar">
+    <div class="authors">
+        {% for author in site.data.authors %}
+        {% assign authorname = author[0] %}
+        {% assign info = author[1] %}
+        <div class="authordetails">
+            <div class="avatar"></div>
+            <div class="content">
+                <h2>{{ info.name }}</h2>
+            </div>
+        </div>
+        <div class="authordetails">
+            <div class="avatar">
+                {% if info.avatar %}
+                <img {% if info.avatar-circle %}class="circle"{% endif %} src="/img/avatars/{{ info.avatar }}"/>
+                {% else %}
+                <img src="/img/avatars/default.svg"/>
+                {% endif %}
+            </div>
+            <div class="content">
+                {{ info.bio | markdownify }}
+                {% include authoridentities.html author=authorname %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="sidebar">
+        <h2>Recent news:</h2>
+        <div class="articlelink">
+            <h3>Universal Basic Asset Ownership</h3>
+            <p>In the spirit of Mike Rypka's original menu, we encourage experimentation!</p>
+            <a class="readmore" href="/">Read More</a>
+        </div>
+        <div class="articlelink">
+            <h3>Handshake, investors, and co-creators</h3>
+            <p>In the spirit of Mike Rypka's original menu, we encourage experimentation!</p>
+            <a class="readmore" href="/">Read More</a>
+        </div>
+        <div class="articlelink">
+            <h3>Developing documentation!</h3>
+            <p>In the spirit of Mike Rypka's original menu, we encourage experimentation!</p>
+            <a class="readmore" href="/">Read More</a>
+        </div>
+    </div>
+</div>
