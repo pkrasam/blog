@@ -32,20 +32,12 @@ layout: default
     </div>
     <div class="sidebar">
         <h2>Recent news:</h2>
+        {% for post in site.posts | limit: 3 %}
         <div class="articlelink">
-            <h3>Universal Basic Asset Ownership</h3>
-            <p>In the spirit of Mike Rypka's original menu, we encourage experimentation!</p>
-            <a class="readmore" href="/">Read More</a>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.exerpt }}</p>
+            <a class="readmore" href="{{ post.url }}">Read More</a>
         </div>
-        <div class="articlelink">
-            <h3>Handshake, investors, and co-creators</h3>
-            <p>In the spirit of Mike Rypka's original menu, we encourage experimentation!</p>
-            <a class="readmore" href="/">Read More</a>
-        </div>
-        <div class="articlelink">
-            <h3>Developing documentation!</h3>
-            <p>In the spirit of Mike Rypka's original menu, we encourage experimentation!</p>
-            <a class="readmore" href="/">Read More</a>
-        </div>
+        {% endfor %}
     </div>
 </div>
