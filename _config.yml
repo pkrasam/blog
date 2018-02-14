@@ -1,0 +1,19 @@
+name: Handshake Blog
+url: https://blog.handshake.io
+kramdown:
+  input: GFM
+  auto_ids: false
+exclude:
+  - README.md
+  - Gemfile*
+plugins:
+  - jekyll-sitemap
+  - jekyll-redirect-from
+sass:
+    sass_dir: css
+sitemap:
+  file: "/sitemap.xml"
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  blanklines: true

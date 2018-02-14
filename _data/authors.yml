@@ -1,0 +1,10 @@
+# authors that post to the blog
+
+# alias they're referred to in post metadata and similar
+doaks:
+  # their literal name (the name their posts will be attributed to)
+  name: Daniel Oakley
+
+  # identities on various external services such as GitHub, Twitter, etc
+  identities:
+    github: DanielOaks
