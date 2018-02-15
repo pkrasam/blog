@@ -36,8 +36,7 @@
                 {% assign current = page.path | downcase | split: '/' %}
                 <ul class="breadcrumbs">
                     <li><a {% if current[0] == 'index.html' %}class="active"{% endif %} href="/">Blog</a></li>
-                    <li><a {% if current[0] == 'news.html' %}class="active"{% endif %} href="/">News</a></li>
-                    <li><a {% if current[0] == 'article' %}class="active"{% endif %} href="/">Article</a></li>
+                    <li><a {% if current[0] == 'articles.html' %}class="active"{% elsif current[0] == '2018' %}class="active"{% endif %} href="/articles">News</a></li>
                     <li><a {% if current[0] == 'authors.html' %}class="active"{% endif %} href="/authors">Authors</a></li>
                 </ul>
 
