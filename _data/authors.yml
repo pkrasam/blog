@@ -23,5 +23,6 @@ doaks:
   # identities on various external services such as GitHub, Twitter, etc
   identities:
     github: DanielOaks
+    keybase: danieloaks
     twitter: Daniel_Oaks
     site: https://www.privateinternetaccess.com/
