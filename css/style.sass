@@ -14,6 +14,7 @@ html > body
 .wrapper
     width: $wide-content-width
     max-width: calc(100% - 3rem)
+    max-width: calc(100% - 3rem - env(safe-area-inset-left) - env(safe-area-inset-right))
     margin: 0 auto
 
 html, body
@@ -159,10 +160,14 @@ content .wrapper
         flex-grow: 0
         flex-shrink: 0
         width: 9em
+        @include mobile
+            width: 6em
         margin-right: 1.7em
         img
             display: block
             width: 9em
+            @include mobile
+                width: 6em
             max-height: 7.5em
             margin: 0 auto
             &.circle
@@ -172,6 +177,9 @@ content .wrapper
                 background: #fff
                 width: 7.5em
                 height: 7.5em
+                @include mobile
+                    width: 5em
+                    height: 5em
     > .content
         flex-grow: 1
         font-size: 1.1em
@@ -245,6 +253,7 @@ footer
     font-size: 1rem
     font-weight: 300
     padding: 2rem 0
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom))
     box-sizing: border-box
     a
         color: #ebebeb
