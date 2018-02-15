@@ -1,5 +1,6 @@
 name: Handshake Blog
 url: https://blog.handshake.io
+description: Blog for the Handshake project
 kramdown:
   input: GFM
   auto_ids: false
@@ -10,7 +11,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
 sass:
-    sass_dir: css
+  sass_dir: css
 sitemap:
   file: "/sitemap.xml"
 compress_html:
