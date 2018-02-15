@@ -38,25 +38,34 @@ header
             font-weight: 500
             font-size: 1.26em
             color: #525050
-    nav a
-        display: inline-block
-        text-decoration: none
-        font-weight: 500
-        font-size: 1em
-        color: #4193ec
-        padding: 0.7em 0.9em
-        &:first-of-type
-            padding-left: 0
-        &:last-of-type
-            padding-right: 0
+    nav
+        text-align: right
+        .grouping
+            display: inline-block
+            break-inside: avoid
+            + .grouping
+                margin-left: 1.7em
+        a
+            display: inline-block
+            text-decoration: none
+            font-weight: 500
+            font-size: 1em
+            color: #4193ec
+            padding: 0.7em 0.9em
+            &:first-of-type
+                padding-left: 0
+            &:last-of-type
+                padding-right: 0
     > .wrapper
         display: flex
         flex-direction: row
         align-items: center
         > .logo
             flex-grow: 1
+            flex-shrink: 0
         > nav
             flex-grow: 0
+            flex-shrink: 1
 
 // content
 content .wrapper
