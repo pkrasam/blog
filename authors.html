@@ -32,6 +32,8 @@ css_class: authors
         {% endfor %}
     </div>
     <div class="sidebar">
+        {% include search.html %}
+
         <h2>Recent news:</h2>
         {% for post in site.posts | limit: 3 %}
         <div class="articlelink">

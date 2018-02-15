@@ -25,6 +25,8 @@ layout: default
         {% endfor %}
     </div>
     <div class="sidebar">
+        {% include search.html %}
+
         <h2>In other news:</h2>
         {% for post in site.posts | limit: 4 %}
         {% if forloop.first %}{% else %}

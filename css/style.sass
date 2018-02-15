@@ -221,7 +221,21 @@ content
     h2
         font-size: 1.55em
         font-weight: 300
-        margin-bottom: 0.9em
+        margin-bottom: 0.8em
+        &:not(:first-of-type)
+            margin-top: 1.5em
+    .search
+        input[type="text"]
+            width: 100%
+            font-size: 1.1em
+            padding: 0.3em 0.4em
+            box-sizing: border-box
+            border-radius: 0.3em
+            box-shadow: rgba(15, 45, 70, 0.18) 0 1px 1px
+            border: 1px solid rgba(117, 117, 117, 0.52)
+            font-weight: 300
+            color: rgba(15, 45, 70, 0.96)
+            letter-spacing: 0.02em
     .articlelink
         width: 100%
         border: 1px solid rgba(100, 100, 100, 0.12)
