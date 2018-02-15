@@ -11,41 +11,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     </head>
     <body class="{{ template.css_class }} {{ page.css_class }}">
-        <div id="allbutfooter">
-            <header>
-                <div class="wrapper">
-                    <div class="logo">
-                        <a href="/">
-                            <img class="logoimg" src="/img/logo.svg">
-                            <span>hand:shake</span>
-                        </a>
+        <header>
+            <div class="wrapper">
+                <div class="logo">
+                    <a href="/">
+                        <img class="logoimg" src="/img/logo.svg">
+                        <span>hand:shake</span>
+                    </a>
+                </div>
+                <nav>
+                    <div class="grouping">
+                        <a href="https://handshake/">Develop</a>
+                        <a href="https://handshake/">Airdrop</a>
                     </div>
-                    <nav>
-                        <div class="grouping">
-                            <a href="https://handshake/">Develop</a>
-                            <a href="https://handshake/">Airdrop</a>
-                        </div>
-                        <div class="grouping">
-                            <a href="https://handshake/">Blog</a>
-                            <a href="https://handshake/">Account</a>
-                        </div>
-                    </nav>
-                </div>
-            </header>
-            <content>
-                <div class="wrapper">
-                    {% assign current = page.path | downcase | split: '/' %}
-                    <ul class="breadcrumbs">
-                        <li><a {% if current[0] == 'index.html' %}class="active"{% endif %} href="/">Blog</a></li>
-                        <li><a {% if current[0] == 'news.html' %}class="active"{% endif %} href="/">News</a></li>
-                        <li><a {% if current[0] == 'article' %}class="active"{% endif %} href="/">Article</a></li>
-                        <li><a {% if current[0] == 'authors.html' %}class="active"{% endif %} href="/authors">Authors</a></li>
-                    </ul>
+                    <div class="grouping">
+                        <a href="https://handshake/">Blog</a>
+                        <a href="https://handshake/">Account</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <content>
+            <div class="wrapper">
+                {% assign current = page.path | downcase | split: '/' %}
+                <ul class="breadcrumbs">
+                    <li><a {% if current[0] == 'index.html' %}class="active"{% endif %} href="/">Blog</a></li>
+                    <li><a {% if current[0] == 'news.html' %}class="active"{% endif %} href="/">News</a></li>
+                    <li><a {% if current[0] == 'article' %}class="active"{% endif %} href="/">Article</a></li>
+                    <li><a {% if current[0] == 'authors.html' %}class="active"{% endif %} href="/authors">Authors</a></li>
+                </ul>
 
-                    {{ content }}
-                </div>
-            </content>
-        </div>
+                {{ content }}
+            </div>
+        </content>
         <footer>
             <div class="wrapper">
                 <div class="linklist">

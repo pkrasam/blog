@@ -16,6 +16,16 @@ html > body
     max-width: calc(100% - 3rem)
     margin: 0 auto
 
+html, body
+    height: 100%
+
+body
+    display: flex
+    flex-direction: column
+
+    > content
+        flex: 1 0 auto
+
 // header
 header
     background: #fff
@@ -23,7 +33,7 @@ header
     .logo a
         display: inline-block
         text-decoration: none
-        padding: 0.4em 0
+        padding: 0.4em 0.2em 0.4em 0
         vertical-align: center
         .logoimg
             display: inline-block
@@ -269,22 +279,3 @@ a
 
 p + p
     margin-top: 0.9em
-
-// sticky footer
-html
-    position: relative
-    min-height: 100%
-
-body
-    /* Margin bottom by footer height */
-    margin-bottom: 25rem
-
-#allbutfooter
-    margin-bottom: 25rem
-
-footer
-    position: absolute
-    bottom: 0
-    width: 100%
-    /* Set the fixed height of the footer here */
-    min-height: 25rem
