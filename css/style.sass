@@ -7,7 +7,6 @@
 
 html > body
     // background: rgba(246, 247, 251, 1)
-    background: #fcfcff
     font-family: Helvetica, Arial, sans-serif
     line-height: 1
 
@@ -19,6 +18,7 @@ html > body
 
 html, body
     height: 100%
+    background: #222 // so overscroll looks nicer
 
 body
     display: flex
@@ -79,27 +79,30 @@ header
             flex-shrink: 1
 
 // content
-content .wrapper
-    padding: 0 0 2.14em
+content
+    background: #fcfcff
 
-    .breadcrumbs
-        margin: 2.14em 0
-        li
-            display: inline-block
-            + li
-                margin-left: 1.14em
-            ::after
-                content: "/"
-                padding-left: 1.14em
-                color: #555
-                font-weight: 300
-        a
-            font-size: 0.9em
-            text-decoration: none
-            font-weight: 600
-            transition: color 0.3s ease
-            &.active, &:hover
-                color: #3b64b9
+    .wrapper
+        padding: 0 0 2.14em
+
+        .breadcrumbs
+            margin: 2.14em 0
+            li
+                display: inline-block
+                + li
+                    margin-left: 1.14em
+                ::after
+                    content: "/"
+                    padding-left: 1.14em
+                    color: #555
+                    font-weight: 300
+            a
+                font-size: 0.9em
+                text-decoration: none
+                font-weight: 600
+                transition: color 0.3s ease
+                &.active, &:hover
+                    color: #3b64b9
 
 // frontpage and article list styles
 .withsidebar
