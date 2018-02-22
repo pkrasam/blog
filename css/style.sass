@@ -32,7 +32,7 @@ body
 // header
 header
     background: #3C376F
-    padding: 4em 0 1.2em
+    padding: 4em 0 1.8em
     .logo a
         display: inline-block
         text-decoration: none
@@ -197,6 +197,9 @@ content
             font-size: 1.4em
             margin-bottom: 0.1em
             margin-top: 0.5em
+        h3
+            margin-bottom: 0.1em
+            margin-top: 0.5em
         .authorlinks
             display: block
             margin-top: 1em
@@ -275,9 +278,9 @@ content
 
 // footer
 footer
-    background: #222
-    color: #f1f1f1
-    font-size: 1rem
+    background: #393b54
+    color: #ffffff
+    font-size: 0.9rem
     font-weight: 300
     padding: 2rem 0 6rem
     padding-bottom: calc(6rem + env(safe-area-inset-bottom))
@@ -288,9 +291,14 @@ footer
         &:hover
             color: #ccc
     h2
-        font-weight: 600
-        font-size: 1.1em
+        font-weight: 400
+        font-size: 1.3em
         margin-bottom: 1em
+    .mailinglistsub
+        h2
+            font-weight: 400
+            font-size: 1.5em
+            margin-bottom: 0.5em
     li + li, p + p
         margin-top: 1em
     > .wrapper
@@ -305,6 +313,33 @@ footer
             flex-grow: 1
             width: 20em
             padding-top: 2rem
+
+    .subscribe
+        box-shadow: rgba(15, 45, 70, 0.18) 0 1px 1px
+        background: #292d46
+        width: 100%
+        padding: 0.25em 0.3em 0.25em 1.32em
+        box-sizing: border-box
+        border-radius: 0.3em
+        display: flex
+        margin-top: 1.5em
+
+        input[type="text"]
+            border: none
+            font-size: 1em
+            font-weight: 300
+            color: rgba(255, 255, 255, 0.96)
+            background: none
+            flex-grow: 1
+        .submit
+            padding: 0.9em 3.2em
+            border-radius: 0.4em
+            flex-shrink: 0
+            border: none
+            background: #693AFA
+            font-size: 0.86rem
+            color: #ffffff
+            font-size: 0.8em
 
 // generics
 h1, h2, h3
