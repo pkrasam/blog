@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="30px" viewBox="0 0 46 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="GitHub-Global-Main-Dashboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-994.000000, -323.000000)">
+        <g id="Group-12" transform="translate(897.000000, 240.000000)">
+            <g id="Group-7" transform="translate(98.000000, 84.000000)">
+                <path d="M41.108307,18.0347222 L34.516693,18.0347222 C32.9262618,18.0347222 31.625,16.8231838 31.625,15.3424145 L31.625,12.5603632 C31.625,11.079594 32.9262618,9.86805556 34.516693,9.86805556 L41.108307,9.86805556 C42.6987382,9.86805556 44,11.079594 44,12.5603632 L44,15.3424145 C44,16.8231838 42.6987382,18.0347222 41.108307,18.0347222 Z" id="Stroke-9" stroke="#FFFFFF" stroke-width="1.279" stroke-linecap="round" stroke-linejoin="round" transform="translate(37.812500, 13.951389) rotate(-360.000000) translate(-37.812500, -13.951389) "></path>
+                <path d="M38.5,13.9516388 C38.5,13.1999916 37.8845695,12.5902778 37.1247476,12.5902778 C36.3654305,12.5902778 35.75,13.1999916 35.75,13.9516388 C35.75,14.703286 36.3654305,15.3125 37.1247476,15.3125 C37.8845695,15.3125 38.5,14.703286 38.5,13.9516388" id="Fill-11" fill="#FFFFFF" transform="translate(37.125000, 13.951389) rotate(-360.000000) translate(-37.125000, -13.951389) "></path>
+                <g id="Group-6">
+                    <path d="M40.5625,18.5079635 L40.5625,24.3699999 C40.5625,26.3131198 38.9245021,27.9027778 36.9222939,27.9027778 L3.64020612,27.9027778 C1.63799791,27.9027778 0,26.3131198 0,24.3699999 L0,3.53277784 C0,1.58965798 1.63799791,0 3.64020612,0 L36.9222939,0 C38.9245021,0 40.5625,1.58965798 40.5625,3.53277784 L40.5625,9.60221828" id="Stroke-7" stroke="#FFFFFF" stroke-width="1.279" stroke-linecap="round" stroke-linejoin="round" transform="translate(20.281250, 13.951389) rotate(-360.000000) translate(-20.281250, -13.951389) "></path>
+                    <text id="hsk" font-family="OpenSans, Open Sans" font-size="14" font-weight="normal" letter-spacing="0.0056" fill="#FFFFFF">
+                        <tspan x="5" y="19">hsk</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
