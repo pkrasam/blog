@@ -46,9 +46,25 @@ layout: compress
                         <li><a class="accountlink" href="https://handshake/">Account</a></li>
                     </ul>
                 </nav>
-                <div class="burgermenu">☰</div>
+                <div class="burgermenu" href="#" onclick="document.getElementById('burgernav').classList.toggle('dropped')">☰</div>
             </div>
         </header>
+        <div id="burgernav">
+            <div class="wrapper">
+                <ul class="mobile">
+                    {% assign current = page.path | downcase | split: '/' %}
+                    <li {% if current[0] == 'index.html' %}class="active"{% endif %}><a href="/">Blog</a></li>
+                    <li {% if current[0] == 'articles.html' %}class="active"{% elsif current[0] == '2018' %}class="active"{% endif %}><a href="/articles">News</a></li>
+                    <li {% if current[0] == 'authors.html' %}class="active"{% endif %}><a href="/authors">Authors</a></li>
+                </ul>
+                <hr class="mobile">
+                <ul>
+                    <li><a href="https://handshake/">Develop</a></li>
+                    <li><a href="https://handshake/">Airdrop</a></li>
+                    <li><a href="https://handshake/">Blog</a></li>
+                </ul>
+            </div>
+        </div>
         <content>
             <div class="wrapper">
                 {{ content }}
