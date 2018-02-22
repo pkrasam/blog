@@ -6,7 +6,7 @@ layout: default
 
 <div class="withsidebar">
     <div class="articles">
-        {% for post in site.posts | limit: 1 %}
+        {% for post in site.posts %}
         <div class="article">
             <div class="info">
                 <h1>
@@ -28,14 +28,12 @@ layout: default
         <div>
             {% include search.html %}
 
-            {% for post in site.posts | limit: 4 %}
-            {% if forloop.first %}{% else %}
+            {% for post in site.posts | random | limit: 4 %}
             <div class="articlelink">
                 <h3>{{ post.title }}</h3>
                 <p>{{ post.exerpt }}</p>
                 <a class="readmore" href="{{ post.url }}">Read More</a>
             </div>
-            {% endif %}
             {% endfor %}
         </div>
     </div>

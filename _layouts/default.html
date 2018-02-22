@@ -30,27 +30,28 @@ layout: compress
                         <img class="logoimg" src="/img/logo_colour.svg">
                     </a>
                 </div>
-                <nav>
+                <nav class="pagenav">
+                    {% assign current = page.path | downcase | split: '/' %}
+                    <ul class="breadcrumbs">
+                        <li {% if current[0] == 'index.html' %}class="active"{% endif %}><a href="/">Blog</a></li>
+                        <li {% if current[0] == 'articles.html' %}class="active"{% elsif current[0] == '2018' %}class="active"{% endif %}><a href="/articles">News</a></li>
+                        <li {% if current[0] == 'authors.html' %}class="active"{% endif %}><a href="/authors">Authors</a></li>
+                    </ul>
+                </nav>
+                <nav class="hsknav">
                     <div class="grouping">
                         <a href="https://handshake/">Develop</a>
                         <a href="https://handshake/">Airdrop</a>
                     </div>
                     <div class="grouping">
                         <a href="https://handshake/">Blog</a>
-                        <a href="https://handshake/">Account</a>
+                        <a class="accountlink" href="https://handshake/">Account</a>
                     </div>
                 </nav>
             </div>
         </header>
         <content>
             <div class="wrapper">
-                {% assign current = page.path | downcase | split: '/' %}
-                <ul class="breadcrumbs">
-                    <li><a {% if current[0] == 'index.html' %}class="active"{% endif %} href="/">Blog</a></li>
-                    <li><a {% if current[0] == 'articles.html' %}class="active"{% elsif current[0] == '2018' %}class="active"{% endif %} href="/articles">News</a></li>
-                    <li><a {% if current[0] == 'authors.html' %}class="active"{% endif %} href="/authors">Authors</a></li>
-                </ul>
-
                 {{ content }}
             </div>
         </content>

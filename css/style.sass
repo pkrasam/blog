@@ -32,7 +32,10 @@ body
 // header
 header
     background: #3C376F
-    padding: 4em 0 1.8em
+    padding: 4.5em 0 1.8em
+    .wrapper
+        width: $wide-content-width + 5.3rem
+
     .logo a
         display: inline-block
         text-decoration: none
@@ -51,7 +54,32 @@ header
             font-weight: 500
             font-size: 1.26em
             color: #525050
-    nav
+    nav.pagenav
+        flex-grow: 1
+        flex-shrink: 0
+        text-align: left
+
+        .breadcrumbs
+            li
+                display: inline-block
+                margin: 1.2em 0 0 2.6em
+                padding: 0.3em 0.4em 0.4em
+                border-left: 0.12em solid transparent
+                &.active
+                    border-left: 0.12em solid #00FFEB
+            a
+                display: inline-block
+                text-decoration: none
+                font-weight: 300
+                font-size: 0.9em
+                color: #00FFEB
+                &:first-of-type
+                    padding-left: 0
+                &:last-of-type
+                    padding-right: 0
+    nav.hsknav
+        flex-grow: 1
+        flex-shrink: 0
         text-align: right
         .grouping
             display: inline-block
@@ -70,16 +98,12 @@ header
                 padding-left: 0
             &:last-of-type
                 padding-right: 0
+            &.accountlink
+                color: transparent
     > .wrapper
         display: flex
         flex-direction: row
         align-items: center
-        > .logo
-            flex-grow: 1
-            flex-shrink: 0
-        > nav
-            flex-grow: 0
-            flex-shrink: 1
 
 // content
 content
@@ -87,30 +111,7 @@ content
     color: #ffffff
 
     .wrapper
-        padding: 0 0 2.14em
-
-        .breadcrumbs
-            margin: 2.14em 0
-            li
-                display: inline-block
-                + li
-                    margin-left: 1.14em
-                ::after
-                    font-size: 2em
-                    content: "/"
-                    padding-left: 0.7em
-                    color: #454765
-                    font-weight: 200
-                    margin-right: -0.1em
-                    top: 0.204em
-                    position: relative
-            a
-                font-size: 0.9em
-                text-decoration: none
-                font-weight: 600
-                transition: color 0.3s ease
-                &.active, &.active:hover
-                    color: #00FFEB
+        padding: 1.85em 0 2.14em
 
 // frontpage and article list styles
 .withsidebar
@@ -128,6 +129,14 @@ content
     flex-flow: row
     @include tabletorless
         flex-flow: column
+
+    background: #393b54
+    padding: 1em 1.2em
+    border-radius: 0.6em
+
+    + .article
+        margin-top: 0.8em
+
     > .info
         flex-grow: 0
         flex-shrink: 0
@@ -163,6 +172,11 @@ content
         color: #ffffff
         @include tabletorless
             margin-top: 1.6em
+
+.authors > div
+    background: #3C376F
+    padding: 1em 1.2em
+    border-radius: 0.6em
 
 .authordetails
     display: flex
@@ -225,60 +239,62 @@ content
         display: none
 
 .sidebar
-    margin-left: 2em
-    width: 19em
-    h2
-        font-size: 1.55em
-        font-weight: 300
-        margin-bottom: 0.8em
-        &:not(:first-child)
-            margin-top: 1.5em
-    .search
-        box-shadow: rgba(15, 45, 70, 0.18) 0 1px 1px
+    margin-left: 0.7em
+    > div
+        width: 19em
         background: #393b54
-        width: 100%
-        padding: 0.3em 0.4em
+        padding: 1em 1.2em
+        border-radius: 0.6em
         box-sizing: border-box
-        border-radius: 0.3em
-        display: flex
-
-        input[type="text"]
-            border: none
-            font-size: 1.1em
+        h2
+            font-size: 1.55em
             font-weight: 300
-            color: rgba(255, 255, 255, 0.96)
-            background: none
-            flex-grow: 1
-        .submit
-            height: 1.8rem
-            flex-shrink: 0
-    .articlelink
-        width: 100%
-        background: #393b54
-        padding: 1em 1.4em
-        box-sizing: border-box
-        box-shadow: rgba(15, 45, 70, 0.48) 0 1px 1px
-        border-radius: 0.35em
-        line-height: 1.2
-        + .articlelink
-            margin-top: 0.9em
-        h3
-            font-size: 1.1em
-            font-weight: 400
-            margin-bottom: 0.3em
-            color: #ffffff
-        p
-            font-size: 0.924em
-            margin: 0.8em 0
-            color: #ffffff
-        a.readmore
-            font-size: 0.9em
-            color: #00FFEB
-            text-decoration: none
-            display: inline-block
-            padding: 0.4em 0.55em 0.41em
-            border: 2px solid rgba(0, 255, 235, 0.74)
-            border-radius: 0.1em
+            margin-bottom: 0.8em
+
+            &:not(:first-child)
+                margin-top: 1.5em
+        .search
+            box-shadow: rgba(15, 45, 70, 0.18) 0 1px 1px
+            background: #393b54
+            width: 100%
+            padding: 0.3em 0.4em
+            box-sizing: border-box
+            border-radius: 0.3em
+            display: flex
+
+            input[type="text"]
+                border: none
+                font-size: 1.1em
+                font-weight: 300
+                color: rgba(255, 255, 255, 0.96)
+                background: none
+                flex-grow: 1
+            .submit
+                height: 1.8rem
+                flex-shrink: 0
+        .articlelink
+            width: 100%
+            background: #393b54
+            line-height: 1.2
+            + .articlelink
+                margin-top: 1.7em
+            h3
+                font-size: 1.1em
+                font-weight: 400
+                margin-bottom: 0.3em
+                color: #ffffff
+            p
+                font-size: 0.924em
+                margin: 0.8em 0
+                color: #ffffff
+            a.readmore
+                font-size: 0.9em
+                color: #00FFEB
+                text-decoration: none
+                display: inline-block
+                padding: 0.4em 0.55em 0.41em
+                border: 2px solid rgba(0, 255, 235, 0.74)
+                border-radius: 0.1em
 
 // footer
 footer
