@@ -3,11 +3,12 @@
 
 @import mixins/reset
 @import mixins/gradients
+@import mixins/opensans
 @import partials/media
 
 html > body
     // background: rgba(246, 247, 251, 1)
-    font-family: Helvetica, Arial, sans-serif
+    font-family: "Open Sans", Helvetica, Arial, sans-serif
     line-height: 1
 
 .wrapper
@@ -19,6 +20,7 @@ html > body
 html, body
     height: 100%
     background: #222 // so overscroll looks nicer
+    letter-spacing: 0.02em
 
 body
     display: flex
@@ -103,10 +105,8 @@ content
                 text-decoration: none
                 font-weight: 600
                 transition: color 0.3s ease
-                &.active
-                    color: #1e489c
-                &:not(.active):hover
-                    color: #3b64b9
+                &.active, &.active:hover
+                    color: #00FFEB
 
 // frontpage and article list styles
 .withsidebar
@@ -241,7 +241,6 @@ content
             font-weight: 300
             color: rgba(255, 255, 255, 0.96)
             background: none
-            letter-spacing: 0.02em
             flex-grow: 1
         .submit
             height: 1.8rem
@@ -308,11 +307,14 @@ footer
             padding-top: 2rem
 
 // generics
+h1, h2, h3
+    letter-spacing: 0
+
 a
     transition: color 0.3s ease
-    color: #3e74de
+    color: #00FFEB
     &:hover
-        color: #3b64b9
+        color: #00dccb
 
 p + p
     margin-top: 0.9em
