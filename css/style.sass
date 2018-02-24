@@ -1,11 +1,15 @@
 ---
 ---
-
+    
 @import mixins/reset
 @import mixins/gradients
 @import mixins/hs
 @import mixins/opensans
-@import partials/media
+@import mixins/media
+
+////
+////// html/body styles
+////
 
 html > body
     // background: rgba(246, 247, 251, 1)
@@ -30,7 +34,10 @@ body
     > content
         flex: 1 0 auto
 
-// header
+////
+////// header styles
+////
+
 header
     background: $header-bar-colour
     padding: 5.2em 0 1.8em
@@ -141,6 +148,10 @@ content
 
     .wrapper
         padding: 1.85em 0 2.14em
+
+////
+////// blog styles
+////
 
 // frontpage and article list styles
 .withsidebar
@@ -323,7 +334,414 @@ content
                 border: 2px solid rgba(0, 255, 235, 0.74)
                 border-radius: 0.1em
 
-// footer
+////
+////// landing page styles
+////
+
+.flex-nav-bar
+    display: none // just while it's still way broken
+
+.flashmessage
+    margin-bottom: 1.7em
+    > div
+        padding: 1.7em 1.9em
+        background: $window-colour
+        margin: 0 auto
+        text-align: center
+        width: 60%
+        border-radius: 0.3em
+    &.alert > div
+        background: $secondary-colour
+
+.landing-page-container, .onboarding-container
+    display: flex
+    flex-direction: row
+    .left
+        flex: 1 0 auto
+        width: 30%
+        margin-right: 2em
+        .pageicon-1
+            display: block
+            margin: 3.4em 0
+        .pageicon-2
+            display: block
+            width: 74%
+            margin: 15em 0
+        subtitle
+            display: block
+            font-size: 1.4em
+            line-height: 1.7
+            font-weight: 300
+            margin-bottom: 6em
+
+    .right
+        flex-grow: 2 1 auto
+        background: $window-colour
+        border-radius: 0.34em
+        width: 100%
+
+        h1
+            font-size: 1.7em
+            font-weight: 400
+            color: $text-colour
+            margin-bottom: 1.7em
+
+.landing-page-container .right
+    padding: 8em 7em
+    .inputfield
+        display: flex
+        flex-direction: row
+        margin: 1.7em 0
+        label
+            flex: 0 0 auto
+            width: 10em
+            text-align: right
+            padding-right: 2em
+            box-sizing: border-box
+            padding-top: 0.95em
+        input
+            flex: 1 1 auto
+            border: none
+            font-size: 1em
+            font-weight: 300
+            color: rgba(255, 255, 255, 0.96)
+            background: $content-bg
+            padding: 0.9em 1.9em
+            border-radius: 0.4em
+
+        > div
+            flex: 1 1 auto
+            width: 100%
+            text-align: right
+            padding-top: 0.24em
+            box-sizing: border-box
+            > span
+                display: block
+                margin-right: 3em
+                font-size: 0.87em
+                color: $lighter-text-colour
+                font-weight: 300
+                + span
+                    margin-top: 0.5em
+        .submit
+            display: inline-block
+            margin: 0 0 0 auto
+            padding: 1.1em 5.2em
+            border-radius: 0.4em
+            flex-shrink: 0
+            border: none
+            background: $button-colour
+            font-size: 0.86rem
+            color: $text-colour
+            font-size: 0.8em
+            cursor: pointer
+
+.onboarding-container .right
+    padding: 7em
+    h1
+        margin-bottom: 0.7em
+    p
+        font-size: 0.943em
+        font-weight: 300
+        color: $lighter-text-colour
+    
+    .qual
+        margin: 6em 0
+        h2
+            font-size: 1.2em
+            font-weight: 400
+            margin-bottom: 1.4em
+        .verif-boxes
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            > div
+                width: 27%
+
+            .verifybutton
+                display: block
+                width: 100%
+                padding: 1.65em 0
+                background: $button-colour
+                color: $text-colour
+                font-size: 1.1em
+                text-align: center
+                border-radius: 0.3em
+                box-shadow: rgba(15, 45, 70, 0.48) 0 1px 2px
+                &.qualified
+                    background: #27b573 // users won't see this anyway
+            
+            subtitle
+                display: block
+                margin-top: 2em
+                font-size: 0.8em
+                font-weight: 300
+                line-height: 1.4
+                color: $lighter-text-colour
+
+    .verif-flow-box
+        display: none
+        &.show
+            display: block
+        padding: 1.4em 2em
+        background: $content-bg
+        border-radius: 0.3em
+        margin-top: 1.7em
+        h2
+            font-size: 1.2em
+            font-weight: 300
+            color: $lighter-text-colour
+            margin-bottom: 0.4em
+        p
+            line-height: 1.5
+        .verifcode
+            margin-top: 0.5em
+            font-size: 1.1em
+            width: 100%
+            max-width: 40ch
+        #freenodeCode
+            word-wrap: break-word
+            word-wrap: break-all
+        #pgpForm
+            background: $window-colour
+    #surveyForm
+        .splitinput
+            display: flex
+            width: 100%
+            justify-content: space-between
+            input
+                width: 60%
+                + input
+                    margin-left: 0.4em
+        input, textarea
+            border: none
+            font-size: 0.9em
+            font-weight: 300
+            color: rgba(255, 255, 255, 0.96)
+            background: $window-colour
+            padding: 0.9em 1.9em
+            border-radius: 0.4em
+            box-sizing: border-box
+        textarea
+            width: 100%
+            margin: 0.4em 0
+        .submit
+            display: block
+            width: auto
+            text-align: right
+            margin: 0 0 0 auto
+            padding: 1.1em 5.2em
+            border-radius: 0.4em
+            flex-shrink: 0
+            border: none
+            background: $button-colour
+            font-size: 0.86rem
+            color: $text-colour
+            font-size: 0.8em
+            cursor: pointer
+
+    h3
+        font-weight: 300
+        margin-bottom: 0.4em
+        color: $lighter-text-colour
+
+////
+////// dashboard styles
+////
+
+.graphsbox, .nominatebox, .domainsearch
+    background: $window-colour
+    padding: 1.2em 1.8em
+    border-radius: 0.3em
+    h2
+        font-size: 1.6em
+        font-weight: 400
+        subtitle.onright
+            margin-left: 0.5em
+            font-size: 0.5em
+            font-weight: 300
+            color: $lighter-text-colour
+            strong
+                color: $text-colour
+                font-weight: 400
+.nominatebox, .domainsearch
+    margin-top: 0.7em
+.domainsearch
+    margin-bottom: 4em
+
+.graphwalletrow
+    display: flex
+    width: 100%
+    .active
+        color: $link-colour
+    .graphsbox
+        flex-grow: 1
+        margin-right: 0.6em
+        .graphs
+            display: flex
+            justify-content: space-around
+            margin: 1em 0
+            text-align: center
+            .graphcircle
+                // these properties are just so we can fake having graphs for real
+                height: 10em
+                width: 10em
+                background: $link-colour
+                border-radius: 40em
+                margin: 1.8em auto 1.3em
+                .inner
+                    height: 9.5em
+                    width: 9.5em
+                    background: $window-colour
+                    border-radius: 40em
+                    position: relative
+                    top: 0.25em
+                    left: 0.25em
+            subtitle
+                // the balancing of subtitles is really tricky
+                // don't modify this unless you want to sit here playing with and
+                // adjusting it for hours to get it looking balanced again
+                display: block
+                font-size: 0.8em
+                color: $lighter-text-colour
+                font-weight: 300
+                height: 1.5rem
+                &:first-of-type:not(.hascount)
+                    padding-top: 0.2em
+                    height: 1.3rem
+                strong
+                    font-weight: 400
+                    color: $text-colour
+                &.count
+                    font-size: 1em
+                .count
+                    font-size: 1.2em
+    .wallet
+        flex-shrink: 0
+        flex-grow: 0
+        width: 25em
+        background: $window-colour
+        padding: 3em 3.3em
+        border-radius: 0.3em
+        box-sizing: border-box
+        h1
+            font-size: 2em
+            font-weight: 300
+            .hs
+                // half of this word is cut off, lol
+                font-weight: 400
+                display: block
+                overflow-y: hidden
+                vertical-align: top
+                height: 0.74em
+                margin: 0.3em 0
+            .walleticon
+                display: inline-block
+                height: 1.05em
+                position: relative
+                left: 0.24em
+                top: 0.16em
+        hr
+            margin: 2em 0
+            border: none
+            border-top: 0.13em solid $disabled-colour
+        .count
+            font-size: 3em
+            font-weight: 600
+        .currency
+            font-size: 1.4em
+            font-weight: 100
+
+.nominatebox
+    display: flex
+    flex-direction: row
+    .left
+        flex-grow: 1
+        margin-right: 0.5em
+
+    .right
+        flex-grow: 0
+        flex-shrink: 0
+        box-sizing: border-box
+        width: 22em
+
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        text-align: center
+
+        .count
+            h1
+                font-size: 2.6em
+                font-weight: 400
+            subtitle
+                display: block
+                font-size: 0.9em
+                font-weight: 100
+                color: $lighter-text-colour
+                margin-top: 0.6em
+        img.sep
+            margin: 0 0.5em 0 0.6em
+            width: 2em
+            height: 3.9em
+
+.domainlist
+    .row
+        display: flex
+        align-items: center
+        width: 100%
+
+        .domain
+            width: 100%
+            flex-grow: 1
+        .availableon, .blocknumber, .button
+            flex-grow: 0
+            flex-shrink: 0
+        
+        font-weight: 300
+        color: $lighter-text-colour
+
+        .domain
+            padding: 2em 0.5em 2em 1.6em
+        .availableon
+            font-size: 0.8em
+            &::before
+                content: "Name available on "
+        .blocknumber
+            font-size: 0.8em
+            &::before
+                content: "Block number "
+            margin: 0 4em
+            padding: 1em 0 1em 4em
+            border-left: 0.1em solid $content-bg
+        .button
+            margin-left: 2em
+            padding: 0.9em 0.3em
+            box-sizing: border-box
+            width: 8em
+            text-align: center
+            border-radius: 0.4em
+            flex-shrink: 0
+            border: none
+            background: $disabled-colour
+            font-size: 0.86rem
+            color: $text-colour
+            font-size: 0.8em
+            margin-right: 0.3em
+            &.available
+                background: $link-colour
+                color: $dark-colour
+            &.bidding
+                background: $secondary-colour
+        
+        + .row
+            border-top: 0.1em solid $content-bg
+
+////
+////// footer styles
+////
+
 footer
     background: $window-colour
     color: $text-colour
@@ -361,38 +779,15 @@ footer
             width: 20em
             padding-top: 2rem
 
-    .subscribe
-        box-shadow: rgba(15, 45, 70, 0.18) 0 1px 1px
-        background: $content-bg
-        width: 100%
-        padding: 0.25em 0.3em 0.25em 1.32em
-        box-sizing: border-box
-        border-radius: 0.3em
-        display: flex
-        margin-top: 1.5em
+////
+////// generics styles
+////
 
-        input[type="text"]
-            border: none
-            font-size: 1em
-            font-weight: 300
-            color: rgba(255, 255, 255, 0.96)
-            background: none
-            flex-grow: 1
-        .submit
-            padding: 0.9em 3.2em
-            border-radius: 0.4em
-            flex-shrink: 0
-            border: none
-            background: $button-colour
-            font-size: 0.86rem
-            color: $text-colour
-            font-size: 0.8em
-
-// generics
 h1, h2, h3
     letter-spacing: 0
 
 a
+    text-decoration: none
     transition: color 0.3s ease
     color: $link-colour
     &:hover
@@ -400,3 +795,36 @@ a
 
 p + p
     margin-top: 0.9em
+
+.code, code, pre, tt
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace
+
+.emailinput, .generalinput
+    box-shadow: rgba(15, 45, 70, 0.18) 0 1px 1px
+    background: $content-bg
+    width: 100%
+    padding: 0.25em 0.3em 0.25em 0.3em
+    box-sizing: border-box
+    border-radius: 0.35em
+    display: flex
+    margin-top: 1.5em
+
+    input[type="text"]
+        border: none
+        font-size: 1em
+        font-weight: 300
+        color: rgba(255, 255, 255, 0.96)
+        background: none
+        flex-grow: 1
+        padding-left: 1.02em
+        border-radius: 0.3em
+        margin-right: 0.3em // display autocomplete better in webkit
+    .submit
+        padding: 0.9em 3.2em
+        border-radius: 0.4em
+        flex-shrink: 0
+        border: none
+        background: $button-colour
+        font-size: 0.86rem
+        color: $text-colour
+        font-size: 0.8em
