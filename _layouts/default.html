@@ -24,7 +24,7 @@ layout: compress
         <meta name="keywords" content="{{ page.keywords | join: "," }}"/>
         {% endif %}
     </head>
-    <body class="{{ template.css_class }} {{ page.css_class }}">
+    <body class="blog {{ template.css_class }} {{ page.css_class }}">
         <header>
             <div class="wrapper">
                 <div class="logo">
@@ -32,20 +32,13 @@ layout: compress
                         <img class="logoimg" src="/img/logo_colour.svg">
                     </a>
                 </div>
-                <nav class="pagenav">
-                    {% assign current = page.path | downcase | split: '/' %}
-                    <ul class="breadcrumbs">
-                        <li {% if current[0] == 'index.html' %}class="active"{% endif %}><a href="/">Blog</a></li>
-                        <li {% if current[0] == 'articles.html' %}class="active"{% elsif current[0] == '2018' %}class="active"{% endif %}><a href="/articles">News</a></li>
-                        <li {% if current[0] == 'authors.html' %}class="active"{% endif %}><a href="/authors">Authors</a></li>
-                    </ul>
-                </nav>
                 <nav class="hsknav">
                     <ul>
-                        <li><a href="https://handshake/">Develop</a></li>
                         <li><a href="https://handshake/">Airdrop</a></li>
+                        <li><a href="https://handshake/">Docs/FAQ</a></li>
                         <li><a href="https://handshake/">Blog</a></li>
-                        <li><a class="accountlink" href="https://handshake/">Account</a></li>
+                        <li><a href="https://handshake/">Community</a></li>
+                        <li><a class="accountlink" href="https://handshake/">Profile</a></li>
                     </ul>
                 </nav>
                 <div class="burgermenu" href="#" onclick="document.getElementById('burgernav').classList.toggle('dropped')">☰</div>
@@ -53,17 +46,11 @@ layout: compress
         </header>
         <div id="burgernav">
             <div class="wrapper">
-                <ul class="mobile">
-                    {% assign current = page.path | downcase | split: '/' %}
-                    <li {% if current[0] == 'index.html' %}class="active"{% endif %}><a href="/">Blog</a></li>
-                    <li {% if current[0] == 'articles.html' %}class="active"{% elsif current[0] == '2018' %}class="active"{% endif %}><a href="/articles">News</a></li>
-                    <li {% if current[0] == 'authors.html' %}class="active"{% endif %}><a href="/authors">Authors</a></li>
-                </ul>
-                <hr class="mobile">
                 <ul>
-                    <li><a href="https://handshake/">Develop</a></li>
                     <li><a href="https://handshake/">Airdrop</a></li>
+                    <li><a href="https://handshake/">Docs/FAQ</a></li>
                     <li><a href="https://handshake/">Blog</a></li>
+                    <li><a href="https://handshake/">Community</a></li>
                 </ul>
             </div>
         </div>
@@ -74,39 +61,40 @@ layout: compress
         </content>
         <footer>
             <div class="wrapper">
+                <div class="logobox">
+                    <img src="/img/footer/logo.svg">
+                </div>
                 <div class="linklist">
                     <h2>Handshake</h2>
                     <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">Airdrop</a></li>
                         <li><a href="/">FAQ</a></li>
-                        <li><a href="/">Inquiries</a></li>
-                        <li><a href="/">License</a></li>
-                        <li><a href="/">Careers</a></li>
+                        <li><a href="/">Whitepaper</a></li>
                     </ul>
                 </div>
                 <div class="linklist">
-                    <h2>Developers</h2>
+                    <h2>Develop</h2>
                     <ul>
                         <li><a href="/">GitHub</a></li>
                         <li><a href="/">Documentation</a></li>
                         <li><a href="/">Register a name</a></li>
-                        <li><a href="/">Blockchain</a></li>
+                        <li><a href="/">Run a Node</a></li>
                     </ul>
                 </div>
                 <div class="linklist">
-                    <h2>Support</h2>
+                    <h2>Community</h2>
                     <ul>
-                        <li><a href="/">Contact us</a></li>
-                        <li><a href="/">Press</a></li>
                         <li><a href="/">Twitter</a></li>
+                        <li><a href="/">Slack</a></li>
+                        <li><a href="/">Telegram</a></li>
+                        <li><a href="/">Discord</a></li>
                     </ul>
                 </div>
-                <div class="mailinglistsub">
-                    <h2>Stay Updated</h2>
-                    <p>Stay up to date with our developments</p>
-                    <form class="emailinput subscribe" action="/subscribe" method="get">
-                        <input type="text" id="q" name="query" placeholder="Your email address" alt="Email address for subscribing"/>
-                        <input class="submit" type="submit" value="Subscribe" alt="Subscribe submit button" />
-                    </form>
+                <div class="social">
+                    <a href="#"><img src="/img/footer/twitter.svg"></a>
+                    <a href="#"><img src="/img/footer/youtube.svg"></a>
+                    <a href="#"><img src="/img/footer/github.svg"></a>
                 </div>
             </div>
         </footer>

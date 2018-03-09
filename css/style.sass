@@ -58,31 +58,6 @@ header
                 max-height: 100%
                 height: 3.2rem
                 padding-top: 0.1em
-    nav.pagenav
-        flex-grow: 1
-        flex-shrink: 0
-        text-align: left
-
-        .breadcrumbs
-            li
-                display: inline-block
-                @include mobile
-                    display: none
-                margin: 1.2em 0 0 2.6em
-                padding: 0.3em 0.4em 0.4em
-                border-left: 0.12em solid transparent
-                &.active
-                    border-left: 0.12em solid $link-colour
-            a
-                display: inline-block
-                text-decoration: none
-                font-weight: 300
-                font-size: 0.9em
-                color: $link-colour
-                &:first-of-type
-                    padding-left: 0
-                &:last-of-type
-                    padding-right: 0
     nav.hsknav
         flex-grow: 1
         flex-shrink: 0
@@ -139,7 +114,7 @@ header
         display: none
         @include tabletorless
             display: block
-        color: $link-colour
+        color: $link-colour-light
         padding: 0.7em 1em
         font-size: 1.7em
         position: absolute
@@ -177,6 +152,31 @@ content
 ////// blog styles
 ////
 
+// stock colour overrides
+body.blog
+    header
+        background: $header-colour-dark
+        nav
+            &.hsknav a
+                color: $link-colour-light
+                &.accountlink
+                    color: transparent
+        
+            &.pagenav .breadcrumbs
+                a
+                    color: $link-colour-light
+                .active
+                    border-left: 0.12em solid $link-colour-light
+    
+    content
+        background: $content-bg-light
+        color: $text-colour-dark
+        > .wrapper
+            margin-top: 1.3em
+    
+    a
+        color: $link-colour-dark
+
 // frontpage and article list styles
 .withsidebar
     display: flex
@@ -188,57 +188,65 @@ content
         flex-grow: 0
         flex-shrink: 0
 
+.pagenav .breadcrumbs
+    font-size: 0.82em
+    margin-bottom: 2.6em
+    li
+        display: inline-block
+        + li::before
+            content: "> "
+            padding: 0 0.35em
+        a
+            color: $text-colour-dark
+            letter-spacing: 0.01em
+
 .article
     display: flex
     flex-flow: row
     @include tabletorless
         flex-flow: column
 
-    background: $window-colour
-    padding: 1em 1.2em
-    border-radius: 0.6em
+    color: $text-colour-dark
 
     + .article
-        margin-top: 0.8em
+        margin-top: 10em
 
     > .info
         flex-grow: 0
         flex-shrink: 0
-        width: 14em
-        margin-right: 1.7em
+        width: 16em
+        margin-right: 1.5em
         @include tabletorless
             width: 100%
             margin-right: 0
         h1
-            font-size: 2.4em
-            font-weight: 400
-            color: $text-colour
-            margin-bottom: 0.3em
+            font-size: 2.3em
+            font-weight: 700
+            letter-spacing: 0.005em
+            line-height: 1.3
+            margin-bottom: 0.65em
+            margin-top: 0.15em
         .author, .authorlinks, .date, permalink
             display: block
             font-size: 1.05em
-            margin: 0.3em 0
+            margin: 0.66em 0
         .author a
             font-weight: 600
-            color: $text-colour
             text-decoration: none
+            color: $text-colour-dark
         .authorlinks img.icon
             height: 1.2em
-        .permalink
-            font-size: 0.9em
-            text-decoration: none
-            margin-top: 0.9em
     > .content
         flex-grow: 1
-        font-size: 1.1em
-        line-height: 1.3
-        letter-spacing: .013em
-        color: $text-colour
+        line-height: 1.7
+        letter-spacing: 0.012em
+        font-size: 0.95em
         @include tabletorless
             margin-top: 1.6em
+        p + p
+            margin-top: 1.65em
 
 .authors > div
-    background: $window-colour
     padding: 1em 1.2em
     border-radius: 0.6em
 
@@ -274,7 +282,6 @@ content
         font-size: 1.1em
         line-height: 1.3
         letter-spacing: .013em
-        color: $text-colour
         h2
             font-size: 1.4em
             margin-bottom: 0.1em
@@ -303,16 +310,17 @@ content
         display: none
 
 .sidebar
-    margin-left: 0.7em
+    margin-left: 4em
     > div
-        width: 19em
+        width: 21em
         padding: 0 1.2em 1em
         border-radius: 0.6em
         box-sizing: border-box
         h2
             font-size: 1.55em
-            font-weight: 300
-            margin-bottom: 0.8em
+            font-weight: 600
+            margin-bottom: 1.5em
+            margin-top: -0.5em
 
             &:not(:first-child)
                 margin-top: 1.5em
@@ -337,26 +345,43 @@ content
                 flex-shrink: 0
         .articlelink
             width: 100%
-            line-height: 1.2
+            line-height: 1.3
+            background: $content-bg-light
+            border-radius: 0.4em
             + .articlelink
                 margin-top: 1.7em
+            .img
+                height: 8em
+                background: $placeholder-colour
+                border-radius: 0.4em 0.4em 0 0
+                z-index: 9
+                position: relative
+            .rest
+                box-sizing: border-box
+                padding: 2em 1.5em
+                box-shadow: 0 0 3em -0.5em rgba(0,0,0,0.13)
+                border-radius: 0 0 0.4em 0.4em
+                z-index: 6
+                position: relative
             h3
-                font-size: 1.1em
-                font-weight: 400
+                font-size: 1.2em
+                font-weight: 600
                 margin-bottom: 0.3em
-                color: $text-colour
+                text-wrap: balance
             p
-                font-size: 0.924em
-                margin: 0.8em 0
-                color: $text-colour
+                font-size: 0.88em
+                margin: 0.7em 0 1em
+                line-height: 1.5
+                font-weight: 300
             a.readmore
-                font-size: 0.9em
-                color: $link-colour
+                font-size: 0.72em
+                color: #ffffff
+                background: #693AFA
                 text-decoration: none
                 display: inline-block
-                padding: 0.4em 0.55em 0.41em
-                border: 2px solid rgba(0, 255, 235, 0.74)
-                border-radius: 0.1em
+                padding: 1em 3em
+                border-radius: 0.5em
+                margin-top: 0.8em
 
 ////
 ////// landing page styles
@@ -1078,41 +1103,38 @@ content
 ////
 
 footer
-    background: $window-colour
+    background: $footer-colour-dark
     color: $text-colour
-    font-size: 0.9rem
+    font-size: 1rem
     font-weight: 300
-    padding: 2rem 0 6rem
+    padding: 4rem 0 6rem
     padding-bottom: calc(6rem + env(safe-area-inset-bottom))
     box-sizing: border-box
     a
-        color: #ebebeb
+        color: $text-colour !important
         text-decoration: none
         &:hover
             color: #ccc
     h2
-        font-weight: 400
-        font-size: 1.3em
+        color: $footer-text-headers
+        font-size: 1rem
         margin-bottom: 1em
-    .mailinglistsub
-        h2
-            font-weight: 400
-            font-size: 1.5em
-            margin-bottom: 0.5em
+        // hackery to make it look the same as regular text
+        margin-left: -0.03em
+        font-weight: 400
     li + li, p + p
         margin-top: 1em
     > .wrapper
         display: flex
         flex-flow: row wrap
         align-items: top
-        > .linklist
+        .logobox
+            width: 17.5em
+        > .linklist, .social
             flex-grow: 1
-            width: 10em
-            padding-top: 2rem
-        > .mailinglistsub
-            flex-grow: 1
-            width: 20em
-            padding-top: 2rem
+        .social a
+            display: inline-block
+            margin-top: 7.1em
 
 ////
 ////// generics styles

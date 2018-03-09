@@ -6,6 +6,8 @@ layout: default
 
 <div class="withsidebar">
     <div class="articles">
+        {% include breadcrumbs.html %}
+
         {% for post in site.posts | limit: 1 %}
         <div class="article">
             <div class="info">
@@ -28,12 +30,17 @@ layout: default
         <div>
             {% include search.html %}
 
+            <h2>In Other News:</h2>
+
             {% for post in site.posts | limit: 4 %}
             {% if forloop.first %}{% else %}
             <div class="articlelink">
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.exerpt }}</p>
-                <a class="readmore" href="{{ post.url }}">Read More</a>
+                <div class="img"></div>
+                <div class="rest">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.exerpt }}</p>
+                    <a class="readmore" href="{{ post.url }}">Read More</a>
+                </div>
             </div>
             {% endif %}
             {% endfor %}

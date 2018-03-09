@@ -7,6 +7,8 @@ css_class: authors
 
 <div class="withsidebar">
     <div class="authors">
+        {% include breadcrumbs.html %}
+
         <div>
             {% for author in site.data.authors %}
             {% assign authorname = author[0] %}
@@ -35,15 +37,6 @@ css_class: authors
     </div>
     <div class="sidebar">
         <div>
-            {% include search.html %}
-
-            {% for post in site.posts | limit: 3 %}
-            <div class="articlelink">
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.exerpt }}</p>
-                <a class="readmore" href="{{ post.url }}">Read More</a>
-            </div>
-            {% endfor %}
         </div>
     </div>
 </div>
