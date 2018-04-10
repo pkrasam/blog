@@ -12,9 +12,9 @@
 ////
 
 html > body
-    // background: rgba(246, 247, 251, 1)
     font-family: "Open Sans", Helvetica, Arial, sans-serif
     line-height: 1
+    overflow-x: hidden
 
 .wrapper
     width: $wide-content-width
@@ -39,31 +39,38 @@ body
 ////
 
 header
-    background: $header-bar-colour
+    background-color: $header-colour-light
     padding: 5.2em 0 1.8em
+    @include mobile
+        padding: 2.8em 0 1.8em
     .wrapper
-        width: $wide-content-width + 5.3rem
-
+        max-width: $wide-content-width + 4.25rem
     .logo
+        text-align: center
         @include mobile
-            text-align: center
+            text-align: left
+            padding-left: 2em
+            height: 4em
             width: 100%
         a
             display: inline-block
             text-decoration: none
             padding: 0.4em 0.2em 0.4em 0
-            vertical-align: center
             .logoimg
                 display: inline-block
                 max-height: 100%
-                height: 3.2rem
+                height: 2.9375rem
                 padding-top: 0.1em
+
+    nav.hsknav.dashnav
+        padding-top: 0.9em
+        text-align: left
+ 
     nav.hsknav
+        font-size: 0.8325em
         flex-grow: 1
         flex-shrink: 0
         text-align: right
-        .fa-chevron-down
-            padding-left: 0.3em
         .grouping
             display: inline-block
             break-inside: avoid
@@ -73,14 +80,14 @@ header
             display: inline-block
             @include tabletorless
                 display: none
-            margin: 1.2em 0 0 2.6em
+            margin: 0.7em 0 0 2.6em
             padding: 0.3em 0.4em 0.4em
         a
             display: inline-block
             text-decoration: none
             font-weight: 300
             font-size: 0.9em
-            color: $link-colour
+            color: $link-colour-light
             text-transform: uppercase
             &:first-of-type
                 padding-left: 0
@@ -88,17 +95,26 @@ header
                 padding-right: 0
             &.accountlink
                 color: transparent
-        
+    nav.hsknav.usernav
+        padding-top: 0.9em
+        float: right
+        position: relative
+        .fa-chevron-down
+            padding-left: 0.3em
+    
         #useraccountdropdownmenu
+            color: red
             display: none
             &.dropped
                 display: block
                 @include mobile
                     display: none
             position: absolute
+            right: 0
+            right: calc(env(safe-area-inset-right))
             width: 10em
-            background: $header-bar-colour
-            margin-left: -4.8em
+            background-color: $header-colour-light
+            margin-left: 3em
             margin-top: 1.5em
             border-radius: 0.3em
             li
@@ -142,25 +158,26 @@ header
 
 // content
 content
-    background: $content-bg
+    background: $content-bg-dark
     color: $text-colour
 
     .wrapper
         padding: 1.85em 0 2.14em
 
-////
-////// blog styles
-////
-
 // stock colour overrides
+
+// blog
 body.blog
     header
         background: $header-colour-dark
         nav
-            &.hsknav a
-                color: $link-colour-light
-                &.accountlink
-                    color: transparent
+            &.hsknav
+                #useraccountdropdownmenu
+                    background: $header-colour-dark
+                a
+                    color: $link-colour-light
+                    &.accountlink
+                        color: transparent
         
             &.pagenav .breadcrumbs
                 a
@@ -174,8 +191,32 @@ body.blog
         > .wrapper
             margin-top: 1.3em
     
+    footer
+        h2
+            color: $footer-text-headers-dark
+
     a
         color: $link-colour-dark
+
+// community
+body.community
+    header, header nav.hsknav #useraccountdropdownmenu
+        background-color: $header-colour-dark
+        @include mobile
+            background-color: $header-colour-light
+    content
+        // these wrappers are empty on this page or provide their own wrapping
+        .wrapper:first-of-type, .wrapper:last-of-type
+            padding: 0
+        > .top
+            background-color: $header-colour-dark
+        > .bottom
+            background-color: $editorial-cta-bg
+    footer
+        background-color: $content-bg-dark
+        h2
+            color: $footer-text-headers-dark
+
 
 // frontpage and article list styles
 .withsidebar
@@ -408,7 +449,10 @@ body.blog
     .left
         flex: 0 0 auto
         width: 30%
-        margin-right: 2em
+        margin: 5em 3em 0 0
+        font-weight: 100
+        font-size: 0.8em
+
         .pageicon-1
             display: block
             margin: 3.4em 0
@@ -416,6 +460,26 @@ body.blog
             display: block
             width: 74%
             margin: 15em 0
+
+        .onboard-progress-bar
+            display: flex
+            flex-direction: column
+            img
+                display: block
+                margin: 3em 4em 0 0
+
+        .onboard-progress-label
+            display: block
+            margin: 1em 0 -4em 0
+
+        .onboard-progress-label-3
+            display: block
+            margin: 1em 0 0 0
+            float: right
+            width: 30%
+            text-align: center
+
+          
         subtitle
             display: block
             font-size: 1.4em
@@ -428,12 +492,25 @@ body.blog
         background: $window-colour
         border-radius: 0.34em
         width: 100%
+        display: flex
+        flex-direction: column
+        justify-content: space-around
 
         h1
-            font-size: 1.7em
-            font-weight: 400
+            font-size: 1.8em
+            font-weight: 300
             color: $text-colour
             margin-bottom: 1.7em
+
+        h2  
+            font-weight: 300
+            font-size: 1.2em
+            margin-bottom: 1.5em
+
+        h3
+            font-weight: 300
+            font-size: 1.1em
+            margin-bottom: 1.5em
 
 .landing-page-container .right
     padding: 8em 7em
@@ -487,14 +564,23 @@ body.blog
 .onboarding-container .right
     padding: 7em
     h1
-        margin-bottom: 0.7em
+        margin-bottom: 1.5em
+        font-size: 1.5em
     p
         font-size: 0.943em
         font-weight: 300
         color: $lighter-text-colour
+        margin-bottom: 3em
     
+    .onboard-back
+        position: relative
+        display: block
+        top: 5em
+      
+      
     .qual
-        margin: 6em 0
+        margin: 2.2em 0
+        flex-direction: column
         h2
             font-size: 1.2em
             font-weight: 400
@@ -503,6 +589,7 @@ body.blog
             display: flex
             flex-direction: row
             justify-content: space-between
+            margin-bottom: 4em
             > div
                 width: 27%
 
@@ -519,6 +606,10 @@ body.blog
                 &.qualified
                     background: #27b573 // users won't see this anyway
             
+                &.pending
+                    background: $disabled-colour
+                    opacity: 0.7
+
             subtitle
                 display: block
                 margin-top: 2em
@@ -547,11 +638,27 @@ body.blog
             font-size: 1.1em
             width: 100%
             max-width: 40ch
-        #freenodeCode
-            word-wrap: break-word
-            word-wrap: break-all
         #pgpForm
             background: $window-colour
+    #freenodeCode
+        background-color: $content-bg
+        padding: 20px
+        text-align: center
+        border-radius: 2px
+        margin: 30px 0 30px 0
+        word-wrap: break-word
+        word-wrap: break-all
+    .hsicon
+        padding: 0.3em 0.4em
+        color: $text-colour
+        &:not(.invisible)
+            cursor: pointer
+        &:first-child
+            padding-left: 0.7em
+        &:last-child
+            padding-right: 0.7em
+
+
     #surveyForm
         .splitinput
             display: flex
@@ -721,7 +828,7 @@ body.blog
         margin: 2em 0 -0.5em
 
 .onnominate-container .right
-    padding: 7em
+    padding: 5em
     font-size: 1.2em
     h1
         font-size: 1.3em
@@ -791,6 +898,496 @@ body.blog
         padding-right: 0.2em
 
 ////
+////// community-page styles
+////
+
+.community
+    content
+        padding: 0
+        margin: 0
+        width: 100%
+        background-color: white
+        .community-cta
+            background-color: $header-colour-dark
+            width: 100%
+            height: 34.5em
+            display: flex
+            flex-direction: column
+            justify-content: center
+            @include mobile
+                height: 32.45em
+            .cta-content
+                height: 100%
+                margin-bottom: 1em
+                color: white
+                text-align: center
+                display: flex
+                flex-direction: column
+                .title
+                    margin-top: 6.25em
+                    @include mobile
+                        margin-top: 4.625em
+                    h3
+                        font-size: 2.21875em
+                        font-weight: 300
+                        @include mobile
+                            font-size: 1.68em
+                    h1
+                        font-size: 5.825em
+                        font-weight: 500
+                        display: block
+                        overflow-y: hidden
+                        vertical-align: top
+                        height: 0.78em
+                        @include mobile
+                            font-size: 4.5em
+                .cta-sub-message
+                    font-size: 1.40em
+                    font-weight: 500
+                    opacity: 0.75
+                    max-width: 45em
+                    min-width: 22em
+                    margin: 0 auto
+                    margin-top: 2.125em
+                    line-height: 2.1375em
+                    @include mobile
+                        letter-spacing: 0.10em
+                        width: 90%
+                        font-size: 0.98em
+                        line-height: 1.9em
+                        margin-bottom: 3em
+                .cta-links
+                    margin: 3em auto
+                    font-size: 1.08em
+                    opacity: 0.75
+                    width: 26.5em
+                    max-width: 500px
+                    display: flex
+                    justify-content: space-between
+                    font-weight: 300
+                    letter-spacing: 0.045em
+                    line-height: 2.1375em
+                    padding-left: 2em
+                    @include mobile
+                        letter-spacing: 0
+                        line-height: 0
+                        margin: 0 auto
+                        padding-left: 0
+                        font-size: 0.95em
+                        opacity: 0.90
+                        flex-direction: column
+                        height: 4em
+                        width: 100%
+
+        .community-information
+            background-color: white
+            color: $content-text-light
+            display: flex
+            flex-direction: column
+            height: 115em
+            width: 100%
+            padding-top: 7em
+            @include mobile
+                padding-top: 2.25em
+                height: 180em
+            .community-container
+                max-width: $wide-content-width + 4.25rem
+                height: 25em
+                width: 85%
+                margin: 0 auto
+                @include mobile
+                    min-height: 44em
+                h1
+                    font-size: 2.750em
+                    opacity: 0.9
+                    font-weight: 600
+                    padding-bottom: 0.60em
+                    @include mobile
+                        font-size: 1.8em
+                h4
+                    font-size: 1.250em
+                    opacity: 0.7
+                    font-weight: 500
+                    line-height: 1.5em
+                    padding-bottom: 1.60em
+                .social-row
+                    width: 100%
+                    display: flex
+                    flex-direction: row
+                    flex-wrap: wrap
+                    @include desktop
+                        margin-bottom: 2em
+                    @include mobile
+                        flex-direction: column
+                        justify-content: space-around
+                        min-height: 15em
+                        min-width: 0
+                        margin: 0 auto
+                    .social-card
+                        margin: 0
+                        margin-bottom: 0.5em
+                        height: 3.5em
+                        display: flex
+                        @include mobile
+                            margin: 0 auto
+                            margin-bottom: 0.5em
+                        .logo
+                            display: flex
+                            justify-content: flex-start
+                            align-items: center
+                            flex: 0 1 auto
+                            img
+                                height: 90%
+                                width: 4.5em
+                        .content
+                            display: flex
+                            flex-direction: column
+                            flex: 1 1 auto
+                            min-width: 15em
+                            h4
+                                margin: 0
+                                padding: 0.2em 0
+                                font-size: 1em
+                                opacity: 0.85
+                                font-weight: 600
+                            div
+                                .link
+                                    color: $content-link-colour-dark
+                                    font-size: 0.8em
+                                    opacity: 0.85
+                                    font-weight: 500
+                                    text-decoration: underline
+                                    &:hover
+                                        opacity: 0.5
+
+            .upcoming-events-container
+                max-width: $wide-content-width + 4.25rem
+                width: 85%
+                margin: 0 auto
+                margin-top: 2.875em
+                min-height: 25em
+                @include mobile
+                    margin-top: 0
+                    min-height: 29em
+                h1
+                    font-size: 2.750em
+                    opacity: 0.9
+                    font-weight: 600
+                    padding-bottom: 0.60em
+                    @include mobile
+                        font-size: 1.8em
+                h4
+                    font-size: 1.250em
+                    opacity: 0.7
+                    font-weight: 500
+                    line-height: 1.4em
+                    padding-bottom: 2.6em
+                .upcoming-events-row
+                    width: 35%
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+                    min-width: 35em
+                    margin-bottom: 1.4em
+                    @include mobile
+                        min-width: 10em
+                        width: 100%
+                    .date
+                        width: 30%
+                        height: 100%
+                        @include mobile
+                            max-width: 5em
+                        h4
+                            font-size: 1.05em
+                            opacity: 0.7
+                            font-weight: 500
+                            line-height: 1.4em
+                            @include mobile
+                                font-size: 0.875em
+                                font-weight: 600
+                    .content
+                        width: 70%
+                        min-height: 2.5em
+                        height: 100%
+                        display: flex
+                        flex-direction: column
+                        justify-content: space-between
+                        @include mobile
+                            min-width: 12em
+                            padding-left: 1em
+                        h4
+                            margin: 0
+                            margin-bottom: 0.5em
+                            padding: 0
+                            font-size: 1.2em
+                            opacity: 0.7
+                            font-weight: 600
+                            a
+                                color: $content-link-colour-light
+                                font-size: 1.05em
+                                font-weight: 600
+                                &:hover
+                                    opacity: 0.5
+                                @include mobile
+                                    font-size: 0.875em
+                        h6
+                            margin: 0
+                            padding: 0
+                            font-size: 0.875em
+                            opacity: 0.7
+                            font-weight: 600
+                            @include mobile
+                                line-height: 1.3125em
+
+////
+////// contribute
+////
+
+.dashboard-contribute-container
+    max-width: $wide-content-width + 4.25rem
+    width: 85%
+    margin: 0 auto
+    margin-top: 5.875em
+    @include mobile
+    h1
+        font-size: 2.750em
+        opacity: 0.9
+        font-weight: 600
+        padding-bottom: 0.60em
+        @include mobile
+            padding-bottom: 1.50em
+            font-size: 1.8em
+    h4
+        font-size: 1.250em
+        opacity: 0.7
+        font-weight: 500
+        line-height: 1.4em
+        padding-bottom: 1.6em
+        @include mobile
+            line-height: 1.5em
+    .contribution-flex
+        .contribution-ideas-row
+            width: 100%
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            min-width: 30em
+            margin-top: 1.8em
+            @include mobile
+                flex-direction: column
+                justify-content: space-between
+                display: flex
+                margin-top: 0
+                width: 100%
+            .contribution-idea
+                margin: 0.5em
+                margin-left: 0
+                min-width: 14em
+                width: 28%
+                height: 16em
+                @include mobile
+                    margin-top: 1.5em
+                    height: 12em
+                    width: 80%
+                    display: block
+                hr
+                    display: inline-block
+                    border: 0
+                    width: 4em
+                    background-color: $hr-colour-light
+                    height: 0.3em
+                    margin-bottom: 1em
+                h4
+                    font-size: 1.1em
+                    opacity: 0.7
+                    line-height: 1.4em
+                    padding-bottom: 0.6em
+                    font-weight: 600
+                    @include mobile
+                        font-size: 0.8em
+                h3
+                    font-weight: 300
+                    opacity: 0.7
+                    line-height: 2.2em
+                    font-size: 1em
+                    padding-bottom: 1.2em                  
+                div
+                    .link
+                        color: $content-link-colour-light
+                        font-size: 0.9em
+                        opacity: 0.7
+                        font-weight: 500
+                        text-decoration: underline
+                        &:hover
+                            opacity: 0.5
+
+.contribute-container
+    max-width: $wide-content-width + 4.25rem
+    width: 85%
+    margin: 0 auto
+    margin-top: 5.875em
+    @include mobile
+    h1
+        font-size: 2.750em
+        opacity: 0.9
+        font-weight: 600
+        padding-bottom: 0.60em
+        @include mobile
+            padding-bottom: 1.50em
+            font-size: 1.8em
+    h4
+        font-size: 1.250em
+        opacity: 0.7
+        font-weight: 500
+        line-height: 1.4em
+        padding-bottom: 1.6em
+        @include mobile
+            line-height: 1.5em
+    .contribution-flex
+        .contribution-ideas-row
+            width: 100%
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            min-width: 30em
+            margin-top: 1.8em
+            @include mobile
+                flex-direction: column
+                justify-content: space-between
+                display: flex
+                margin-top: 0
+                width: 100%
+            .contribution-idea
+                margin: 0.5em
+                margin-left: 0
+                min-width: 14em
+                width: 28%
+                height: 16em
+                color: $content-text-dark
+                @include mobile
+                    margin-top: 1.5em
+                    height: 12em
+                    width: 80%
+                    display: block
+                hr
+                    display: inline-block
+                    border: 0
+                    width: 4em
+                    background-color: $hr-colour-light
+                    height: 0.3em
+                    margin-bottom: 1em
+                h4
+                    font-size: 1.1em
+                    opacity: 0.7
+                    line-height: 1.4em
+                    padding-bottom: 0.6em
+                    font-weight: 600
+                    @include mobile
+                        font-size: 0.8em
+                h3
+                    font-weight: 300
+                    opacity: 0.7
+                    line-height: 2.2em
+                    font-size: 1em
+                    padding-bottom: 1.2em                  
+                div
+                    .link
+                        color: $content-link-colour-dark
+                        font-size: 0.9em
+                        opacity: 0.7
+                        font-weight: 500
+                        text-decoration: underline
+                        &:hover
+                            opacity: 0.5
+
+////
+////// editorial-cta
+////
+
+.editorial-cta
+    display: flex
+    justify-content: space-around
+    align-items: center
+    min-height: 25em
+    background-color: $editorial-cta-bg
+    .editorial-cta-content
+        width: 100%
+        max-width: $wide-content-width + 4.25rem
+        @include mobile
+            max-width: 100%
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        flex-wrap: wrap
+        @include mobile
+            flex-direction: column
+            align-items: center
+        .message
+            flex: 1 1 auto
+            h1
+                font-weight: 600
+                font-size: 2.74em
+                margin-bottom: 0.75em
+                @include mobile
+                    font-size: 1.7em
+                    letter-spacing: 0.15em
+                    margin-top: 2em
+                    font-weight: 500
+            .sub-message p
+                font-weight: 400
+                opacity: 0.9
+                line-height: 1.6em
+                font-size: 1.3em
+                width: 28em
+                @include mobile
+                    font-size: 1.23em
+                    width: auto
+        .signup-form
+            // max-width: 43%
+            // @include mobile
+            //     max-width: 100%
+            display: flex
+            flex: 1 1 auto
+            @include mobile
+                width: 100%
+            form
+                background-color: $editorial-cta-bg
+                display: flex
+                align-items: center
+                @include mobile
+                    flex-direction: column
+                    margin-bottom: 2em
+                input
+                    box-sizing: border-box
+                    color: $editorial-cta-form-input-text-color
+                    background-color: $editorial-cta-form-input
+                    flex: 1 1 auto
+                    font-size: 1em
+                    padding: 1em
+                    opacity: 0.85
+                    font-weight: 400
+                    border-radius: 0.5em
+                    max-width: 25.5em
+                    @include mobile
+                        margin-right: 0
+                        max-width: 100%
+                        width: 100%
+                    &::placeholder
+                        color: $editorial-cta-form-input-text-color
+                        @include mobile
+                            color: #ffffff
+                input[type='submit']
+                    padding: 1em 3em 1em 2.5em
+                    opacity: 1
+                    flex: 0 0 auto
+                    font-weight: 400
+                    background-color: $editorial-cta-form-input-submit
+                    border-radius: 0.5em
+                    @include mobile
+                        margin: 0
+                        margin-top: 1.14em
+
+////
 ////// dashboard styles
 ////
 
@@ -818,7 +1415,7 @@ body.blog
     display: flex
     width: 100%
     .active
-        color: $link-colour
+        color: $link-colour-light
     .graphsbox
         flex-grow: 1
         margin-right: 0.6em
@@ -864,9 +1461,13 @@ body.blog
         flex-grow: 0
         width: 25em
         background: $window-colour
-        padding: 3em 3.3em
+        padding: 1.2em 2.5em
         border-radius: 0.3em
         box-sizing: border-box
+        h2
+            font-size: 1.6em
+            font-weight: 400
+            margin-bottom: 1.5em
         h1
             font-size: 2em
             font-weight: 300
@@ -894,6 +1495,25 @@ body.blog
         .currency
             font-size: 1.4em
             font-weight: 100
+        .verifybutton
+            display: block
+            padding: 1.65em 0
+            background: $button-colour
+            color: $text-colour
+            font-size: .8em
+            text-align: center
+            border-radius: 0.3em
+            box-shadow: rgba(15, 45, 70, 0.48) 0 1px 2px
+
+            img: width 20px
+            &.qualified
+                background: #27b573 // users won't see this anyway
+        
+            &.pending
+                background: $disabled-colour
+                opacity: 0.7
+
+
 
 .nominatebox
     display: flex
@@ -907,7 +1527,6 @@ body.blog
         flex-shrink: 0
         box-sizing: border-box
         width: 22em
-
         display: flex
         flex-direction: row
         justify-content: center
@@ -972,7 +1591,7 @@ body.blog
             font-size: 0.8em
             margin-right: 0.3em
             &.available
-                background: $link-colour
+                background: $link-colour-light
                 color: $dark-colour
             &.bidding
                 background: $secondary-colour
@@ -1098,12 +1717,13 @@ body.blog
     padding: 2.2em 2.8em
     border-radius: 0.3em
     background-color: $window-colour
+
 ////
 ////// footer styles
 ////
 
 footer
-    background: $footer-colour-dark
+    background-color: $footer-colour-dark
     color: $text-colour
     font-size: 1rem
     font-weight: 300
@@ -1116,7 +1736,7 @@ footer
         &:hover
             color: #ccc
     h2
-        color: $footer-text-headers
+        color: $footer-text-headers-light
         font-size: 1rem
         margin-bottom: 1em
         // hackery to make it look the same as regular text
@@ -1124,17 +1744,49 @@ footer
         font-weight: 400
     li + li, p + p
         margin-top: 1em
-    > .wrapper
+    .footer-wrapper
         display: flex
         flex-flow: row wrap
-        align-items: top
+        flex-direction: row
+        max-width: $wide-content-width + 4.25rem
+        margin: 0 auto
+        justify-content: space-around
         .logobox
-            width: 17.5em
-        > .linklist, .social
-            flex-grow: 1
-        .social a
-            display: inline-block
-            margin-top: 7.1em
+            width: 13.5em
+            display: flex
+            flex-direction: row
+            @include mobile
+                flex-direction: column
+                align-items: flex-start
+                width: 5em
+                margin-bottom: 1em
+        .linklist-wrapper
+            display: flex
+            flex-direction: row
+            min-width: 40em
+            @include mobile
+                flex-direction: column
+                min-width: 8em
+            .linklist
+                min-width: 12em
+                @include mobile
+                    margin-top: 1em
+            .social
+                flex-grow: 1
+                @include mobile
+                    width: 20%
+                    min-width: 10em
+                    margin: 0 auto
+                    margin-bottom: 1.5em
+                h2
+                    opacity: 0.35
+                ul
+                    font-weight: 500
+                    opacity: 0.75
+            .social a
+                display: inline-block
+                margin-top: 7.1em
+
 
 ////
 ////// generics styles
@@ -1146,7 +1798,7 @@ h1, h2, h3
 a
     text-decoration: none
     transition: color 0.3s ease
-    color: $link-colour
+    color: $link-colour-light
     &:hover
         color: saturate(darken(#00FFEB, 10%), 10%)
 
@@ -1222,3 +1874,61 @@ p + p
     color: $text-colour
     font-size: 0.8em
     cursor: pointer
+
+#successOnboard
+    background-color: $header-colour-light
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: center
+    border-radius: 0.4em
+    padding: 4em
+
+    .success-content
+        width: 50%
+        margin-top: 2.5em
+        margin-bottom: 2.5em
+        line-height: 2em
+
+        text-align: center
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        align-items: center
+        h1
+            font-size: 1.7em
+    .success-content > *
+        margin-top: 2.1em
+
+.qual-box
+    display: block
+    margin: 1em 0
+    padding: 1.5em 2em
+    border-radius: 0.4em
+    flex-shrink: 0
+    border: none
+    background: $button-colour
+    color: $text-colour
+    font-size: 1em
+    cursor: pointer
+    text-align: center
+
+    img
+        width: 15px
+    &:hover
+        opacity: 0.7
+
+.qual-box.pending
+    background: $disabled-colour
+    a
+        color: white
+.header-box > *
+    margin-bottom: 2.2em
+
+input.error-input
+    color: red
+    border: 2px solid $link-colour-light !important
+
+.onnominate-seperator
+    border: 0.5px solid black
+    margin: 4em 0 4em 0

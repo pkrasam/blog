@@ -1,15 +1,9 @@
 ---
-title: Handshake DOCS
-html_title: Handshake DOCS
 layout: default
 ---
 
 <div class="withsidebar">
-    <div class="sidebar">
-        {% include breadcrumbs.html %}
-    </div>
     <div class="articles">
-        {% for page in site.pages | limit: 1 %}
         <div class="article">
             <div class="info">
                 <h1>
@@ -20,6 +14,5 @@ layout: default
                 {{ page.content }}
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
