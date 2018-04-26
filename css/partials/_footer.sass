@@ -25,17 +25,16 @@
       cursor: pointer
 
 .center-wrap
-  padding-left: 5%
-  padding-right: 5%
+  max-width: 77em
+  margin: 0 auto
   padding-top: 1em
   padding-bottom: 4em
 
 .top-wrap, .bottom-wrap
   display: flex
-  font-size: 14px
-  max-width: 1220px
-  padding-left: 5%
-  padding-right: 5%
+  font-size: 0.8em
+  max-width: 77em
+  margin: 0 auto
   flex-direction: row
   justify-content: space-between
 
@@ -115,18 +114,14 @@
       > *
         width: 25%
         flex: 1 1 auto
-    .bottom-wrap .legal .copy
+    .bottom-wrap .legal .copy, .top-wrap
       display: none
 
 @media (max-width: 540px)
   #footer .center-wrap > :last-child
     display: none
-
-@media (max-width: 480px)
   #footer
     height: auto
-    .top-wrap
-      display: none
     .center-wrap
       padding: 0
       flex-direction: column
