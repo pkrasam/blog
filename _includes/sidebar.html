@@ -1,0 +1,5 @@
+{% for post in site.posts reversed | limit: 99 %}
+<div class="post-link">
+  <h3 onclick="window.scrollToSpot({{ post.title }})">{{ post.title }}</h3>
+</div>
+{% endfor %}

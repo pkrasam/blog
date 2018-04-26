@@ -1,26 +1,32 @@
 ---
 ---
     
+// mixins
+
 @import mixins/reset
 @import mixins/gradients
 @import mixins/hs
 @import mixins/opensans
 @import mixins/media
 
+// partials
+
+@import partials/footer
+@import partials/faq
+
 ////
 ////// html/body styles
 ////
 
-html > body
-    font-family: "Open Sans", Helvetica, Arial, sans-serif
-    line-height: 1
-    overflow-x: hidden
-
 .wrapper
+    position: relative // setting position so that the flash messages can have an absolute position in relation to this element
     width: $wide-content-width
     max-width: calc(100% - 3rem)
     max-width: calc(100% - 3rem - env(safe-area-inset-left) - env(safe-area-inset-right))
     margin: 0 auto
+
+html
+    font-size: 14px
 
 html, body
     height: 100%
@@ -28,11 +34,17 @@ html, body
     letter-spacing: 0.02em
 
 body
+    font-family: "Open Sans", Helvetica, Arial, sans-serif
+    overflow-x: hidden
+    font-size: 1em
+    color: $light-text
     display: flex
     flex-direction: column
 
     > content
         flex: 1 0 auto
+        background-color: white
+        color: $dark-stroke
 
 ////
 ////// header styles
@@ -41,6 +53,7 @@ body
 header
     background-color: $header-colour-light
     padding: 5.2em 0 1.8em
+    height: 5em
     @include mobile
         padding: 2.8em 0 1.8em
     .wrapper
@@ -156,7 +169,27 @@ header
     hr
         visibility: hidden
 
+// faq header
+
+#faq-header
+    background-color: $header-colour-light
+    min-height: 10em
+    div
+        max-width: 1000px
+        margin: 0 auto
+        h1
+            color: white!important
+            margin-bottom: 0
+    @include mobile
+        display: none
+
 // content
+
+.withsidebar
+    display: flex
+    flex-direction: row
+    width: 100%
+
 content
     background: $content-bg-dark
     color: $text-colour
@@ -164,1771 +197,133 @@ content
     .wrapper
         padding: 1.85em 0 2.14em
 
-// stock colour overrides
-
-// blog
-body.blog
-    header
-        background: $header-colour-dark
-        nav
-            &.hsknav
-                #useraccountdropdownmenu
-                    background: $header-colour-dark
-                a
-                    color: $link-colour-light
-                    &.accountlink
-                        color: transparent
-        
-            &.pagenav .breadcrumbs
-                a
-                    color: $link-colour-light
-                .active
-                    border-left: 0.12em solid $link-colour-light
-    
-    content
-        background: $content-bg-light
-        color: $text-colour-dark
-        > .wrapper
-            margin-top: 1.3em
-    
-    footer
-        h2
-            color: $footer-text-headers-dark
-
-    a
-        color: $link-colour-dark
-
-// community
-body.community
-    header, header nav.hsknav #useraccountdropdownmenu
-        background-color: $header-colour-dark
-        @include mobile
-            background-color: $header-colour-light
-    content
-        // these wrappers are empty on this page or provide their own wrapping
-        .wrapper:first-of-type, .wrapper:last-of-type
-            padding: 0
-        > .top
-            background-color: $header-colour-dark
-        > .bottom
-            background-color: $editorial-cta-bg
-    footer
-        background-color: $content-bg-dark
-        h2
-            color: $footer-text-headers-dark
-
-
-// frontpage and article list styles
-.withsidebar
-    display: flex
-    flex-flow: row
-    > .articles, > .authors
-        flex-grow: 1
-        flex-shrink: 1
-    > .sidebar
-        flex-grow: 0
-        flex-shrink: 0
-
-.pagenav .breadcrumbs
-    font-size: 0.82em
-    margin-bottom: 2.6em
-    li
-        display: inline-block
-        + li::before
-            content: "> "
-            padding: 0 0.35em
-        a
-            color: $text-colour-dark
-            letter-spacing: 0.01em
-
-.article
-    display: flex
-    flex-flow: row
-    @include tabletorless
-        flex-flow: column
-
-    color: $text-colour-dark
-
-    + .article
-        margin-top: 10em
-
-    > .info
-        flex-grow: 0
-        flex-shrink: 0
-        width: 16em
-        margin-right: 1.5em
-        @include tabletorless
-            width: 100%
-            margin-right: 0
-        h1
-            font-size: 2.3em
-            font-weight: 700
-            letter-spacing: 0.005em
-            line-height: 1.3
-            margin-bottom: 0.65em
-            margin-top: 0.15em
-        .author, .authorlinks, .date, permalink
-            display: block
-            font-size: 1.05em
-            margin: 0.66em 0
-        .author a
-            font-weight: 600
-            text-decoration: none
-            color: $text-colour-dark
-        .authorlinks img.icon
-            height: 1.2em
-    > .content
-        flex-grow: 1
-        line-height: 1.7
-        letter-spacing: 0.012em
-        font-size: 0.95em
-        @include tabletorless
-            margin-top: 1.6em
-        p + p
-            margin-top: 1.65em
-
-.authors > div
-    padding: 1em 1.2em
-    border-radius: 0.6em
-
-.authordetails
-    display: flex
-    flex-flow: row
-    > .avatar
-        flex-grow: 0
-        flex-shrink: 0
-        width: 9em
-        @include mobile
-            width: 6em
-        margin-right: 1.7em
-        img
-            display: block
-            width: 9em
-            @include mobile
-                width: 6em
-            max-height: 7.5em
-            margin: 0 auto
-            &.circle
-                border-radius: 99em
-                border: 1px solid #fff
-                box-shadow: rgba(15, 45, 70, 0.48) 0 1px 1px
-                background: #fff
-                width: 7.5em
-                height: 7.5em
-                @include mobile
-                    width: 5em
-                    height: 5em
-    > .content
-        flex-grow: 1
-        font-size: 1.1em
-        line-height: 1.3
-        letter-spacing: .013em
-        h2
-            font-size: 1.4em
-            margin-bottom: 0.1em
-            margin-top: 0.5em
-        h3
-            margin-bottom: 0.1em
-            margin-top: 0.5em
-        .authorlinks
-            display: block
-            margin-top: 1em
-            img.icon
-                height: 2em
-    &:not(:first-child) .content h2
-        margin-top: 1.6em
-
-@include tabletorless
-    body.authors .sidebar
-        display: none
-    .info .authorlinks
-        display: inline-block !important
-        margin: 0 0 0 0.3em !important
-        img
-            max-height: 1em
-@include mobile
-    .sidebar
-        display: none
-
-.sidebar
-    margin-left: 4em
-    > div
-        width: 21em
-        padding: 0 1.2em 1em
-        border-radius: 0.6em
-        box-sizing: border-box
-        h2
-            font-size: 1.55em
-            font-weight: 600
-            margin-bottom: 1.5em
-            margin-top: -0.5em
-
-            &:not(:first-child)
-                margin-top: 1.5em
-        .search
-            box-shadow: rgba(15, 45, 70, 0.18) 0 1px 1px
-            background: $window-colour
-            width: 100%
-            padding: 0.3em 0.4em
-            box-sizing: border-box
-            border-radius: 0.3em
-            display: flex
-
-            input[type="text"]
-                border: none
-                font-size: 1.1em
-                font-weight: 300
-                color: rgba(255, 255, 255, 0.96)
-                background: none
-                flex-grow: 1
-            .submit
-                height: 1.8rem
-                flex-shrink: 0
-        .articlelink
-            width: 100%
-            line-height: 1.3
-            background: $content-bg-light
-            border-radius: 0.4em
-            + .articlelink
-                margin-top: 1.7em
-            .img
-                height: 8em
-                background: $placeholder-colour
-                border-radius: 0.4em 0.4em 0 0
-                z-index: 9
-                position: relative
-            .rest
-                box-sizing: border-box
-                padding: 2em 1.5em
-                box-shadow: 0 0 3em -0.5em rgba(0,0,0,0.13)
-                border-radius: 0 0 0.4em 0.4em
-                z-index: 6
-                position: relative
-            h3
-                font-size: 1.2em
-                font-weight: 600
-                margin-bottom: 0.3em
-                text-wrap: balance
-            p
-                font-size: 0.88em
-                margin: 0.7em 0 1em
-                line-height: 1.5
-                font-weight: 300
-            a.readmore
-                font-size: 0.72em
-                color: #ffffff
-                background: #693AFA
-                text-decoration: none
-                display: inline-block
-                padding: 1em 3em
-                border-radius: 0.5em
-                margin-top: 0.8em
-
-////
-////// landing page styles
-////
-
-.flex-nav-bar
-    display: none // just while it's still way broken
-
-.flashmessage
-    margin-bottom: 1.7em
-    > div
-        padding: 1.7em 1.9em
-        background: $window-colour
-        margin: 0 auto
-        text-align: center
-        width: 60%
-        border-radius: 0.3em
-    &.alert > div
-        background: $secondary-colour
-
-.landing-page-container, .onboarding-container, .pubkey-container, .onnominate-container
-    display: flex
-    flex-direction: row
-    .left
-        flex: 0 0 auto
-        width: 30%
-        margin: 5em 3em 0 0
-        font-weight: 100
-        font-size: 0.8em
-
-        .pageicon-1
-            display: block
-            margin: 3.4em 0
-        .pageicon-2
-            display: block
-            width: 74%
-            margin: 15em 0
-
-        .onboard-progress-bar
-            display: flex
-            flex-direction: column
-            img
-                display: block
-                margin: 3em 4em 0 0
-
-        .onboard-progress-label
-            display: block
-            margin: 1em 0 -4em 0
-
-        .onboard-progress-label-3
-            display: block
-            margin: 1em 0 0 0
-            float: right
-            width: 30%
-            text-align: center
-
-          
-        subtitle
-            display: block
-            font-size: 1.4em
-            line-height: 1.7
-            font-weight: 300
-            margin-bottom: 6em
-
-    .right
-        flex: 1 1 auto
-        background: $window-colour
-        border-radius: 0.34em
-        width: 100%
-        display: flex
-        flex-direction: column
-        justify-content: space-around
-
-        h1
-            font-size: 1.8em
-            font-weight: 300
-            color: $text-colour
-            margin-bottom: 1.7em
-
-        h2  
-            font-weight: 300
-            font-size: 1.2em
-            margin-bottom: 1.5em
-
-        h3
-            font-weight: 300
-            font-size: 1.1em
-            margin-bottom: 1.5em
-
-.landing-page-container .right
-    padding: 8em 7em
-    .inputfield
-        display: flex
-        flex-direction: row
-        margin: 1.7em 0
-        label
-            flex: 0 0 auto
-            width: 10em
-            text-align: right
-            padding-right: 2em
-            box-sizing: border-box
-            padding-top: 0.95em
-        input
-            flex: 1 1 auto
-            border: none
-            font-size: 1em
-            font-weight: 300
-            color: rgba(255, 255, 255, 0.96)
-            background: $content-bg
-            padding: 0.9em 1.9em
-            border-radius: 0.4em
-
-        > div
-            flex: 1 1 auto
-            width: 100%
-            text-align: right
-            padding-top: 0.24em
-            box-sizing: border-box
-            > span
-                display: block
-                margin-right: 3em
-                font-size: 0.87em
-                color: $lighter-text-colour
-                font-weight: 300
-                + span
-                    margin-top: 0.5em
-        .submit
-            display: inline-block
-            margin: 0 0 0 auto
-            padding: 1.1em 5.2em
-            border-radius: 0.4em
-            flex-shrink: 0
-            border: none
-            background: $button-colour
-            color: $text-colour
-            font-size: 0.8em
-            cursor: pointer
-
-.onboarding-container .right
-    padding: 7em
-    h1
-        margin-bottom: 1.5em
-        font-size: 1.5em
-    p
-        font-size: 0.943em
-        font-weight: 300
-        color: $lighter-text-colour
-        margin-bottom: 3em
-    
-    .onboard-back
-        position: relative
-        display: block
-        top: 5em
-      
-      
-    .qual
-        margin: 2.2em 0
-        flex-direction: column
-        h2
-            font-size: 1.2em
-            font-weight: 400
-            margin-bottom: 1.4em
-        .verif-boxes
-            display: flex
-            flex-direction: row
-            justify-content: space-between
-            margin-bottom: 4em
-            > div
-                width: 27%
-
-            .verifybutton
-                display: block
-                width: 100%
-                padding: 1.65em 0
-                background: $button-colour
-                color: $text-colour
-                font-size: 1.1em
-                text-align: center
-                border-radius: 0.3em
-                box-shadow: rgba(15, 45, 70, 0.48) 0 1px 2px
-                &.qualified
-                    background: #27b573 // users won't see this anyway
-            
-                &.pending
-                    background: $disabled-colour
-                    opacity: 0.7
-
-            subtitle
-                display: block
-                margin-top: 2em
-                font-size: 0.8em
-                font-weight: 300
-                line-height: 1.4
-                color: $lighter-text-colour
-
-    .verif-flow-box
-        display: none
-        &.show
-            display: block
-        padding: 1.4em 2em
-        background: $content-bg
-        border-radius: 0.3em
-        margin-top: 1.7em
-        h2
-            font-size: 1.2em
-            font-weight: 300
-            color: $lighter-text-colour
-            margin-bottom: 0.4em
-        p
-            line-height: 1.5
-        .verifcode
-            margin-top: 0.5em
-            font-size: 1.1em
-            width: 100%
-            max-width: 40ch
-        #pgpForm
-            background: $window-colour
-    #freenodeCode
-        background-color: $content-bg
-        padding: 20px
-        text-align: center
-        border-radius: 2px
-        margin: 30px 0 30px 0
-        word-wrap: break-word
-        word-wrap: break-all
-    .hsicon
-        padding: 0.3em 0.4em
-        color: $text-colour
-        &:not(.invisible)
-            cursor: pointer
-        &:first-child
-            padding-left: 0.7em
-        &:last-child
-            padding-right: 0.7em
-
-
-    #surveyForm
-        .splitinput
-            display: flex
-            width: 100%
-            justify-content: space-between
-            input
-                width: 60%
-                + input
-                    margin-left: 0.4em
-        input, textarea
-            border: none
-            font-size: 0.9em
-            font-weight: 300
-            color: rgba(255, 255, 255, 0.96)
-            background: $window-colour
-            padding: 0.9em 1.9em
-            border-radius: 0.4em
-            box-sizing: border-box
-        textarea
-            width: 100%
-            margin: 0.4em 0
-        .submit
-            display: block
-            width: auto
-            text-align: right
-            margin: 0 0 0 auto
-            padding: 1.1em 5.2em
-            border-radius: 0.4em
-            flex-shrink: 0
-            border: none
-            background: $button-colour
-            color: $text-colour
-            font-size: 0.8em
-            cursor: pointer
-
-    h3
-        font-weight: 300
-        margin-bottom: 0.4em
-        color: $lighter-text-colour
-
-.pubkey-container .right
-    padding: 7em
-    font-size: 1.2em
-    h1
-        font-size: 1.3em
-        margin-bottom: 0.7em
-    h2
-        font-size: 0.5em
-        font-weight: 400
-        margin-bottom: 0.33em
-    p, span
-        font-weight: 300
-        color: $lighter-text-colour
-        line-height: 1.3
-        strong
-            font-weight: 400
-            color: $text-colour
-    .buttons
-        display: flex
-        margin: 1.2em 0
-    .selbutton
-        color: $lighter-text-colour
-        font-weight: 300
-        line-height: 1.3
-        > div
-            display: block
-            margin: 0.5em auto
-            padding: 1em
-            max-width: 15em
-            border-radius: 0.3em
-            background: $button-colour
-            color: $text-colour
-            text-align: center
-        
-        + .selbutton
-            margin-left: 1.5em
-
-    .checkboxwithtext
-        display: flex
-        align-items: center
-        margin: 1em 0
-        cursor: pointer
-        input
-            margin-right: 2em
-
-    input, textarea
-        display: block
-        width: 100%
-        margin: 0.35em 0
-        background: $content-bg
-        border: 0
-        border-radius: 0.3em
-        font-size: 0.9em
-        font-weight: 300
-        color: rgba(255, 255, 255, 0.96)
-        padding:  0.5em 0.6em 0.5em 1.02em
-        box-sizing: border-box
-
-    .hsoutput
-        display: flex
-        align-items: center
-        width: 100%
-        background: $content-bg
-        border-radius: 0.3em
-        input
-            padding-right: 0
-        .hsicon
-            padding: 0.3em 0.4em
-            color: $text-colour
-            &:not(.invisible)
-                cursor: pointer
-            &:first-child
-                padding-left: 0.7em
-            &:last-child
-                padding-right: 0.7em
-        .iconcont
-            display: flex
-            position: relative
-            box-shadow: -0.7em 0 0.7em 0 $content-bg
-
-
-    #nextprev
-        display: flex
-        align-items: center
-        .navbuttonbak
-            font-size: 0.8em
-            width: 100%
-            text-align: right
-            margin-right: 1em
-            font-weight: 300
-            color: $lighter-text-colour
-            padding: 0.6em
-        .navbutton
-            flex-grow: 0
-            flex-shrink: 1
-            display: block
-            width: 10em
-            padding: 0.9em 1.3em
-            box-sizing: border-box
-            text-align: center
-            border-radius: 0.4em
-            flex-shrink: 0
-            border: none
-            background: $button-colour
-            color: $text-colour
-            font-size: 0.86rem
-            margin-right: 0.3em
-
-    label
-        display: block
-        margin: 2em 0
-        span
-            display: block
-            margin-bottom: 0.3em
-            color: $text-colour
-            font-weight: 400
-
-    .pkeypage
-        min-height: 17em // keeps the prev/next buttons in a roughly-static place
-
-    .errorbox
-        padding: 0.9em 1.3em
-        background: $secondary-colour
-        color: $text-colour
-        font-size: 0.9em
-        border-radius: 0.3em
-        margin: 2em 0 -0.5em
-
-.onnominate-container .right
-    padding: 5em
-    font-size: 1.2em
-    h1
-        font-size: 1.3em
-        margin-bottom: 0.3em
-    .subtitle
-        font-weight: 300
-        color: $even-lighter-text-colour
-        font-size: 0.8em
-    h2
-        font-size: 0.5em
-        font-weight: 400
-        margin-bottom: 0.33em
-    p, span
-        font-weight: 300
-        color: $lighter-text-colour
-        line-height: 1.3
-        strong
-            font-weight: 400
-            color: $text-colour
-    #nominateFriendForm
-        margin-top: 2em
-    .error-message
-        display: none
-        height: 1em
-        color: red
-        margin: 4em 0
-    .nomination-row
-        font-size: 0.9em
-        display: flex
-        justify-content: space-between
-        flex-direction: row
-        padding: 0.6em 0
-        font-weight: 300
-        color: $even-lighter-text-colour
-        &.title-text
-            color: $text-colour
-        .user-icon
-            display: inline-block
-            width: 1.8em
-            height: 1.8em
-            background-color: $disabled-colour
-            border-radius: 6em
-            margin-right: 0.7em
-            float: left
-            top: -0.4em
-            left: -0.2em
-            position: relative
-        .email
-            flex-grow: 1
-            flex-shrink: 1
-        .sent, .status
-            flex-grow: 0
-            flex-shrink: 0
-            width: 8em
-    hr
-        margin: 2em -3em
-        border: none
-        border-top: 0.13em solid rgba(41, 45, 70, 0.6)
-    
-    .skiplink
-        display: block
-        text-align: right
-        margin-top: 3em
-        font-size: 0.8em
-        font-weight: 300
-        padding-left: 0.2em
-        padding-right: 0.2em
-
-////
-////// community-page styles
-////
-
-.community
-    content
-        padding: 0
-        margin: 0
-        width: 100%
-        background-color: white
-        .community-cta
-            background-color: $header-colour-dark
-            width: 100%
-            height: 34.5em
-            display: flex
-            flex-direction: column
-            justify-content: center
-            @include mobile
-                height: 32.45em
-            .cta-content
-                height: 100%
-                margin-bottom: 1em
-                color: white
-                text-align: center
-                display: flex
-                flex-direction: column
-                .title
-                    margin-top: 6.25em
-                    @include mobile
-                        margin-top: 4.625em
-                    h3
-                        font-size: 2.21875em
-                        font-weight: 300
-                        @include mobile
-                            font-size: 1.68em
-                    h1
-                        font-size: 5.825em
-                        font-weight: 500
-                        display: block
-                        overflow-y: hidden
-                        vertical-align: top
-                        height: 0.78em
-                        @include mobile
-                            font-size: 4.5em
-                .cta-sub-message
-                    font-size: 1.40em
-                    font-weight: 500
-                    opacity: 0.75
-                    max-width: 45em
-                    min-width: 22em
-                    margin: 0 auto
-                    margin-top: 2.125em
-                    line-height: 2.1375em
-                    @include mobile
-                        letter-spacing: 0.10em
-                        width: 90%
-                        font-size: 0.98em
-                        line-height: 1.9em
-                        margin-bottom: 3em
-                .cta-links
-                    margin: 3em auto
-                    font-size: 1.08em
-                    opacity: 0.75
-                    width: 26.5em
-                    max-width: 500px
-                    display: flex
-                    justify-content: space-between
-                    font-weight: 300
-                    letter-spacing: 0.045em
-                    line-height: 2.1375em
-                    padding-left: 2em
-                    @include mobile
-                        letter-spacing: 0
-                        line-height: 0
-                        margin: 0 auto
-                        padding-left: 0
-                        font-size: 0.95em
-                        opacity: 0.90
-                        flex-direction: column
-                        height: 4em
-                        width: 100%
-
-        .community-information
-            background-color: white
-            color: $content-text-light
-            display: flex
-            flex-direction: column
-            height: 115em
-            width: 100%
-            padding-top: 7em
-            @include mobile
-                padding-top: 2.25em
-                height: 180em
-            .community-container
-                max-width: $wide-content-width + 4.25rem
-                height: 25em
-                width: 85%
-                margin: 0 auto
-                @include mobile
-                    min-height: 44em
-                h1
-                    font-size: 2.750em
-                    opacity: 0.9
-                    font-weight: 600
-                    padding-bottom: 0.60em
-                    @include mobile
-                        font-size: 1.8em
-                h4
-                    font-size: 1.250em
-                    opacity: 0.7
-                    font-weight: 500
-                    line-height: 1.5em
-                    padding-bottom: 1.60em
-                .social-row
-                    width: 100%
-                    display: flex
-                    flex-direction: row
-                    flex-wrap: wrap
-                    @include desktop
-                        margin-bottom: 2em
-                    @include mobile
-                        flex-direction: column
-                        justify-content: space-around
-                        min-height: 15em
-                        min-width: 0
-                        margin: 0 auto
-                    .social-card
-                        margin: 0
-                        margin-bottom: 0.5em
-                        height: 3.5em
-                        display: flex
-                        @include mobile
-                            margin: 0 auto
-                            margin-bottom: 0.5em
-                        .logo
-                            display: flex
-                            justify-content: flex-start
-                            align-items: center
-                            flex: 0 1 auto
-                            img
-                                height: 90%
-                                width: 4.5em
-                        .content
-                            display: flex
-                            flex-direction: column
-                            flex: 1 1 auto
-                            min-width: 15em
-                            h4
-                                margin: 0
-                                padding: 0.2em 0
-                                font-size: 1em
-                                opacity: 0.85
-                                font-weight: 600
-                            div
-                                .link
-                                    color: $content-link-colour-dark
-                                    font-size: 0.8em
-                                    opacity: 0.85
-                                    font-weight: 500
-                                    text-decoration: underline
-                                    &:hover
-                                        opacity: 0.5
-
-            .upcoming-events-container
-                max-width: $wide-content-width + 4.25rem
-                width: 85%
-                margin: 0 auto
-                margin-top: 2.875em
-                min-height: 25em
-                @include mobile
-                    margin-top: 0
-                    min-height: 29em
-                h1
-                    font-size: 2.750em
-                    opacity: 0.9
-                    font-weight: 600
-                    padding-bottom: 0.60em
-                    @include mobile
-                        font-size: 1.8em
-                h4
-                    font-size: 1.250em
-                    opacity: 0.7
-                    font-weight: 500
-                    line-height: 1.4em
-                    padding-bottom: 2.6em
-                .upcoming-events-row
-                    width: 35%
-                    display: flex
-                    flex-direction: row
-                    justify-content: space-between
-                    min-width: 35em
-                    margin-bottom: 1.4em
-                    @include mobile
-                        min-width: 10em
-                        width: 100%
-                    .date
-                        width: 30%
-                        height: 100%
-                        @include mobile
-                            max-width: 5em
-                        h4
-                            font-size: 1.05em
-                            opacity: 0.7
-                            font-weight: 500
-                            line-height: 1.4em
-                            @include mobile
-                                font-size: 0.875em
-                                font-weight: 600
-                    .content
-                        width: 70%
-                        min-height: 2.5em
-                        height: 100%
-                        display: flex
-                        flex-direction: column
-                        justify-content: space-between
-                        @include mobile
-                            min-width: 12em
-                            padding-left: 1em
-                        h4
-                            margin: 0
-                            margin-bottom: 0.5em
-                            padding: 0
-                            font-size: 1.2em
-                            opacity: 0.7
-                            font-weight: 600
-                            a
-                                color: $content-link-colour-light
-                                font-size: 1.05em
-                                font-weight: 600
-                                &:hover
-                                    opacity: 0.5
-                                @include mobile
-                                    font-size: 0.875em
-                        h6
-                            margin: 0
-                            padding: 0
-                            font-size: 0.875em
-                            opacity: 0.7
-                            font-weight: 600
-                            @include mobile
-                                line-height: 1.3125em
-
-////
-////// contribute
-////
-
-.dashboard-contribute-container
-    max-width: $wide-content-width + 4.25rem
-    width: 85%
-    margin: 0 auto
-    margin-top: 5.875em
-    @include mobile
-    h1
-        font-size: 2.750em
-        opacity: 0.9
-        font-weight: 600
-        padding-bottom: 0.60em
-        @include mobile
-            padding-bottom: 1.50em
-            font-size: 1.8em
-    h4
-        font-size: 1.250em
-        opacity: 0.7
-        font-weight: 500
-        line-height: 1.4em
-        padding-bottom: 1.6em
-        @include mobile
-            line-height: 1.5em
-    .contribution-flex
-        .contribution-ideas-row
-            width: 100%
-            display: flex
-            flex-direction: row
-            justify-content: space-between
-            min-width: 30em
-            margin-top: 1.8em
-            @include mobile
-                flex-direction: column
-                justify-content: space-between
-                display: flex
-                margin-top: 0
-                width: 100%
-            .contribution-idea
-                margin: 0.5em
-                margin-left: 0
-                min-width: 14em
-                width: 28%
-                height: 16em
-                @include mobile
-                    margin-top: 1.5em
-                    height: 12em
-                    width: 80%
-                    display: block
-                hr
-                    display: inline-block
-                    border: 0
-                    width: 4em
-                    background-color: $hr-colour-light
-                    height: 0.3em
-                    margin-bottom: 1em
-                h4
-                    font-size: 1.1em
-                    opacity: 0.7
-                    line-height: 1.4em
-                    padding-bottom: 0.6em
-                    font-weight: 600
-                    @include mobile
-                        font-size: 0.8em
-                h3
-                    font-weight: 300
-                    opacity: 0.7
-                    line-height: 2.2em
-                    font-size: 1em
-                    padding-bottom: 1.2em                  
-                div
-                    .link
-                        color: $content-link-colour-light
-                        font-size: 0.9em
-                        opacity: 0.7
-                        font-weight: 500
-                        text-decoration: underline
-                        &:hover
-                            opacity: 0.5
-
-.contribute-container
-    max-width: $wide-content-width + 4.25rem
-    width: 85%
-    margin: 0 auto
-    margin-top: 5.875em
-    @include mobile
-    h1
-        font-size: 2.750em
-        opacity: 0.9
-        font-weight: 600
-        padding-bottom: 0.60em
-        @include mobile
-            padding-bottom: 1.50em
-            font-size: 1.8em
-    h4
-        font-size: 1.250em
-        opacity: 0.7
-        font-weight: 500
-        line-height: 1.4em
-        padding-bottom: 1.6em
-        @include mobile
-            line-height: 1.5em
-    .contribution-flex
-        .contribution-ideas-row
-            width: 100%
-            display: flex
-            flex-direction: row
-            justify-content: space-between
-            min-width: 30em
-            margin-top: 1.8em
-            @include mobile
-                flex-direction: column
-                justify-content: space-between
-                display: flex
-                margin-top: 0
-                width: 100%
-            .contribution-idea
-                margin: 0.5em
-                margin-left: 0
-                min-width: 14em
-                width: 28%
-                height: 16em
-                color: $content-text-dark
-                @include mobile
-                    margin-top: 1.5em
-                    height: 12em
-                    width: 80%
-                    display: block
-                hr
-                    display: inline-block
-                    border: 0
-                    width: 4em
-                    background-color: $hr-colour-light
-                    height: 0.3em
-                    margin-bottom: 1em
-                h4
-                    font-size: 1.1em
-                    opacity: 0.7
-                    line-height: 1.4em
-                    padding-bottom: 0.6em
-                    font-weight: 600
-                    @include mobile
-                        font-size: 0.8em
-                h3
-                    font-weight: 300
-                    opacity: 0.7
-                    line-height: 2.2em
-                    font-size: 1em
-                    padding-bottom: 1.2em                  
-                div
-                    .link
-                        color: $content-link-colour-dark
-                        font-size: 0.9em
-                        opacity: 0.7
-                        font-weight: 500
-                        text-decoration: underline
-                        &:hover
-                            opacity: 0.5
-
-////
-////// editorial-cta
-////
-
-.editorial-cta
-    display: flex
-    justify-content: space-around
-    align-items: center
-    min-height: 25em
-    background-color: $editorial-cta-bg
-    .editorial-cta-content
-        width: 100%
-        max-width: $wide-content-width + 4.25rem
-        @include mobile
-            max-width: 100%
-        display: flex
-        flex-direction: row
-        justify-content: space-between
-        flex-wrap: wrap
-        @include mobile
-            flex-direction: column
-            align-items: center
-        .message
-            flex: 1 1 auto
-            h1
-                font-weight: 600
-                font-size: 2.74em
-                margin-bottom: 0.75em
-                @include mobile
-                    font-size: 1.7em
-                    letter-spacing: 0.15em
-                    margin-top: 2em
-                    font-weight: 500
-            .sub-message p
-                font-weight: 400
-                opacity: 0.9
-                line-height: 1.6em
-                font-size: 1.3em
-                width: 28em
-                @include mobile
-                    font-size: 1.23em
-                    width: auto
-        .signup-form
-            // max-width: 43%
-            // @include mobile
-            //     max-width: 100%
-            display: flex
-            flex: 1 1 auto
-            @include mobile
-                width: 100%
-            form
-                background-color: $editorial-cta-bg
-                display: flex
-                align-items: center
-                @include mobile
-                    flex-direction: column
-                    margin-bottom: 2em
-                input
-                    box-sizing: border-box
-                    color: $editorial-cta-form-input-text-color
-                    background-color: $editorial-cta-form-input
-                    flex: 1 1 auto
-                    font-size: 1em
-                    padding: 1em
-                    opacity: 0.85
-                    font-weight: 400
-                    border-radius: 0.5em
-                    max-width: 25.5em
-                    @include mobile
-                        margin-right: 0
-                        max-width: 100%
-                        width: 100%
-                    &::placeholder
-                        color: $editorial-cta-form-input-text-color
-                        @include mobile
-                            color: #ffffff
-                input[type='submit']
-                    padding: 1em 3em 1em 2.5em
-                    opacity: 1
-                    flex: 0 0 auto
-                    font-weight: 400
-                    background-color: $editorial-cta-form-input-submit
-                    border-radius: 0.5em
-                    @include mobile
-                        margin: 0
-                        margin-top: 1.14em
-
-////
-////// dashboard styles
-////
-
-.graphsbox, .nominatebox, .domainsearch
-    background: $window-colour
-    padding: 1.2em 1.8em
-    border-radius: 0.3em
-    h2
-        font-size: 1.6em
-        font-weight: 400
-        subtitle.onright
-            margin-left: 0.5em
-            font-size: 0.5em
-            font-weight: 300
-            color: $lighter-text-colour
-            strong
-                color: $text-colour
-                font-weight: 400
-.nominatebox, .domainsearch
-    margin-top: 0.7em
-.domainsearch
-    margin-bottom: 4em
-
-.graphwalletrow
-    display: flex
-    width: 100%
-    .active
-        color: $link-colour-light
-    .graphsbox
-        flex-grow: 1
-        margin-right: 0.6em
-        .graphs
-            display: flex
-            justify-content: space-around
-            margin: 1em 0 0.5em
-            text-align: center
-            #emptygraph
-                width: 200px
-                height: 200px
-            .hskicon
-                width: 200px
-                height: 0
-                position: absolute
-                img
-                    position: relative
-                    top: -140px
-                    left: 0
-                    height: 80px
-            subtitle
-                // the balancing of subtitles is really tricky
-                // don't modify this unless you want to sit here playing with and
-                // adjusting it for hours to get it looking balanced again
-                display: block
-                font-size: 0.8em
-                color: $lighter-text-colour
-                font-weight: 300
-                height: 1.5rem
-                &:first-of-type:not(.hascount)
-                    padding-top: 0.2em
-                    height: 1.3rem
-                strong
-                    font-weight: 400
-                strong.count
-                    color: $text-colour
-                &.count
-                    font-size: 1em
-                .count
-                    font-size: 1.2em
-    .wallet
-        flex-shrink: 0
-        flex-grow: 0
-        width: 25em
-        background: $window-colour
-        padding: 1.2em 2.5em
-        border-radius: 0.3em
-        box-sizing: border-box
-        h2
-            font-size: 1.6em
-            font-weight: 400
-            margin-bottom: 1.5em
-        h1
-            font-size: 2em
-            font-weight: 300
-            .hs
-                // half of this word is cut off, lol
-                font-weight: 400
-                display: block
-                overflow-y: hidden
-                vertical-align: top
-                height: 0.74em
-                margin: 0.3em 0
-            .walleticon
-                display: inline-block
-                height: 1.05em
-                position: relative
-                left: 0.24em
-                top: 0.16em
-        hr
-            margin: 2em 0
-            border: none
-            border-top: 0.13em solid $disabled-colour
-        .count
-            font-size: 3em
-            font-weight: 600
-        .currency
-            font-size: 1.4em
-            font-weight: 100
-        .verifybutton
-            display: block
-            padding: 1.65em 0
-            background: $button-colour
-            color: $text-colour
-            font-size: .8em
-            text-align: center
-            border-radius: 0.3em
-            box-shadow: rgba(15, 45, 70, 0.48) 0 1px 2px
-
-            img: width 20px
-            &.qualified
-                background: #27b573 // users won't see this anyway
-        
-            &.pending
-                background: $disabled-colour
-                opacity: 0.7
-
-
-
-.nominatebox
-    display: flex
-    flex-direction: row
-    .left
-        flex-grow: 1
-        margin-right: 0.5em
-
-    .right
-        flex-grow: 0
-        flex-shrink: 0
-        box-sizing: border-box
-        width: 22em
-        display: flex
-        flex-direction: row
-        justify-content: center
-        align-items: center
-        text-align: center
-
-        .count
-            h1
-                font-size: 2.6em
-                font-weight: 400
-            subtitle
-                display: block
-                font-size: 0.9em
-                font-weight: 100
-                color: $lighter-text-colour
-                margin-top: 0.6em
-        img.sep
-            margin: 0 0.5em 0 0.6em
-            width: 2em
-            height: 3.9em
-
-.domainlist
-    .row
-        display: flex
-        align-items: center
-        width: 100%
-
-        .domain
-            width: 100%
-            flex-grow: 1
-        .availableon, .blocknumber, .button
-            flex-grow: 0
-            flex-shrink: 0
-        
-        font-weight: 300
-        color: $lighter-text-colour
-
-        .domain
-            padding: 2em 0.5em 2em 1.6em
-        .availableon
-            font-size: 0.8em
-            &::before
-                content: "Name available on "
-        .blocknumber
-            font-size: 0.8em
-            &::before
-                content: "Block number "
-            margin: 0 4em
-            padding: 1em 0 1em 4em
-            border-left: 0.1em solid $content-bg
-        .button
-            margin-left: 2em
-            padding: 0.9em 0.3em
-            box-sizing: border-box
-            width: 8em
-            text-align: center
-            border-radius: 0.4em
-            flex-shrink: 0
-            border: none
-            background: $disabled-colour
-            color: $text-colour
-            font-size: 0.8em
-            margin-right: 0.3em
-            &.available
-                background: $link-colour-light
-                color: $dark-colour
-            &.bidding
-                background: $secondary-colour
-        
-        + .row
-            border-top: 0.1em solid $content-bg
-
-
-////
-////// nominate friends styles
-////
-
-.nominate-friends-container
-    display: flex
-    justify-content: space-between
-    flex-direction: row
-    width: 100%
-
-    .nominations-left
-        padding: 4.3em 7.5em 8em 4.6em
-        flex-grow: 1
-        flex-shrink: 1
-        border-radius: 0.3em
-        max-width: 100%
-        background-color: $window-colour
-        h2
-            margin-bottom: 0.5em
-            font-size: 1.6em
-            font-weight: 300
-        .subtitle
-            font-weight: 300
-            color: $even-lighter-text-colour
-            font-size: 0.84em
-        .nonoms
-            font-weight: 300
-            color: $lighter-text-colour
-        #nominateFriendForm
-            margin-top: 3em
-        .error-message
-            display: none
-            height: 1em
-            color: red
-            margin: 4em 0
-        .nomination-row
-            font-size: 0.9em
-            display: flex
-            justify-content: space-between
-            flex-direction: row
-            padding: 0.6em 0
-            font-weight: 300
-            color: $even-lighter-text-colour
-            &.title-text
-                color: $text-colour
-            .user-icon
-                display: inline-block
-                width: 1.8em
-                height: 1.8em
-                background-color: $disabled-colour
-                border-radius: 6em
-                margin-right: 0.7em
-                float: left
-                top: -0.4em
-                left: -0.2em
-                position: relative
-            .email
-                flex-grow: 1
-                flex-shrink: 1
-                width: 100%
-            .sent, .status
-                flex-grow: 0
-                flex-shrink: 1
-                width: 16em
-        hr
-            margin: 3em -4em 3em -2em
-            border: none
-            border-top: 0.13em solid rgba(41, 45, 70, 0.6)
-
-    .nominations-right
-        padding: 2.2em 2.8em
-        flex-grow: 0
-        flex-shrink: 0
-        border-radius: 0.3em
-        background-color: $window-colour
-        margin-left: 0.5rem
-        h3
-            font-weight: 300
-            margin-bottom: 2em
-        .nomination-reward-info
-            font-size: 0.7em
-            font-weight: 300
-            margin-top: 1.5em
-            + .nomination-reward-info
-                margin-top: 0.6em
-
-    .nominations-info
-        padding: 0 1em
-        display: flex
-        flex-direction: row
-        justify-content: space-between
-        text-align: center
-        .count
-            h1
-                font-size: 2.6em
-                font-weight: 400
-            subtitle
-                display: block
-                font-size: 0.9em
-                font-weight: 100
-                color: $lighter-text-colour
-                margin-top: 0.6em
-        img.sep
-            margin: 0 0.5em 0 0.6em
-            width: 2em
-            height: 3.9em
-////
-////// password reset styles
-////
-
-.resetpassword-container
-    width: 50%
-    margin: 0 auto
-    min-width: 20em
-    padding: 2.2em 2.8em
-    border-radius: 0.3em
-    background-color: $window-colour
-
-////
-////// footer styles
-////
-
-footer
-    background-color: $footer-colour-dark
-    color: $text-colour
-    font-size: 1rem
-    font-weight: 300
-    padding: 4rem 0 6rem
-    padding-bottom: calc(6rem + env(safe-area-inset-bottom))
-    box-sizing: border-box
-    a
-        color: $text-colour !important
-        text-decoration: none
-        &:hover
-            color: #ccc
-    h2
-        color: $footer-text-headers-light
-        font-size: 1rem
-        margin-bottom: 1em
-        // hackery to make it look the same as regular text
-        margin-left: -0.03em
-        font-weight: 400
-    li + li, p + p
-        margin-top: 1em
-    .footer-wrapper
-        display: flex
-        flex-flow: row wrap
-        flex-direction: row
-        max-width: $wide-content-width + 4.25rem
-        margin: 0 auto
-        justify-content: space-around
-        .logobox
-            width: 13.5em
-            display: flex
-            flex-direction: row
-            @include mobile
-                flex-direction: column
-                align-items: flex-start
-                width: 5em
-                margin-bottom: 1em
-        .linklist-wrapper
-            display: flex
-            flex-direction: row
-            min-width: 40em
-            @include mobile
-                flex-direction: column
-                min-width: 8em
-            .linklist
-                min-width: 12em
-                @include mobile
-                    margin-top: 1em
-            .social
-                flex-grow: 1
-                @include mobile
-                    width: 20%
-                    min-width: 10em
-                    margin: 0 auto
-                    margin-bottom: 1.5em
-                h2
-                    opacity: 0.35
-                ul
-                    font-weight: 500
-                    opacity: 0.75
-            .social a
-                display: inline-block
-                margin-top: 7.1em
-
-
-////
-////// generics styles
-////
-
-h1, h2, h3
-    letter-spacing: 0
+h1
+    color: $faq-text-color
+    font-size: 275%
+    font-weight: $bold
+    margin-bottom: 1.2em
+
+h2
+    color: $faq-text-color
+    font-weight: $semi-bold
+    font-size: 1.4em
+    line-height: 225%
+    margin-top: 1em
+    margin-bottom: 0.2
+
+h3
+    color: $faq-text-color
+    font-size: 1.4em
+    line-height: 187.5%
+    margin-top: 1em
+    margin-bottom: 1em
+    font-weight: 400
+
+h4
+    color: $faq-text-color
+    font-size: 93.75%
+    font-weight: $semi-bold
+    line-height: 187.5%
+    margin-bottom: 12px
+
+p
+    color: $faq-text-color
+    font-size: 1em
+    margin-bottom: 2em
+    line-height: 2.2em
 
 a
+    color: $primary-accent
+    font-weight: $semi-bold
     text-decoration: none
     transition: color 0.3s ease
-    color: $link-colour-light
     &:hover
         color: saturate(darken(#00FFEB, 10%), 10%)
 
-p + p
-    margin-top: 0.9em
-
-.code, code, pre, tt
-    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace
-
-.invisible
-    visibility: hidden !important
-.hidden
-    display: none !important
-
-.emailinput, .generalinput
-    box-shadow: rgba(15, 45, 70, 0.18) 0 1px 1px
-    background: $content-bg
-    width: 100%
-    padding: 0.25em 0.3em 0.25em 0.3em
-    box-sizing: border-box
-    border-radius: 0.35em
-    display: flex
-    margin-top: 1.5em
-
-    input[type="text"]
-        border: none
-        font-size: 1em
-        font-weight: 300
-        color: rgba(255, 255, 255, 0.96)
-        background: none
-        flex-grow: 1
-        padding-left: 1.02em
-        border-radius: 0.3em
-        margin-right: 0.3em // display autocomplete better in webkit
-    .submit
-        cursor: pointer
-        padding: 0.9em 3.2em
-        border-radius: 0.4em
-        flex-shrink: 0
-        border: none
-        background: $button-colour
-        color: $text-colour
-        font-size: 0.8em
-
-.search-submit-icon
-    position: relative
-    img
-        position: absolute
-        left: 1.88em
-        width: 1.4em
-        top: 0.5em
-        pointer-events: none // to pass-thru submit pointer clicks
-
-.nominate-submit-icon
-    position: relative
-    img
-        position: absolute
-        left: 1.88em
-        width: 1.2em
-        top: 0.7em
-        pointer-events: none // to pass-thru submit pointer clicks
-.dashboard .nominate.emailinput .submit
-    padding: 0.95em 2.5em 0.85em
-
-.next-button
+.button
+    background-color: $secondary-accent
+    border-radius: 4px
+    border: none
+    color: $light-text
+    cursor: pointer
     display: inline-block
-    margin: 1em 0
-    padding: 1.1em 5.2em
-    border-radius: 0.4em
-    flex-shrink: 0
-    border: none
-    background: $button-colour
-    color: $text-colour
-    font-size: 0.8em
-    cursor: pointer
-
-#successOnboard
-    background-color: $header-colour-light
-    width: 100%
-    display: flex
-    flex-direction: row
-    justify-content: center
-    border-radius: 0.4em
-    padding: 4em
-
-    .success-content
-        width: 50%
-        margin-top: 2.5em
-        margin-bottom: 2.5em
-        line-height: 2em
-
-        text-align: center
-        display: flex
-        flex-direction: column
-        justify-content: space-around
-        align-items: center
-        h1
-            font-size: 1.7em
-    .success-content > *
-        margin-top: 2.1em
-
-.qual-box
-    display: block
-    margin: 1em 0
-    padding: 1.5em 2em
-    border-radius: 0.4em
-    flex-shrink: 0
-    border: none
-    background: $button-colour
-    color: $text-colour
-    font-size: 1em
-    cursor: pointer
+    font-weight: $semi-bold
+    margin: 5px 32px 5px 0
     text-align: center
+    width: 40%
 
-    img
-        width: 15px
-    &:hover
+    &.primary
+        padding: 15px
+
+    &.large
+        padding: 25px
+
+    &.disabled
+        background-color: $disabled-accent
+
+    &.small
+        padding: 1px
+
+    &.inline
+        display: inline
+        padding: 0.9em
+        margin: 0 0 0 1em
+
+.fatbutton
+    display: block
+    width: 100%
+    padding: 1.65em 0
+    background: $secondary-accent
+    color: $light-text
+    font-size: 1.1em
+    text-align: center
+    border-radius: 0.3em
+    &.qualified
+        background-color: $primary-accent
+
+    &.pending
+        background: $disabled-colour
         opacity: 0.7
 
-.qual-box.pending
-    background: $disabled-colour
-    a
-        color: white
-.header-box > *
-    margin-bottom: 2.2em
+label
+    flex: 0 0 auto
+    width: 10em
+    text-align: right
+    padding-right: 2em
+    box-sizing: border-box
+    padding-top: 0.95em
 
-input.error-input
+    &.error-text
+        color: $primary-accent
+
+input
+    flex: 1 1 auto
+    border: none
+    font-weight: $normal
+    color: $light-text
+    background: $primary-background
+    padding: 0.9em 1.9em
+    border-radius: 0.4em
+    width: 70%
+    font-size: 100%
+    margin: 0 0 22px
+    &.error
+        border: 1px solid $primary-accent
+
+subtitle
+    display: block
+    margin-top: 2em
+    font-size: 0.8em
+    font-weight: 300
+    line-height: 1.4
+    color: $light-text
+
+.inputfield.inline
     color: red
-    border: 2px solid $link-colour-light !important
+    display: flex
+    flex-direction: row
 
-.onnominate-seperator
-    border: 0.5px solid black
-    margin: 4em 0 4em 0
+.seperator
+    border: 0.5px solid $dark-stroke
+    width: 100%
+    margin: 2em 0 2em 0

@@ -6,11 +6,8 @@ layout: compress
 <html lang="en-us">
     <head>
         <title>{% if page.html_title %}{{ page.html_title }}{% else %}{{ page.title }}{% endif %}</title>
-
-        <link href="/css/style.css" rel="stylesheet" type="text/css" />
-
-        <script src="/js/anchor.min.js"></script>
-
+        <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="/javascript/main.js"></script>
         <meta charset='utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
@@ -35,7 +32,6 @@ layout: compress
                 <nav class="hsknav">
                     <ul>
                         <li><a href="https://handshake/">Airdrop</a></li>
-                        <li><a href="https://handshake/">Docs/FAQ</a></li>
                         <li><a href="https://handshake/">Blog</a></li>
                         <li><a href="https://handshake/">Community</a></li>
                         <li><a class="accountlink" href="https://handshake/">Profile</a></li>
@@ -54,59 +50,103 @@ layout: compress
                 </ul>
             </div>
         </div>
+        <section id="faq-header">
+            <div>
+                <h1>FAQ</h1>
+            </div>
+        </section>
         <content>
             <div class="wrapper">
                 {{ content }}
             </div>
         </content>
-        <footer>
-            <div class="footer-wrapper">
-                <div class="logobox">
-                    <img src="/img/footer/logo.svg">
+        <footer id="footer">
+            <div class="top-wrap-full">
+                <div class="top-wrap">
+                    <span>*Developers who wish to receive > 5000 HNS may be required to provide certain identification information for tax purposes.</span>
+                    <span>Top<img id="upButton" onclick="window.scrollTo(0, 0)" src="../img/footer/up-button.svg" alt="Go to top of the page button"/></span>
                 </div>
-                <div class='linklist-wrapper'>
-                    <div class="linklist">
-                        <h2>Handshake</h2>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/">Airdrop</a></li>
-                            <li><a href="/">FAQ</a></li>
-                            <li><a href="/">Whitepaper</a></li>
-                        </ul>
+            </div>
+            <div class="center-wrap">
+                <nav>
+                    <div class="header">
+                        <h3>Learn</h3>
+                        <span><img id="learnMenuToggle" src="../img/footer/up-caret.svg" alt="Learn More Menu Toggle on Mobile"/></span>
                     </div>
-                    <div class="linklist">
-                        <h2>Develop</h2>
-                        <ul>
-                            <li><a href="/">GitHub</a></li>
-                            <li><a href="/">Documentation</a></li>
-                            <li><a href="/">Register a name</a></li>
-                            <li><a href="/">Run a Node</a></li>
-                        </ul>
+                    <div class="links">
+                        <a href="#">Introduction</a>
+                        <a href="#">Coindrop</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Whitepaper</a>
+                        <a href="#">Contact Us</a>
                     </div>
-                    <div class="linklist">
-                        <h2>Community</h2>
-                        <ul>
-                            <li><a href="/">Twitter</a></li>
-                            <li><a href="/">Slack</a></li>
-                            <li><a href="/">Telegram</a></li>
-                            <li><a href="/">Discord</a></li>
-                        </ul>
+                </nav>
+
+                <nav>
+                    <div class="header">
+                        <h3>Develop</h3>
+                        <span><img id="developMenuToggle" src="../img/footer/up-caret.svg" alt="Developer Information Menu Toggle on Mobile"/></span>
                     </div>
-                    <div class="social">
-                        <a href="#"><img src="/img/footer/twitter.svg"></a>
-                        <a href="#"><img src="/img/footer/youtube.svg"></a>
-                        <a href="#"><img src="/img/footer/github.svg"></a>
+                    <div class="links">
+                        <a href="#">Documentation</a>
+                        <a href="#">API Docs</a>
+                        <a href="#">Run a Full Node</a>
+                        <a href="#">Install an SPV Resolver</a>
+                        <a href="#">See a List of Servers</a>
                     </div>
+                </nav>
+
+                <nav>
+                    <div class="header">
+                        <h3>Community</h3>
+                        <span><img id="communityMenuToggle" src="../img/footer/up-caret.svg" alt="Community Information Menu Toggle on Mobile"/></span>
+                    </div>
+                    <div class="links">
+                        <a href="#">Github</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Reddit</a>
+                        <a href="#">Telegram</a>
+                        <a href="#">Discord</a>
+                    </div>
+                </nav>
+
+                <div>
+                    <img src="../img/footer/logo.svg" alt="Handshake Logo"/>
+                </div>
+            </div>
+            <div class="bottom-wrap-full">
+                <div class="bottom-wrap">
+                    <span class="coindrop-message-mobile">*Developers who wish to receive > 5000 HNS may be required to provide certain identification information for tax purposes.</span>
+                    <nav class="legal">
+                        <a href="#">
+                            Terms of Use
+                        </a>
+                        <a href="#">
+                            Legal Notices
+                        </a>
+                        <a href="#">
+                            Privacy Policy
+                        </a>
+                        <span class="copy">
+                            &copy; Handshake, All Rights Reserved
+                        </span>
+                    </nav>
+                    <nav class="social-icons">
+
+                        <a href="#">
+                            <img src="../img/footer/github.svg" alt="GitHub Logo" />
+                        </a>
+                        <a href="#">
+                            <img src="../img/footer/twitter.svg" alt="Twitter Logo" />
+                        </a>
+
+                        <a href="#">
+                            <img src="../img/footer/reddit.svg" alt="Reddit Logo" />
+                        </a>
+
+                    </nav>
                 </div>
             </div>
         </footer>
     </body>
-
-    <script>
-        anchors.options = {
-            placement: 'right',
-            class: 'anchor',
-        };
-        anchors.add('.post h1, .post h2, .post h3, .post h4, .post h5, .post .figure');
-    </script>
 </html>

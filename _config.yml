@@ -1,6 +1,6 @@
-name: Handshake Blog
-url: https://blog.handshake.io
-description: Blog for the Handshake project
+name: Handshake Docs
+url: https://
+description: Docs for the Handshake project
 kramdown:
   input: GFM
   auto_ids: false

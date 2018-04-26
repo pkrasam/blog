@@ -6,19 +6,15 @@ layout: default
 
 <div class="withsidebar">
     <div class="sidebar">
-        {% include breadcrumbs.html %}
+        {% include sidebar.html %}
     </div>
     <div class="articles">
-        {% for page in site.pages | limit: 1 %}
-        <div class="article">
-            <div class="info">
-                <h1>
-                    {{ page.title }}
-                </h1>
-            </div>
-            <div class="content">
-                {{ page.content }}
-            </div>
+    {% for post in site.posts reversed %}
+        <h1 id="{{post.title}}" class="article">
+            {{ post.title }}
+        </h1>
+        <div class="content">
+            {{ post.content }}
         </div>
         {% endfor %}
     </div>
