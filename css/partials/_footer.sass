@@ -1,173 +1,211 @@
 #upButton
-  display: inline-block
+  display: block
 
-#footer .center-wrap > :last-child
-  display: flex
-  justify-content: flex-end
+#footer .footer-caret-up, #footer .footer-caret-down
+  pointer-events: none
 
-.top-wrap-full
-  background-color: white
+#footer
+  margin: 0
+  height: auto
+  background-color: $secondary-background
 
-.top-wrap
-  display: flex
-  color: $dark-stroke
-  background-color: white
-  span
+#footer .hide
+  display: none!important
+
+#footer
+  .top-wrap
+    height: 4em
+    color: $disabled-accent!important
+    font-size: 0.9375em
     display: flex
-    flex-direction: column
-    justify-content: space-around
-    &:last-child
-      flex-direction: row
-      min-width: 5em
-      align-items: flex-end
-      padding-bottom: 0.4em
-    img
-      cursor: pointer
-
-.center-wrap
-  max-width: 77em
-  margin: 0 auto
-  padding-top: 1em
-  padding-bottom: 4em
-
-.top-wrap, .bottom-wrap
-  display: flex
-  font-size: 0.8em
-  max-width: 77em
-  margin: 0 auto
-  flex-direction: row
-  justify-content: space-between
-
-.bottom-wrap-full
-  width: 100%
-  border-top: 1px solid grey
-  background-color: #251c47 
-  .bottom-wrap 
-    justify-content: space-between
+    max-width: 1450px
+    padding-left: 2em
+    padding-right: 2em
+    margin: 0 auto
     flex-direction: row
-    display: flex
-    padding-top: 1.5em
-    .social-icons
-      display: flex
-      justify-content: space-between
-      width: 10em
-      a
-        margin: 5px
-    .coindrop-message-mobile
-      display: none      
-    .legal
+    justify-content: space-between
+    div
+      min-width: 8em
       display: flex
       flex-direction: row
       justify-content: space-around
-      font-size: 12px
-      min-width: 40em
-      a
-        text-decoration: underline!important
-      span
-        margin: 5px
+      padding-bottom: 0.2em
+      align-items: center
+      img
+        cursor: pointer
 
 #footer
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
-  margin: 0
-  height: 280px
-  background-color: #251c47
   .center-wrap
-    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif
-    max-width: 1220px
-    padding-left: 5%
-    padding-right: 5%
+    max-width: 1450px
+    margin: 0 auto
+    padding-top: 2.625em
+    padding-left: 2em
+    padding-right: 2em
+    padding-bottom: 4em
     display: flex
     justify-content: space-between
+    h3
+      font-weight: 500
+    nav .links
+      display: flex
+      flex-direction: column
+      a
+        padding-bottom: 1.063em
+        font-size: 0.937em
+        color: white!important
     > *
-      max-width: 92%
       flex: 1 1 240px
-  nav .links
+    > :last-child
+      display: flex
+      justify-content: center
+
+#footer
+  .top-wrap-full-light
+    background-color: white
+  .bottom-wrap-full
+    width: 100%
+    border-top: 1px solid grey
+    background-color: $secondary-background
+  .bottom-wrap
+    align-items: center
+    color: white
     display: flex
-    flex-direction: column
-  .header
-    display: flex
-    span
-      display: none
-  h3
-    flex: 1 0 auto
-    margin: 5px 0
-    font-size: 17px
-    color: #696589
+    padding-left: 2em
+    padding-right: 2em
+    max-width: 1450px
+    margin: 0 auto
+    justify-content: space-between
+    flex-direction: row
+    font-size: 0.75em
+    min-height: 5em
+
+.social-icons
+  display: flex
+  justify-content: space-between
   a
-    margin: 5px 0
-    font-size: 12px
-    color: #f6f6f7
+    margin-left: 12.5px
+    margin-right: 12.5px
+    img
+      height: 26px
+
+.coindrop-message-mobile
+  display: none
+
+.legal
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  min-width: 50em
+  a
+    text-decoration: underline !important
+    padding-left: 1em
+    color: white!important
+  div > :first-child
+    padding-left: 0
+  .copy > :last-child
+    padding-left: 0.4em
+  span, div
+    display: flex
+
+.header
+  display: flex
+  span
+    display: none
+  > h3
+    flex: 1 0 auto
+    margin: 0
+    margin-bottom: 1.375em
+    font-size: 1.063em
+    color: $footer-header-color
+  a
+    color: white
     text-decoration: none
     font-weight: normal
     text-decoration: none
-
+    
 @media (max-width: 900px)
-  #footer h3
-    text-align: left
-  .bottom-wrap .legal
-    min-width: 25em!important
-
-@media (max-width: 720px)
   #footer
+    text-align: left
     .center-wrap
       flex-wrap: wrap
       > *
         width: 25%
         flex: 1 1 auto
-    .bottom-wrap .legal .copy, .top-wrap
+    .top-wrap
       display: none
+    .bottom-wrap-full
+      border-top: 0
+      .bottom-wrap
+        display: flex
+        padding-top: 0
+        flex-direction: column
+        align-items: baseline
+        padding-left: 32px
+        padding-right: 32px
+        .social-icons
+          border-top: 0 !important
+          order: 1
+          width: 20em
+          height: 4em
+          a:first-child
+            margin-left: 0
+        .coindrop-message-mobile
+          display: block
+          font-size: 11px
+          order: 2
+          padding-bottom: 1em
+        .legal
+          order: 3
+          padding-bottom: 1em
+          margin-bottom: 1em
+          display: flex
+          flex-direction: column
+          div
+            min-width: 12em
+            padding-bottom: 1em
 
-@media (max-width: 540px)
-  #footer .center-wrap > :last-child
-    display: none
+@media (max-width: 660px)
   #footer
     height: auto
+    .top-wrap, .bottom-wrap
+      padding-left: 0
+      padding-right: 0
     .center-wrap
       padding: 0
       flex-direction: column
-      > *
-        margin: 10px 0
-        width: auto
+      >
+        \:last-child
+          display: none
+        *
+          margin: 10px 0
+          width: 100%
+          padding: 0
+      a
+        padding-bottom: 1.5em
+        margin: 0
+      h3
+        color: white
+        padding-left: 0
+      span
+        color: white
+      h3
+        margin: 0
+        font-weight: 500
+      nav
         padding: 0
-    a
-      padding-bottom: 1.5em
-      margin: 0
-    h3, span
-      color: white
-    h3
-      margin: 0
-    .center-wrap nav
-      padding: 0 1em
-      margin: 0
-    .header span
-      display: initial
-    nav .links
-      display: none
-      &.open
-        display: flex
-    .header
-      cursor: pointer
-      padding-top: 1.5em
-      padding-bottom: 1.5em
-    nav
-      border-top: 1px solid grey
-    .social-icons
-      width: 70%
-      margin: 0 auto
-    .coindrop-message-mobile
-      display: block
-      font-size: 11px
-      padding-bottom: 1em
-    .bottom-wrap-full
-      border-top: 0
-    .bottom-wrap
-      display: flex
-      flex-direction: column-reverse
-      .social-icons
-        border-top: 0!important
-      .legal
-        padding-top: 1em
-        border-top: 0!important
-        padding-bottom: 1em
-        min-width: 12em
-      
+        margin: 0 auto
+        border-top: 1px solid grey
+        .header span
+          display: initial
+        .links
+          display: none
+        .links.open
+          display: flex
+          padding-left: 2em
+          padding-right: 2em
+        .header
+          cursor: pointer
+          padding-left: 2em
+          padding-right: 2em
+          padding-top: 1.5em
+          padding-bottom: 1.5em

@@ -12,6 +12,7 @@
 // partials
 
 @import partials/footer
+@import partials/nav
 
 ////
 ////// html/body styles
@@ -32,6 +33,10 @@ html, body
     background: $dark-colour // so overscroll looks nicer
     letter-spacing: 0.02em
 
+hr
+    border-height: 3px
+    border-style: outset
+
 body
     font-family: "Open Sans", Helvetica, Arial, sans-serif
     overflow-x: hidden
@@ -45,141 +50,21 @@ body
         background-color: white
         color: $dark-stroke
 
-////
-////// header styles
-////
-
-header
-    background-color: $header-colour-light
-    padding: 5.2em 0 1.8em
-    height: 5em
-    @include mobile
-        padding: 2.8em 0 1.8em
-    .wrapper
-        max-width: $wide-content-width + 4.25rem
-    .logo
-        text-align: center
-        @include mobile
-            text-align: left
-            padding-left: 2em
-            height: 4em
-            width: 100%
-        a
-            display: inline-block
-            text-decoration: none
-            padding: 0.4em 0.2em 0.4em 0
-            .logoimg
-                display: inline-block
-                max-height: 100%
-                height: 2.9375rem
-                padding-top: 0.1em
-
-    nav.hsknav.dashnav
-        padding-top: 0.9em
-        text-align: left
- 
-    nav.hsknav
-        font-size: 0.8325em
-        flex-grow: 1
-        flex-shrink: 0
-        text-align: right
-        .grouping
-            display: inline-block
-            break-inside: avoid
-            + .grouping
-                margin-left: 1.7em
-        li
-            display: inline-block
-            @include tabletorless
-                display: none
-            margin: 0.7em 0 0 2.6em
-            padding: 0.3em 0.4em 0.4em
-        a
-            display: inline-block
-            text-decoration: none
-            font-weight: 300
-            font-size: 0.9em
-            color: $link-colour-light
-            text-transform: uppercase
-            &:first-of-type
-                padding-left: 0
-            &:last-of-type
-                padding-right: 0
-            &.accountlink
-                color: transparent
-    nav.hsknav.usernav
-        padding-top: 0.9em
-        float: right
-        position: relative
-        .fa-chevron-down
-            padding-left: 0.3em
-    
-        #useraccountdropdownmenu
-            color: red
-            display: none
-            &.dropped
-                display: block
-                @include mobile
-                    display: none
-            position: absolute
-            right: 0
-            right: calc(env(safe-area-inset-right))
-            width: 10em
-            background-color: $header-colour-light
-            margin-left: 3em
-            margin-top: 1.5em
-            border-radius: 0.3em
-            li
-                display: block
-                margin: 0
-                padding: 0
-                a
-                    padding: 1em
-            li:last-child a
-                padding-bottom: 1.35em
-
-    .burgermenu
-        display: none
-        @include tabletorless
-            display: block
-        color: $link-colour-light
-        padding: 0.7em 1em
-        font-size: 1.7em
-        position: absolute
-        right: 0
-        right: calc(env(safe-area-inset-right))
-        cursor: pointer
-    > .wrapper
-        display: flex
-        flex-direction: row
-        align-items: center
-
-#burgernav
-    display: none
-    &.dropped
-        display: block
-        @include desktop
-            display: none
-    padding: 1.6em 0
-    a
-        display: block
-        text-decoration: none
-        padding: 0.4em 0
-    hr
-        visibility: hidden
-
 // faq header
 
 #faq-header
     background-color: $header-colour-light
-    min-height: 10em
+    min-height: 13em
+    display: flex
+    flex-direction: column
+    justify-content: center
     div
         margin: 0 auto
+        max-width: 1450px
+        width: 100%
         h1
             color: white
-            margin-bottom: 0
-    @include mobile
-        display: none
+            margin: 0
 
 // content
 
