@@ -7,14 +7,10 @@ We believe in social good being a motivating factor. Our commitment to the free 
 
 Building a new DNS for the world is not something any one organization can do on its own - that’s why we’re giving away all $10.2m we’ve raised from investors to well-known open source organizations and developers, including Mozilla, Open Rights Group, and the Apache Foundation.
 
----
 
 ### What if i have an open source project - how do I apply? 
 If your open source project isn’t a non profit, don’t worry! You can still benefit by participating in our FOSS community airdrop. Handshake coins are being distributed now.
 
----
 
 ### I am involved with an open source project but we are not an incorporated entity, can we still apply?
 If your open source project isn’t a non profit, don’t worry! You can still benefit by participating in our FOSS community airdrop. Handshake coins are being distributed now.
-
----

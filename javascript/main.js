@@ -4,10 +4,34 @@ document.addEventListener('DOMContentLoaded', () => {
  *  Side Menu
 */
 
-window.scrollToSpot = (elm) => {
-	const element = document.getElementById(elm.id)
-	element.scrollIntoView()
-}	
+const postLinks = document.getElementsByClassName('post-link')
+const faqSideMenuLinks = document.getElementsByClassName('faq-sidemenu-link')
+faqSideMenuLinks[0].classList.add('selected')
+const faqPosts = document.getElementsByClassName('faq-posts')
+// console.dir(faqPosts)
+for (index = 0; index < faqSideMenuLinks.length; ++index) {
+  const className = 'sidemenu-link' + index
+  faqSideMenuLinks[index].classList.add(className)
+}
+
+const clearSelectedSideMenuLinks = () => {
+  const selected = document.getElementsByClassName('selected')
+  for (var i = selected.length - 1; i >= 0; i--) {
+    selected[i].classList.remove('selected')
+  }
+}
+
+window.scrollToSpot = elm => {
+  clearSelectedSideMenuLinks()
+  const element = document.getElementById(elm.id)
+  element.scrollIntoView()
+}
+
+for (var i = postLinks.length - 1; i >= 0; i--) {
+  postLinks[i].addEventListener('click', e => {
+    e.target.classList.add('selected')
+  })
+}
 
 /*
  *  Nav Bar
@@ -61,28 +85,135 @@ function hideDropDown( e ){
 }	
 
 /*
+ *  Faq
+*/
+
+const questions = document.querySelectorAll('div.faq-content > h3')
+const subjects = document.querySelectorAll('.content > h1')
+for (index = 0; index < subjects.length; ++index) {
+  const className = 'sidemenu-ref' + index
+  subjects[index].classList.add(className)
+}
+// generate caret toggles
+
+for(keys in questions) {
+  // `element` is the element you want to wrap
+  const parent = questions[keys].parentNode
+  const wrapper = document.createElement('div')
+  wrapper.className = 'toggle-header'
+  const upCaret = document.createElement('img')
+  upCaret.src = '/img/up-caret.svg'
+  upCaret.className = 'faq-caret-up'
+  const downCaret = document.createElement('img')
+  downCaret.className = 'faq-caret-down'
+  downCaret.src = '/img/down-caret.svg'
+  const toggleUp = document.createElement('span')
+  const toggleDown = document.createElement('span')
+  toggleUp.appendChild(upCaret)
+  toggleDown.appendChild(downCaret)
+  // set the wrapper as child (instead of the element)
+  if(parent) {
+    parent.replaceChild(wrapper, questions[keys])
+    // set questions[keys] as child of wrapper
+    wrapper.appendChild(questions[keys])
+  }
+  wrapper.appendChild(toggleUp)
+  wrapper.appendChild(toggleDown)
+}
+
+const content = document.querySelector('content > .wrapper')
+const answers = document.querySelectorAll('div.faq-content > p')
+for (index = 0; index < answers.length; ++index) {
+  answers[index].classList.add('answers')
+}
+const faqCaretsUp = document.getElementsByClassName('faq-caret-up')
+const faqCaretsDown = document.getElementsByClassName('faq-caret-down')
+for (index = 0; index < faqCaretsDown.length; ++index) {
+  faqCaretsDown[index].parentElement.classList.add('hide')
+}
+let lastFaqTarget = null
+
+window.onscroll = () => {
+  for (index = 0; index < subjects.length; ++index) {
+    const subject = 'sidemenu-ref' + index
+    const subjectTitle = document.getElementsByClassName(subject)
+    const sideMenuSubject = 'sidemenu-link' + index
+    const subjectSideMenuLink = document.getElementsByClassName(sideMenuSubject)
+
+    if (subjects[index].offsetTop < window.pageYOffset) {
+      for (j = 0; j < subjects.length; ++j) {
+        faqSideMenuLinks[j].classList.remove('selected')
+      }
+      faqSideMenuLinks[index].classList.add('selected')
+    }
+  }
+}
+
+const setFaqCaretUp = () => {
+  for (index = 0; index < faqCaretsUp.length; ++index) {
+    faqCaretsUp[index].parentElement.classList.remove('hide')
+    faqCaretsDown[index].parentElement.classList.add('hide')
+  }
+}
+
+const openFaqMobileMenu = target => {
+
+  if (target === lastFaqTarget) {
+    target.children[2].classList.add('hide')
+    target.children[1].classList.remove('hide')
+  } else if (lastFaqTarget !== null) {
+    lastFaqTarget.children[1].classList.remove('hide')
+    lastFaqTarget.children[2].classList.remove('hide')
+  }
+
+  const answer = target.nextElementSibling
+
+  if(answer.classList.contains('open')) {
+    return answer.classList.remove('open')
+  }
+
+  Array.prototype.forEach.call(answers, (item) => {
+    item.classList.remove('open')
+  })
+
+  setFaqCaretUp()
+  answer.classList.add('open')
+  target.children[1].classList.add('hide')
+  target.children[2].classList.remove('hide')
+}
+
+content.addEventListener('click', e => {
+
+  const target = e.target
+ 
+  if (target.classList.contains('toggle-header')) {
+    openFaqMobileMenu(target)
+    lastFaqTarget = target
+  } else if (target.parentElement.classList.contains('toggle-header')) {
+    openFaqMobileMenu(target.parentElement)
+    lastFaqTarget = target.parentElement
+  }
+
+})
+
+/*
  *  Footer
 */
 
-// variable declarations
-
 const footer = document.getElementById('footer')
-const footerHeader = document.getElementsByClassName('header')
 const footerLinks = document.getElementsByClassName('links')
 const footerCaretsUp = document.getElementsByClassName('footer-caret-up')
 const footerCaretsDown = document.getElementsByClassName('footer-caret-down')
 let lastFooterTarget = null
 
-// functions
-
-const setCaretOrientationToClosed = () => {
+const setFooterCaretUp = () => {
   for (index = 0; index < footerCaretsUp.length; ++index) {
     footerCaretsUp[index].classList.remove('hide')
     footerCaretsDown[index].classList.add('hide')
   }
 }
 
-const open = (target) => {
+const openFooterMobileMenu = target => {
 
   if (target === lastFooterTarget) {
     target.children[1].classList.remove('hide')
@@ -101,23 +232,21 @@ const open = (target) => {
     item.classList.remove('open')
   })
 
-  setCaretOrientationToClosed()
+  setFooterCaretUp()
   links.classList.add('open')
   target.children[1].classList.add('hide')
   target.lastElementChild.children[0].classList.remove('hide')
 }
-
-// event listeners
 
 footer.addEventListener('click', (e) => {
 
   const target = e.target
 
   if (target.classList.contains('header')) {
-    open(target)
+    openFooterMobileMenu(target)
     lastFooterTarget = target
   } else if (target.parentElement.classList.contains('header')) {
-    open(target.parentElement)
+    openFooterMobileMenu(target.parentElement)
     lastFooterTarget = target.parentElement
   }
 

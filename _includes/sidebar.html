@@ -1,5 +1,5 @@
 {% for post in site.posts reversed | limit: 99 %}
 <div class='post-link'>
-  <div onclick='window.scrollToSpot({{ post.title }})'><span>{{ post.title }}</span></div>
+  <div onclick='window.scrollToSpot({{ post.title }})'><span id='sidemenu-{{post.title}}' class='faq-sidemenu-link'>{{ post.title }}</span></div>
 </div>
 {% endfor %}

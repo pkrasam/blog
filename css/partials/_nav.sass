@@ -1,3 +1,17 @@
+section#top .center-wrap
+  background-color: #433968
+  
+header
+  padding: 0 20px
+  display: flex
+  align-items: flex-end
+  background-color: #433968
+  height: 100px
+  margin: 0 auto
+  max-width: 1300px
+  h1
+    margin-bottom: 0
+
 .burgermenu, section#top header nav
   flex-grow: 1
   display: flex
@@ -52,6 +66,8 @@
   height: 100%
   display: none
   top: 0
+  background-color: black
+  opacity: 0.5
   position: absolute
 
 .active-nav
@@ -127,14 +143,12 @@ section#top
     .nav-links
       display: none
     .center-wrap header
-      flex-direction: column
-      justify-content: space-around
-      // align-items: center
+      align-items: center
       display: flex
-      height: 20.313em
+      height: 10.313em
       h1
         padding: 0
         margin: 0
-        display: inline-block !important
+        display: inline-block!important
     .burgermenu
       display: inherit

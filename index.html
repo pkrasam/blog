@@ -8,12 +8,12 @@ layout: default
     <div class="sidebar">
         {% include sidebar.html %}
     </div>
-    <div class="articles">
+    <div class="content">
     {% for post in site.posts reversed %}
-        <h1 id="{{post.title}}" class="article">
+        <h1 id="{{post.title}}" class="faq-posts">
             {{ post.title }}
         </h1>
-        <div class="content">
+        <div class="faq-content">
             {{ post.content }}
         </div>
         {% endfor %}
