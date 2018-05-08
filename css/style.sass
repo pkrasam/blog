@@ -54,16 +54,17 @@ body
 // faq header
 
 #faq-header
+    @include mobile
+        min-height: 6em!important
+        justify-content: flex-start!important
+
+#faq-header
     background-color: $header-colour-light
     padding: 0 20px
     min-height: 13em
     display: flex
     flex-direction: column
     justify-content: center
-    @include mobile
-        min-height: 6em
-        justify-content: flex-start
-
     h1 > :first-child
         margin-top: 0
     div
@@ -128,17 +129,25 @@ body
     .faq-content div:first-child
         padding-top: 0em
     h1
-        padding-top: 0.5em
+        padding-top: 1.5em
+        padding-bottom: 0.5em
+        text-transform: uppercase
         border-top: 1px solid $faq-stroke
         @include mobile
-            margin-top: 0
+            font-size: 143%
+            padding-top: 1.3em
+            margin-bottom: 1.3em
     h1:first-child
         padding-top: 0
         border-top: 0
         margin-bottom: 48px
+        @include mobile
+            font-size: 143%
+            margin-bottom: 1.3em
     .answers
         margin-bottom: 0
-        padding-bottom: 3em
+        margin-top: 0
+        padding-bottom: 2em
         @include mobile
             display: none
     .answers.open
@@ -162,8 +171,10 @@ body
         cursor: pointer
         h1
             font-size: 1.438em
+            padding-right: 0.4em
         h3
             font-size: 0.75em
+            padding-right: 0.4em
 
 content
     background: $content-bg-dark
