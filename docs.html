@@ -1,0 +1,22 @@
+---
+title: Handshake Docs
+html_title: Handshake Docs
+permalink: /docs/index.html
+layout: docs
+---
+
+<div class="withsidebar">
+    <div class="sidebar">
+      {% include sidebar.html content=site.docs type='docs' %}
+    </div>
+    <div class="content">
+    {% for doc in site.docs reversed %}
+        <h1 id="section-{{doc.title}}" class="faq-posts">
+            {{ doc.title }}
+        </h1>
+        <div class="faq-content">
+            {{ doc.content }}
+        </div>
+        {% endfor %}
+    </div>
+</div>

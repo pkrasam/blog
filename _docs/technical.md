@@ -1,6 +1,8 @@
 ---
 title: Technical
 date: 2018-01-02
+collection: docs
+layout: docs
 ---
 
 ### How do I register a name? 

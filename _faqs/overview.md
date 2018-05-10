@@ -1,6 +1,7 @@
 ---
-title: General
+title: Overview
 date: 2018-01-01
+collection: faqs
 ---
 ### Why do we need decentralized names on the internet?
 DNS today is not secure and vulnerable to DDoS attacks. Compromised certificate authorities threaten SSL. Billions of dollars in cryptocurrency are currently being moved around on potentially insecure websites. If you’re personally identifiable as the owner of a valuable asset, there’s a risk to your personal safety. Anonymised registration would end the risk of being held for ransom.

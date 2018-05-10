@@ -6,11 +6,11 @@ layout: default
 
 <div class="withsidebar">
     <div class="sidebar">
-        {% include sidebar.html %}
+        {% include sidebar.html content=site.posts type='post'%}
     </div>
     <div class="content">
     {% for post in site.posts reversed %}
-        <h1 id="{{post.title}}" class="faq-posts">
+        <h1 id="section-{{post.title}}" class="faq-posts">
             {{ post.title }}
         </h1>
         <div class="faq-content">

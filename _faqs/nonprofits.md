@@ -1,6 +1,7 @@
 ---
 title: Nonprofits
 date: 2018-01-04
+collection: faqs
 ---
 ### Why is Handshake donating $10.2 million to non profits?
 We believe in social good being a motivating factor. Our commitment to the free and open source software community is absolute. Instead of enrichening ourselves, we’ve taken the validation value from this project and shared it with the world.

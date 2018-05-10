@@ -1,0 +1,22 @@
+---
+title: Handshake FAQs
+html_title: Handshake FAQs
+permalink: /faqs/index.html
+layout: faqs
+---
+
+<div class="withsidebar">
+    <div class="sidebar">
+      {% include sidebar.html type="faq" content=site.faqs %}
+    </div>
+    <div class="content">
+    {% for faq in site.faqs reversed %}
+        <h1 id="section-{{faq.title}}" class="faq-posts">
+            {{ faq.title }}
+        </h1>
+        <div class="faq-content">
+            {{ faq.content }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
