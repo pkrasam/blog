@@ -1,0 +1,7 @@
+<div class='sidebar-content'>
+{% for post in include.content %}
+  <a class='sidebar-link' href='#section-{{post.title}}'>
+    {{post.title}}
+  </a>
+{% endfor %}
+</div>

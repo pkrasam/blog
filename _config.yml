@@ -1,15 +1,11 @@
-name: Handshake Blog
-url: https://blog.handshake.io
-description: Blog for the Handshake project
-kramdown:
-  input: GFM
-  auto_ids: false
+name: Handshake Docs
+url: https://
+description: Docs for the Handshake project
 exclude:
   - README.md
   - Gemfile*
 plugins:
   - jekyll-sitemap
-  - jekyll-redirect-from
 sass:
   sass_dir: css
 sitemap:
@@ -18,3 +14,24 @@ compress_html:
   # clippings: all
   # comments: ["<!-- ", " -->"]
   blanklines: true
+
+collections:
+  faqs:
+    output: true
+    permalink: /faq/:name
+  docs:
+    output: true
+    permalink: /doc/:name
+    layout: default
+
+defaults: 
+  - scope:
+     path: ""
+     type: "faqs"
+    values:
+      layout: default
+
+
+# Build settings
+markdown: kramdown
+permalinks: pretty

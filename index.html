@@ -1,49 +1,21 @@
 ---
-title: Handshake Blog
-html_title: Handshake Blog
+title: Handshake DOCS
+html_title: Handshake DOCS
 layout: default
 ---
 
 <div class="withsidebar">
-    <div class="articles">
-        {% include breadcrumbs.html %}
-
-        {% for post in site.posts | limit: 1 %}
-        <div class="article">
-            <div class="info">
-                <h1>
-                    {{ post.title }}
-                </h1>
-                {% include authorname.html author=post.author mono=true %}
-                <span class="date">
-                    {{ post.date | date: '%B %d, %Y' }}
-                </span>
-                <a class="permalink" href="{{ post.url }}">Permalink</a>
-            </div>
-            <div class="content">
-                {{ post.content }}
-            </div>
+    <div class="sidebar">
+        {% include sidebar.html content=site.posts type='post'%}
+    </div>
+    <div class="content">
+    {% for post in site.posts reversed %}
+        <h1 id="section-{{post.title}}" class="faq-posts">
+            {{ post.title }}
+        </h1>
+        <div class="faq-content">
+            {{ post.content }}
         </div>
         {% endfor %}
-    </div>
-    <div class="sidebar">
-        <div>
-            {% include search.html %}
-
-            <h2>In Other News:</h2>
-
-            {% for post in site.posts | limit: 4 %}
-            {% if forloop.first %}{% else %}
-            <div class="articlelink">
-                <div class="img"></div>
-                <div class="rest">
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.exerpt }}</p>
-                    <a class="readmore" href="{{ post.url }}">Read More</a>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
     </div>
 </div>

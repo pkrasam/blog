@@ -1,0 +1,214 @@
+#upButton
+  display: block
+
+#footer .footer-caret-up, #footer .footer-caret-down
+  pointer-events: none
+
+#footer
+  margin: 0
+  height: auto
+  background-color: $secondary-background
+
+#footer .hide
+  display: none!important
+
+#footer
+  .top-wrap
+    height: 4em
+    color: $disabled-accent!important
+    font-size: 0.9375em
+    display: flex
+    padding-left: 2em
+    padding-right: 2em
+    max-width: 1300px
+    margin: 0 auto
+    flex-direction: row
+    justify-content: space-between
+    div
+      min-width: 6em
+      display: flex
+      flex-direction: row
+      justify-content: space-around
+      padding-bottom: 0.2em
+      align-items: center
+      img
+        cursor: pointer
+  .bottom-wrap-full .bottom-wrap
+    max-width: 1300px
+    margin: 0 auto
+
+#footer
+  .center-wrap
+    max-width: 1300px
+    margin: 0 auto
+    padding-top: 2.625em
+    padding-left: 2em
+    padding-right: 2em
+    padding-bottom: 4em
+    display: flex
+    justify-content: space-between
+    h3
+      font-weight: 500
+    nav .links
+      display: flex
+      flex-direction: column
+      a
+        padding-bottom: 1.063em
+        font-size: 0.937em
+        color: white!important
+    > *
+      flex: 1 1 240px
+    > :last-child
+      display: flex
+      justify-content: center
+
+#footer
+  .top-wrap-full-light
+    background-color: white!important
+  .top-wrap-full-dark
+    background-color: transparent
+  .bottom-wrap-full
+    width: 100%
+    border-top: 1px solid #474068
+    background-color: $secondary-background
+  .bottom-wrap
+    align-items: center
+    color: white
+    display: flex
+    padding-left: 2em
+    padding-right: 2em
+    max-width: 1300px
+    margin: 0 auto
+    justify-content: space-between
+    flex-direction: row
+    font-size: 0.75em
+    min-height: 5em
+
+.social-icons
+  display: flex
+  justify-content: space-between
+  a
+    margin-left: 12.5px
+    margin-right: 12.5px
+    img
+      height: 26px
+
+.coindrop-message-mobile
+  display: none
+
+.legal
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  min-width: 44em
+  a
+    text-decoration: underline !important
+    padding-left: 1em
+    color: white!important
+  div > :first-child
+    padding-left: 0
+  .copy > :last-child
+    padding-left: 0.4em
+  span, div
+    display: flex
+
+.header
+  display: flex
+  span
+    display: none
+  > h3
+    flex: 1 0 auto
+    margin: 0
+    margin-bottom: 1.375em
+    font-size: 1.063em
+    color: $footer-header-color
+  a
+    color: white
+    text-decoration: none
+    font-weight: normal
+    
+@media (max-width: 900px)
+  #footer
+    text-align: left
+    .center-wrap
+      flex-wrap: wrap
+      > *
+        width: 25%
+        flex: 1 1 auto
+    .top-wrap
+      display: none
+    .bottom-wrap-full
+      border-top: 0
+      .bottom-wrap
+        display: flex
+        padding-top: 0
+        flex-direction: column
+        align-items: baseline
+        padding-left: 32px
+        padding-right: 32px
+        .social-icons
+          border-top: 0 !important
+          order: 1
+          width: 20em
+          padding-top: 1em
+          padding-bottom: 3em
+          height: 4em
+          a:first-child
+            margin-left: 0
+        .coindrop-message-mobile
+          display: block
+          font-size: 11px
+          order: 2
+          padding-bottom: 3em
+        .legal
+          order: 3
+          display: flex
+          flex-direction: column
+          div
+            min-width: 12em
+            padding-bottom: 2em
+
+@media (max-width: 660px)
+  #footer
+    height: auto
+    .top-wrap, .bottom-wrap
+      padding-left: 0
+      padding-right: 0
+    .center-wrap
+      padding: 0
+      flex-direction: column
+      >
+        \:last-child
+          display: none
+        *
+          margin: 10px 0
+          width: 100%
+          padding: 0
+      a
+        padding-bottom: 1.5em
+        margin: 0
+      h3
+        color: white
+        padding-left: 0
+        margin: 0
+        font-weight: 500
+      span
+        color: white
+      nav
+        padding: 0
+        margin: 0 auto
+        border-top: 1px solid #474068
+        .header span
+          display: initial
+        .links
+          display: none
+        .links.open
+          display: flex
+          padding-left: 2em
+          padding-right: 2em
+        .header
+          cursor: pointer
+          padding-left: 2em
+          padding-right: 2em
+          padding-top: 1.5em
+          padding-bottom: 1.5em
