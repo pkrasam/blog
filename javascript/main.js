@@ -33,15 +33,6 @@ for (var i = postLinks.length - 1; i >= 0; i--) {
   })
 }
 
-// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-//   anchor.addEventListener('click', function (e) {
-//     e.preventDefault()
-//     document.querySelector(this.getAttribute('href')).scrollIntoView({
-//       behavior: 'smooth'
-//     })
-//   })
-// })
-
 /*
  *  Nav Bar
 */
