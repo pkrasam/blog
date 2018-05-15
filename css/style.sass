@@ -54,17 +54,15 @@ body
 // faq header
 
 #faq-header
-    @include mobile
-        min-height: 6em
-        justify-content: flex-start
-
-#faq-header
     background-color: $header-colour-light
     padding: 0 20px
     min-height: 13em
     display: flex
     flex-direction: column
     justify-content: center
+    @include mobile
+        min-height: 6em
+        justify-content: flex-start
     h1 > :first-child
         margin-top: 0
     div
