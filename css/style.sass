@@ -43,20 +43,15 @@ body
 
     > content
         flex: 1 0 auto
-        background-color: white
+        background-color: $content-bg-light
         color: $dark-stroke
 
 // general effects 
 
 .hide
-    display: none!important
+    display: none
 
 // faq header
-
-#faq-header
-    @include mobile
-        min-height: 6em!important
-        justify-content: flex-start!important
 
 #faq-header
     background-color: $header-colour-light
@@ -65,6 +60,9 @@ body
     display: flex
     flex-direction: column
     justify-content: center
+    @include mobile
+        min-height: 6em
+        justify-content: flex-start
     h1 > :first-child
         margin-top: 0
     div
@@ -74,7 +72,7 @@ body
         h1
             color: white
             margin: 0
-            font-weight: 500
+            font-weight: 600
             font-size: 275%
 
 // content
@@ -83,6 +81,7 @@ body
     display: flex
     flex-direction: row
     width: 100%
+    padding-bottom: 3em
     @include mobile
         flex-direction: column
 
@@ -100,13 +99,16 @@ body
             display: block
             margin-bottom: 2em
             color: $faq-sidebar-color
-            font-weight: 500
+            font-weight: 500              
             &:active
                 font-weight: 700
                 color: $faq-text-color
             &:target
                 font-weight: 700
                 color: $faq-text-color
+        .selected
+            font-weight: 700
+            color: $faq-text-color  
 
 
 .content
@@ -124,6 +126,7 @@ body
         margin: 0
         @include mobile
             padding-bottom: 0
+            font-size: 0.75em
     .faq-content div:first-child h3
         padding-top: 0
         margin-top: 0
@@ -134,7 +137,7 @@ body
     .faq-content div:first-child
         padding-top: 0em
     h1
-        padding-top: 1.5em
+        padding-top: 1.1em
         padding-bottom: 0.5em
         text-transform: uppercase
         border-top: 1px solid $faq-stroke
@@ -145,7 +148,7 @@ body
     h1:first-child
         padding-top: 0
         border-top: 0
-        margin-bottom: 48px
+        margin-bottom: 0
         @include mobile
             font-size: 143%
             margin-bottom: 1.3em
@@ -155,17 +158,16 @@ body
         padding-bottom: 2em
         @include mobile
             display: none
+            font-size: 0.75em
     .answers.open
         @include mobile
             display: flex
 
-.faq-caret-up
+.faq-caret-up, .faq-caret-down
     display: none
+    pointer-events: none
     @include mobile
         display: inline
-
-.faq-caret-up, .faq-caret-down
-    pointer-events: none
     
 .toggle-header
     display: flex
@@ -192,14 +194,14 @@ content
 
 h1
     color: $faq-text-color
-    font-weight: 500
+    font-weight: 600
     font-size: 275%
     margin-top: 0.5em
     margin-bottom: 0.5em
 
 h2
     color: $faq-text-color
-    font-weight: 500
+    font-weight: 600
     word-wrap: break-word
     font-size: 1.4em
     line-height: 225%
@@ -208,7 +210,7 @@ h2
 
 h3
     color: $faq-text-color
-    font-weight: 500
+    font-weight: 600
     font-size: 1.625em
     line-height: 187.5%
     margin-top: 0.5em
@@ -217,7 +219,7 @@ h3
 h4
     color: $faq-text-color
     font-size: 93.75%
-    font-weight: 500
+    font-weight: 600
     font-weight: $semi-bold
     line-height: 187.5%
     margin-top: 0.5em
@@ -230,7 +232,7 @@ p
     margin-bottom: 2em
     line-height: 2.2em
     @include mobile
-        font-size: 75%
+        font-size: 93.8%
 
 a
     color: $primary-accent

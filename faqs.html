@@ -11,7 +11,7 @@ layout: faqs
     </div>
     <div class="content">
     {% for faq in site.faqs reversed %}
-        <h1 id="section-{{faq.title}}" class="faq-posts">
+        <h1 id="section-#{{faq.title}}" class="faq-posts">
             {{ faq.title }}
         </h1>
         <div class="faq-content">

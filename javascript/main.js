@@ -5,13 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
 */
 
 const postLinks = document.getElementsByClassName('post-link')
-const faqSideMenuLinks = document.getElementsByClassName('faq-sidemenu-link')
+const faqSideMenuLinks = document.getElementsByClassName('sidebar-link')
 faqSideMenuLinks[0].classList.add('selected')
 const faqPosts = document.getElementsByClassName('faq-posts')
-// console.dir(faqPosts)
+
 for (index = 0; index < faqSideMenuLinks.length; ++index) {
   const className = 'sidemenu-link' + index
   faqSideMenuLinks[index].classList.add(className)
+  faqSideMenuLinks[index].addEventListener('click', (e) => {
+    const selector = 'section-' + e.target.attributes.href.value
+    document.getElementById(selector).scrollIntoView({
+      behavior: 'smooth'
+    })
+  })
 }
 
 const clearSelectedSideMenuLinks = () => {
@@ -19,12 +25,6 @@ const clearSelectedSideMenuLinks = () => {
   for (var i = selected.length - 1; i >= 0; i--) {
     selected[i].classList.remove('selected')
   }
-}
-
-window.scrollToSpot = elm => {
-  clearSelectedSideMenuLinks()
-  const element = document.getElementById(elm.id)
-  element.scrollIntoView()
 }
 
 for (var i = postLinks.length - 1; i >= 0; i--) {
@@ -81,7 +81,7 @@ function showDropDown( e ){
 
 function hideDropDown( e ){
   const dropdownMenu = e.fromElement.lastElementChild;
-  dropdownMenu.classList.add('hide');
+  dropdownMenu.classList.add('hide')
 }	
 
 /*
@@ -94,10 +94,10 @@ for (index = 0; index < subjects.length; ++index) {
   const className = 'sidemenu-ref' + index
   subjects[index].classList.add(className)
 }
+
 // generate caret toggles
 
 for(keys in questions) {
-  // `element` is the element you want to wrap
   const parent = questions[keys].parentNode
   const wrapper = document.createElement('div')
   wrapper.className = 'toggle-header'
@@ -111,10 +111,8 @@ for(keys in questions) {
   const toggleDown = document.createElement('span')
   toggleUp.appendChild(upCaret)
   toggleDown.appendChild(downCaret)
-  // set the wrapper as child (instead of the element)
   if(parent) {
     parent.replaceChild(wrapper, questions[keys])
-    // set questions[keys] as child of wrapper
     wrapper.appendChild(questions[keys])
   }
   wrapper.appendChild(toggleUp)
