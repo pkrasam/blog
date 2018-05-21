@@ -7,18 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const postLinks = document.getElementsByClassName('post-link')
 const faqSideMenuLinks = document.getElementsByClassName('sidebar-link')
 faqSideMenuLinks[0].classList.add('selected')
-const faqPosts = document.getElementsByClassName('faq-posts')
-
-for (index = 0; index < faqSideMenuLinks.length; ++index) {
-  const className = 'sidemenu-link' + index
-  faqSideMenuLinks[index].classList.add(className)
-  faqSideMenuLinks[index].addEventListener('click', (e) => {
-    const selector = 'section-' + e.target.attributes.href.value
-    document.getElementById(selector).scrollIntoView({
-      behavior: 'smooth'
-    })
-  })
-}
+const posts = document.getElementsByClassName('posts')
 
 const clearSelectedSideMenuLinks = () => {
   const selected = document.getElementsByClassName('selected')
@@ -33,27 +22,42 @@ for (var i = postLinks.length - 1; i >= 0; i--) {
   })
 }
 
+for (index = 0; index < faqSideMenuLinks.length; ++index) {
+  const className = 'sidemenu-link' + index
+  faqSideMenuLinks[index].classList.add(className)
+  faqSideMenuLinks[index].addEventListener('click', (e) => {
+    const selector = 'section-' + e.target.attributes.href.value
+    clearSelectedSideMenuLinks()
+    document.getElementById(selector).scrollIntoView({
+      behavior: 'smooth'
+    })
+    // e.target.classList.add('selected')
+  })
+}
+
 /*
  *  Nav Bar
 */
 
-const bars = document.getElementById('nav-toggle');
-const sideNav = document.getElementById('burgernav');
-const overlay = document.getElementById('overlay');
+// temp disable
 
-function toggleNav(e){
-  sideNav.classList.toggle('dropped');
-  document.body.classList.toggle('active-nav');
-}
+// const bars = document.getElementById('nav-toggle');
+// const sideNav = document.getElementById('burgernav');
+// const overlay = document.getElementById('overlay');
 
-sideNav.addEventListener('click', function(e){
-  // if a tag has a #id for the href
-  if( e.target.nodeName === 'A' && e.target.hash){ toggleNav(); }
-});
+// function toggleNav(e){
+//   sideNav.classList.toggle('dropped');
+//   document.body.classList.toggle('active-nav');
+// }
+
+// sideNav.addEventListener('click', function(e){
+//   // if a tag has a #id for the href
+//   if( e.target.nodeName === 'A' && e.target.hash){ toggleNav(); }
+// });
 
 
-bars.addEventListener('click', toggleNav);
-overlay.addEventListener('click', toggleNav);
+// bars.addEventListener('click', toggleNav);
+// overlay.addEventListener('click', toggleNav);
 
 /*
  * Drop down
@@ -88,8 +92,9 @@ function hideDropDown( e ){
  *  Faq
 */
 
-const questions = document.querySelectorAll('div.faq-content > h3')
-const subjects = document.querySelectorAll('.content > h1')
+const questions = document.querySelectorAll('div.content > h3')
+const subjects = document.querySelectorAll('.content-container > h2')
+
 for (index = 0; index < subjects.length; ++index) {
   const className = 'sidemenu-ref' + index
   subjects[index].classList.add(className)
@@ -120,7 +125,7 @@ for(keys in questions) {
 }
 
 const content = document.querySelector('content > .wrapper')
-const answers = document.querySelectorAll('div.faq-content > p')
+const answers = document.querySelectorAll('div.content > p')
 for (index = 0; index < answers.length; ++index) {
   answers[index].classList.add('answers')
 }
@@ -132,17 +137,17 @@ for (index = 0; index < faqCaretsDown.length; ++index) {
 let lastFaqTarget = null
 
 window.onscroll = () => {
-  for (index = 0; index < subjects.length; ++index) {
-    const subject = 'sidemenu-ref' + index
+  for (idx = 0; idx < subjects.length; ++idx) {
+    const subject = 'sidemenu-ref' + idx
     const subjectTitle = document.getElementsByClassName(subject)
-    const sideMenuSubject = 'sidemenu-link' + index
+    const sideMenuSubject = 'sidemenu-link' + idx
     const subjectSideMenuLink = document.getElementsByClassName(sideMenuSubject)
 
-    if (subjects[index].offsetTop < window.pageYOffset) {
+    if (subjects[idx].offsetTop < window.pageYOffset) {
       for (j = 0; j < subjects.length; ++j) {
         faqSideMenuLinks[j].classList.remove('selected')
       }
-      faqSideMenuLinks[index].classList.add('selected')
+      faqSideMenuLinks[idx].classList.add('selected')
     }
   }
 }

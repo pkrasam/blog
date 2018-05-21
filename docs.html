@@ -9,12 +9,12 @@ layout: docs
     <div class="sidebar">
       {% include sidebar.html content=site.docs type='docs' %}
     </div>
-    <div class="content">
+    <div class="content-container">
     {% for doc in site.docs reversed %}
-        <h1 id="section-{{doc.title}}" class="faq-posts">
+        <h2 id="section-#{{doc.title}}">
             {{ doc.title }}
-        </h1>
-        <div class="faq-content">
+        </h2>
+        <div class="content">
             {{ doc.content }}
         </div>
         {% endfor %}
