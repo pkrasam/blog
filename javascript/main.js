@@ -11,12 +11,12 @@ const posts = document.getElementsByClassName('posts')
 
 const clearSelectedSideMenuLinks = () => {
   const selected = document.getElementsByClassName('selected')
-  for (var i = selected.length - 1; i >= 0; i--) {
+  for (let i = selected.length - 1; i >= 0; i--) {
     selected[i].classList.remove('selected')
   }
 }
 
-for (var i = postLinks.length - 1; i >= 0; i--) {
+for (let i = postLinks.length - 1; i >= 0; i--) {
   postLinks[i].addEventListener('click', e => {
     e.target.classList.add('selected')
   })
@@ -27,11 +27,10 @@ for (index = 0; index < faqSideMenuLinks.length; ++index) {
   faqSideMenuLinks[index].classList.add(className)
   faqSideMenuLinks[index].addEventListener('click', (e) => {
     const selector = 'section-' + e.target.attributes.href.value
-    clearSelectedSideMenuLinks()
     document.getElementById(selector).scrollIntoView({
       behavior: 'smooth'
     })
-    // e.target.classList.add('selected')
+    clearSelectedSideMenuLinks()
   })
 }
 
@@ -39,33 +38,35 @@ for (index = 0; index < faqSideMenuLinks.length; ++index) {
  *  Nav Bar
 */
 
-// temp disable
+const sideNav = document.getElementById('burgernav');
 
-// const bars = document.getElementById('nav-toggle');
-// const sideNav = document.getElementById('burgernav');
-// const overlay = document.getElementById('overlay');
+if( sideNav ) {
+  const bars = document.getElementById('nav-toggle');
+  const overlay = document.getElementById('overlay');
 
-// function toggleNav(e){
-//   sideNav.classList.toggle('dropped');
-//   document.body.classList.toggle('active-nav');
-// }
+  function toggleNav(e){
+    sideNav.classList.toggle('dropped');
+    document.body.classList.toggle('active-nav');
+  }
 
-// sideNav.addEventListener('click', function(e){
-//   // if a tag has a #id for the href
-//   if( e.target.nodeName === 'A' && e.target.hash){ toggleNav(); }
-// });
+  sideNav.addEventListener('click', function(e){
+    // if a tag has a #id for the href
+    if( e.target.nodeName === 'A' && e.target.hash){ toggleNav(); }
+  });
 
 
-// bars.addEventListener('click', toggleNav);
-// overlay.addEventListener('click', toggleNav);
+  bars && bars.addEventListener('click', toggleNav);
+  overlay && overlay.addEventListener('click', toggleNav);
+}
 
 /*
  * Drop down
  *
  * Supports multiple dropdowns
 */
-
 const dropdownMenus = document.getElementsByClassName('dropdown');
+
+if( !dropdownMenus.length) { return }
 
 Array.prototype.forEach.call( dropdownMenus, function( item, index, arr ){
   // add event listeners to all dropdown elements
@@ -75,18 +76,19 @@ Array.prototype.forEach.call( dropdownMenus, function( item, index, arr ){
 
 function showDropDown( e ){
   const target = e.target;
+  const from = e.fromElement;
   // if dropdown link then dont show dropdown
   if( target.nodeName !== 'A' ||
-     e.fromElement.classList.contains('dropdown-menu') ) { return }
+     ( (from && from.classList) && from.classList.contains('dropdown-menu') ) ) { return }
 
   const dropdownMenu = target.nextElementSibling;
-  dropdownMenu.classList.remove('hide');
+  dropdownMenu && dropdownMenu.classList.remove('hide');
 }
 
 function hideDropDown( e ){
-  const dropdownMenu = e.fromElement.lastElementChild;
-  dropdownMenu.classList.add('hide')
-}	
+  const dropdownMenu = e.target.lastElementChild;
+  dropdownMenu.classList.add('hide');
+}
 
 /*
  *  Faq
@@ -203,20 +205,24 @@ content.addEventListener('click', e => {
  *  Footer
 */
 
+
 const footer = document.getElementById('footer')
+const footerHeader = document.getElementsByClassName('header')
 const footerLinks = document.getElementsByClassName('links')
 const footerCaretsUp = document.getElementsByClassName('footer-caret-up')
 const footerCaretsDown = document.getElementsByClassName('footer-caret-down')
 let lastFooterTarget = null
 
-const setFooterCaretUp = () => {
+// functions
+
+const setCaretOrientationToClosed = function(){
   for (index = 0; index < footerCaretsUp.length; ++index) {
     footerCaretsUp[index].classList.remove('hide')
     footerCaretsDown[index].classList.add('hide')
   }
 }
 
-const openFooterMobileMenu = target => {
+const open = function(target){
 
   if (target === lastFooterTarget) {
     target.children[1].classList.remove('hide')
@@ -231,28 +237,32 @@ const openFooterMobileMenu = target => {
     return links.classList.remove('open')
   }
 
-  Array.prototype.forEach.call(footerLinks, (item) => {
+  Array.prototype.forEach.call(footerLinks, function(item){
     item.classList.remove('open')
   })
 
-  setFooterCaretUp()
+  setCaretOrientationToClosed()
   links.classList.add('open')
   target.children[1].classList.add('hide')
   target.lastElementChild.children[0].classList.remove('hide')
 }
 
-footer.addEventListener('click', (e) => {
+// event listeners
 
-  const target = e.target
+if (footer) {
+  footer.addEventListener('click', function(e){
 
-  if (target.classList.contains('header')) {
-    openFooterMobileMenu(target)
-    lastFooterTarget = target
-  } else if (target.parentElement.classList.contains('header')) {
-    openFooterMobileMenu(target.parentElement)
-    lastFooterTarget = target.parentElement
-  }
+    const target = e.target
 
-})
+    if (target.classList.contains('header')) {
+      open(target)
+      lastFooterTarget = target
+    } else if (target.parentElement.classList.contains('header')) {
+      open(target.parentElement)
+      lastFooterTarget = target.parentElement
+    }
+
+  })
+}
 
 })

@@ -5,6 +5,7 @@ layout: compress
 <!DOCTYPE html>
 <html lang='en-us'>
 <head>
+    {% include favicon.html %}
     <title>{% if page.html_title %}{{ page.html_title }}{% else %}{{ page.title }}{% endif %}</title>
     <link href='/css/style.css' rel='stylesheet' type='text/css'/>
     <script type='text/javascript' src='/javascript/main.js'></script>
@@ -22,6 +23,7 @@ layout: compress
     {% endif %}
 </head>
 <body class='blog {{ template.css_class }} {{ page.css_class }}'>
+    {% include nav.html %}
     <section class='sub-header'>
         <div>
             <h2>BLOG</h2>
@@ -32,105 +34,7 @@ layout: compress
             {{ content }}
         </div>
     </content>
-    <footer id='footer'>
-        <div class='top-wrap-full-light'>
-            <div class='top-wrap'>
-                <div>*Developers who wish to receive > 5000 HNS may be required to provide certain identification information for tax purposes.</div>
-                <div>Top<img id='upButton' onclick='window.scrollTo(0, 0)' src='../img/footer/up-button-dark.svg' alt='Go to top of page button'/></div>
-            </div>
-        </div>
-
-        <div class='center-wrap'>
-
-            <nav>
-                <div class='header'>
-                    <h3>Handshake</h3>
-                    <span><img class='footer-caret-up' src='../img/footer/up-caret.svg' alt='Toggle expanded menu on mobile'/></span>
-                    <span><img class='footer-caret-down hide' src='../img/footer/down-caret.svg' alt='Toggle expanded menu on mobile'/></span>
-                </div>
-                <div class='links'>
-                    <a href='#'>Contact us</a>
-                    <a href='#'>Blog</a>
-                    <a href='#'>Community</a>
-                    <a href='#'>Claim existing trademark</a>
-                    <a href='#'>Claim your ownership</a>
-                </div>
-            </nav>
-
-            <nav>
-                <div class='header'>
-                    <h3>Learn</h3>
-                    <span><img class='footer-caret-up' src='../img/footer/up-caret.svg' alt='Toggle expanded menu on mobile'/></span>
-                    <span><img class='footer-caret-down hide' src='../img/footer/down-caret.svg' alt='Toggle expanded menu on mobile'/></span>
-                </div>
-                <div class='links'>
-                    <a href='#'>Home</a>
-                    <a href='#'>Introduction</a>
-                    <a href='#'>Coindrop</a>
-                    <a href='#'>Request for comment</a>
-                    <a href='#'>FAQ</a>
-                </div>
-            </nav>
-
-            <nav>
-                <div class='header'>
-                    <h3>Develop</h3>
-                    <span><img class='footer-caret-up' src='../img/footer/up-caret.svg' alt='Toggle expanded menu on mobile'/></span>
-                    <span><img class='footer-caret-down hide' src='../img/footer/down-caret.svg' alt='Toggle expanded menu on mobile'/></span> 
-                </div>
-                <div class='links'>
-                    <a href='#'>Documentation</a>
-                    <a href='#'>API Docs</a>
-                    <a href='#'>Run a full node</a>
-                    <a href='#'>Install an SPV resolver</a>
-                    <a href='#'>See a list of servers</a>
-                </div>
-            </nav>
-
-            <div> 
-                <img src='../img/footer/H-outline_logo.svg' alt='Handshake logo'/>
-            </div>
-
-        </div>
-        
-        <div class='bottom-wrap-full'>
-            <div class='bottom-wrap'>
-                <span class='coindrop-message-mobile'>*Developers who wish to receive > 5000 HNS may be required to provide certain identification information for tax purposes.</span>
-                <nav class='legal'>
-                    <div>
-                        <a href='#'>
-                            Privacy Policy
-                        </a>
-                        <a href='#'>
-                            Terms of Use
-                        </a>
-                    </div>
-                    <span class='copy'>
-                        Copyright &copy; 2017-2018, Christopher Jeffrey <a href='https://opensource.org/licenses/MIT'>(MIT License)</a>
-                    </span>
-                </nav>
-                <nav class='social-icons'>
-                    <a href='#'>
-                        <img src='../img/footer/github.svg' alt='Github logo'/>
-                    </a>
-                    <a href='#'>
-                        <img src='../img/footer/twitter.svg' alt='Twitter logo'/>
-                    </a>
-                    <a href='#'>
-                        <img src='../img/footer/reddit.svg' alt='Reddit logo'/>
-                    </a>
-                    <a href='#'>
-                        <img src='../img/footer/telegram.svg'' alt='Telegram logo'/>
-                    </a>
-                    <a href='#'>
-                        <img src='../img/footer/discord.svg' alt='Discord logo'/>
-                    </a>
-                </nav>
-            </div>
-        </div>
-    </footer>
-    <!-- this is part of the mobile drop down menu -->
-    <div id='overlay'></div>
+    {% include footer.html %}
 </body>
 </html>
 
