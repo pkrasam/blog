@@ -1,21 +1,26 @@
-#upButton
-  display: block
-
 #footer .footer-caret-up, #footer .footer-caret-down
   pointer-events: none
 
 #footer
   margin: 0
   height: auto
-  background-color: $secondary-background
+  background-color: #251C47
 
 #footer .hide
   display: none
 
 #footer
+  .top-wrap-full-light
+    background-color: #F7F9FB
+  .top-wrap-full-lighter-dark-background
+    background-color: #2b2152
+    .top-wrap
+      color: white
+  .top-wrap-full-dark
+    background-color: #251C47
   .top-wrap
     height: 4em
-    color: $disabled-accent
+    color: #696589
     font-size: 0.9375em
     display: flex
     padding-left: 2em
@@ -33,9 +38,6 @@
       align-items: center
       img
         cursor: pointer
-  .bottom-wrap-full .bottom-wrap
-    max-width: 1300px
-    margin: 0 auto
 
 #footer
   .center-wrap
@@ -54,7 +56,9 @@
       flex-direction: column
       a
         padding-bottom: 1.063em
+        text-decoration: none
         font-size: 0.937em
+        font-weight: 500
         color: white
     > *
       flex: 1 1 240px
@@ -63,14 +67,13 @@
       justify-content: center
 
 #footer
-  .top-wrap-full-light
-    background-color: $content-bg-light
-  .top-wrap-full-dark
-    background-color: transparent
   .bottom-wrap-full
     width: 100%
-    border-top: 1px solid #474068
-    background-color: $secondary-background
+    border-top: 1px solid rgba(71, 64, 104, 0.5)
+    background-color: #251C47
+  .bottom-wrap-full-small-footer
+    background-color: #251C47
+    width: 100%
   .bottom-wrap
     align-items: center
     color: white
@@ -84,7 +87,7 @@
     font-size: 0.75em
     min-height: 5em
 
-.social-icons
+.social-icons, .social-icons-small-footer
   display: flex
   justify-content: space-between
   a
@@ -96,21 +99,26 @@
 .coindrop-message-mobile
   display: none
 
+
 .legal
   display: flex
   flex-direction: row
   justify-content: space-between
   min-width: 44em
   a
+    font-size: 12px
     text-decoration: underline 
     padding-left: 1em
     color: white
-  div > :first-child
+  a:first-child
     padding-left: 0
-  .copy > :last-child
-    padding-left: 0.4em
-  span, div
-    display: flex
+    font-size: 12px
+  .copy
+    line-height: 20px
+    font-size: 12px
+    a
+      font-size: 12px
+      padding-left: 0.4em
 
 .header
   display: flex
@@ -121,7 +129,7 @@
     margin: 0
     margin-bottom: 1.375em
     font-size: 1.063em
-    color: $footer-header-color
+    color: #696589
   a
     color: white
     text-decoration: none
@@ -130,43 +138,47 @@
 @media (max-width: 900px)
   #footer
     text-align: left
+    .top-wrap
+      display: none
     .center-wrap
       flex-wrap: wrap
       > *
         width: 25%
         flex: 1 1 auto
-    .top-wrap
-      display: none
-    .bottom-wrap-full
+    .bottom-wrap-full, .bottom-wrap-full-small-footer
       border-top: 0
       .bottom-wrap
         display: flex
         padding-top: 0
         flex-direction: column
         align-items: baseline
-        padding-left: 32px
+        padding-left: 32px        
         padding-right: 32px
         .social-icons
           border-top: 0 
           order: 1
           width: 20em
           padding-top: 1em
-          padding-bottom: 3em
+          padding-bottom: 1em
           height: 4em
           a:first-child
             margin-left: 0
         .coindrop-message-mobile
           display: block
-          font-size: 11px
+          line-height: 20px
           order: 2
-          padding-bottom: 3em
+          padding-bottom: 2em
         .legal
           order: 3
           display: flex
           flex-direction: column
-          div
-            min-width: 12em
-            padding-bottom: 2em
+          min-width: 100%          
+          div            
+            padding-bottom: 1em
+          .copy a
+            padding-left: 0
+        .social-icons-small-footer
+          display: none
 
 @media (max-width: 660px)
   #footer
@@ -197,7 +209,7 @@
       nav
         padding: 0
         margin: 0 auto
-        border-top: 1px solid #474068
+        border-top: 1px solid rgba(71, 64, 104, 0.5)
         .header span
           display: initial
         .links
@@ -212,3 +224,5 @@
           padding-right: 2em
           padding-top: 1.5em
           padding-bottom: 1.5em
+          h3
+            text-align: left

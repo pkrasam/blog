@@ -36,24 +36,21 @@ html, body
 body
     font-family: "Open Sans", Helvetica, Arial, sans-serif
     overflow-x: hidden
-    font-size: 1em
-    color: $light-text
     display: flex
     flex-direction: column
 
     > content
         flex: 1 0 auto
         background-color: $content-bg-light
-        color: $dark-stroke
 
 // general effects 
 
 .hide
     display: none
 
-// faq header
+// sub-header
 
-#faq-header
+.sub-header
     background-color: $header-colour-light
     padding: 0 20px
     min-height: 13em
@@ -62,18 +59,14 @@ body
     justify-content: center
     @include mobile
         min-height: 6em
-        justify-content: flex-start
-    h1 > :first-child
-        margin-top: 0
     div
         margin: 0 auto
         max-width: 1250px
         width: 100%
-        h1
+        h2
             color: white
             margin: 0
-            font-weight: 600
-            font-size: 275%
+            font-weight: 400
 
 // content
 
@@ -87,70 +80,65 @@ body
 
 .sidebar
     min-width: 20.5em
-    font-size: 87.5%
-    margin-top: 2em
+    font-size: 14px
+    margin-top: 29px
     @include mobile
         display: none
     .sidebar-content
         position: sticky
         top: 20px
-        
         .sidebar-link
             display: block
             margin-bottom: 2em
             color: $faq-sidebar-color
             font-weight: 500              
-            &:active
-                font-weight: 700
-                color: $faq-text-color
-            &:target
-                font-weight: 700
-                color: $faq-text-color
         .selected
             font-weight: 700
             color: $faq-text-color  
 
-
-.content
-    .faq-content .toggle-header
+.content-container
+    h2,h3
+        font-weight: 400
+    .content .toggle-header
         border-top: 1px solid $faq-stroke
         padding-bottom: 1em
-    .faq-content .toggle-header:first-child
+    .content .toggle-header:first-child
         border-top: 0
-    .faq-content .toggle-header:last-child
+    .content .toggle-header:last-child
         @include mobile
             padding-bottom: 0
-    .faq-content div h3
+    .content div h3
         padding-top: 1em
         padding-bottom: 0.62em
         margin: 0
         @include mobile
             padding-bottom: 0
-            font-size: 0.75em
-    .faq-content div:first-child h3
+    .content div:first-child h3
         padding-top: 0
         margin-top: 0
-    .faq-content div
+    .content div
         padding-top: 1.8em
         @include mobile
             padding-top: 1em
-    .faq-content div:first-child
+    .content div:first-child
         padding-top: 0em
-    h1
-        padding-top: 1.1em
+    h2
+        padding-top: 3em
+        font-size: 44px
         padding-bottom: 0.5em
         text-transform: uppercase
         border-top: 1px solid $faq-stroke
         @include mobile
-            font-size: 143%
-            padding-top: 1.3em
+            font-size: 32px
             margin-bottom: 1.3em
-    h1:first-child
+    h2:first-child
         padding-top: 0
+        font-size: 44px
         border-top: 0
+        margin-top: 25px
         margin-bottom: 0
         @include mobile
-            font-size: 143%
+            font-size: 32px
             margin-bottom: 1.3em
     .answers
         margin-bottom: 0
@@ -158,7 +146,6 @@ body
         padding-bottom: 2em
         @include mobile
             display: none
-            font-size: 0.75em
     .answers.open
         @include mobile
             display: flex
@@ -176,11 +163,9 @@ body
         display: flex
     @include mobile
         cursor: pointer
-        h1
-            font-size: 1.438em
+        h2
             padding-right: 0.4em
         h3
-            font-size: 0.75em
             padding-right: 0.4em
 
 content
@@ -192,47 +177,44 @@ content
         @include mobile
             padding: 1.85em 0 2.14em
 
-h1
-    color: $faq-text-color
-    font-weight: 600
-    font-size: 275%
-    margin-top: 0.5em
-    margin-bottom: 0.5em
-
 h2
     color: $faq-text-color
     font-weight: 600
-    word-wrap: break-word
-    font-size: 1.4em
-    line-height: 225%
+    font-size: 44px
     margin-top: 0.5em
     margin-bottom: 0.5em
+    @include mobile
+        font-size: 32px
 
 h3
     color: $faq-text-color
     font-weight: 600
-    font-size: 1.625em
     line-height: 187.5%
+    font-size: 26px
     margin-top: 0.5em
     margin-bottom: 0.5em
+    @include mobile
+        font-size: 18px
 
 h4
     color: $faq-text-color
-    font-size: 93.75%
     font-weight: 600
-    font-weight: $semi-bold
     line-height: 187.5%
     margin-top: 0.5em
     margin-bottom: 0.5em
 
+h5,
+h6
+    font-weight: 600
+
 p
     color: $faq-text-color
-    font-size: 1em
+    font-size: 20px
     margin-top: 1.2em
     margin-bottom: 2em
     line-height: 2.2em
     @include mobile
-        font-size: 93.8%
+        font-size: 12px
 
 a
     color: $primary-accent
