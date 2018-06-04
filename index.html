@@ -12,14 +12,9 @@ layout: default
 			{{ post.title }}
 	</h2>
 	<div class="excerpt-box">
-		<strong>{{ post.author }}</strong>
-		<div>{{ post.publish_date }}</div>
+	  <p>{{ post.publish_date }} &middot; <strong>{{ post.author }}</strong></p>
 		{{ post.excerpt }}
 		<a href="{{ post.url }}">Read more...</a>
-		<ul class="social">
-			<li><a href="#"><img src="/img/share.svg" alt="Share"><span>Share</span></a></li>
-			<li><a href="{{ post.twitter }}"><img src="/img/twitter.svg" alt="Share"><span>Tweet</span></a></li>
-		</ul>
 	</div>
 {% endfor %}
 </div>

@@ -7,11 +7,11 @@ layout: compress
 <head>
     {% include favicon.html %}
     <title>{% if page.html_title %}{{ page.html_title }}{% else %}{{ page.title }}{% endif %}</title>
-    <link href='/css/style.css' rel='stylesheet' type='text/css'/>
+    <link href='{{ '/css/style.css' | prepend:site.url }}' rel='stylesheet' type='text/css'/>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'>
 
-    <link rel='alternate' type='application/rss+xml' href='/feed.xml'>
+    <link rel='alternate' type='application/rss+xml' href='{{ '/feed.xml' | prepend:site.url }}'>
 
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     {% if page.exerpt %}
