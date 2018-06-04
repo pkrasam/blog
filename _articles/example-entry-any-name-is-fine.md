@@ -1,5 +1,6 @@
 ---
 title: Blog entry 2
+file: example-entry-any-name-is-fine.md
 author: Jane Doe
 twitter: https://twitter.com/chrislhayes?lang=en
 date: 2018-01-02

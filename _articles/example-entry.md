@@ -1,5 +1,6 @@
 ---
 title: Blog entry 1
+file: example-entry.md
 author: John Doe
 twitter: https://twitter.com/SeanClements
 date: 2018-01-04

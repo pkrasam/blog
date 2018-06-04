@@ -147,7 +147,10 @@ footer.article-footer
         display: block
         width: 100%
         margin: 0 auto
+        @include tabletorless
+            padding-left: 1em
         @include mobile
+            padding-left: 0        
             text-align: center
         h2
             font-size: 44px 
