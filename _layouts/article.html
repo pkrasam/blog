@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="article">
+	{% include breadcrumbs.html %}
+  <h2>
+    {{ page.title }}
+  </h2>
+  <strong>
+  	{{ page.author }}
+  </strong>
+  <p class="publish-date">
+  	{{ page.publish_date }}
+  </p>
+  <div class="content">
+    {{ page.content }}
+  </div>
+  <ul class="social">
+    <li><a href="#"><img src="/img/share.svg" alt="Share"><span>Share</span></a></li>
+    <li><a href="{{ post.twitter }}"><img src="/img/twitter.svg" alt="Share"><span>Tweet</span></a></li>
+  </ul>
+</div>
+

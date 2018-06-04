@@ -1,6 +1,6 @@
-name: Handshake Docs
-url: https://
-description: Docs for the Handshake project
+name: Handshake Blog
+url: http://handshakeblog.org/
+description: Handshake Blog
 exclude:
   - README.md
   - Gemfile*
@@ -16,18 +16,15 @@ compress_html:
   blanklines: true
 
 collections:
-  faqs:
+  articles:
     output: true
-    permalink: /faq/:name
-  docs:
-    output: true
-    permalink: /doc/:name
-    layout: default
+    permalink: /:name
+    layout: article
 
 defaults: 
   - scope:
      path: ""
-     type: "faqs"
+     type: "articles"
     values:
       layout: default
 

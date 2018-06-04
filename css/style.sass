@@ -5,21 +5,14 @@
 
 @import mixins/reset
 @import mixins/gradients
-@import mixins/hs
-@import mixins/opensans
 @import mixins/media
-
-// partials
-
-@import partials/footer
-@import partials/nav
+@import mixins/fonts
 
 ////
 ////// html/body styles
 ////
 
 .wrapper
-    position: relative // setting position so that the flash messages can have an absolute position in relation to this element
     width: $wide-content-width
     max-width: calc(100% - 3rem)
     max-width: calc(100% - 3rem - env(safe-area-inset-left) - env(safe-area-inset-right))
@@ -29,285 +22,215 @@ html
     font-size: 16px
 
 html, body
+    font-family: IBM Plex Serif 
     height: 100%
-    background: $dark-colour // so overscroll looks nicer
     letter-spacing: 0.02em
+    background: white
+    color: #000000
 
 body
-    font-family: "Open Sans", Helvetica, Arial, sans-serif
+    font-size: 17px
     overflow-x: hidden
     display: flex
     flex-direction: column
 
-    > content
-        flex: 1 0 auto
-        background-color: $content-bg-light
+// colors
+
+$grayish-stroke: #979797
+$footer-link-color: #693AFA
+$button-color: #693AFA
 
 // general effects 
 
 .hide
     display: none
 
-// sub-header
+// layout
 
-.sub-header
-    background-color: $header-colour-light
-    padding: 0 20px
-    min-height: 13em
+header
+    background: #000000
+    height: 157px
+
+header > .center-wrap
+    max-width: 1300px
+    margin: 0 auto
+    width: 100%
     display: flex
+    height: 100%
     flex-direction: column
     justify-content: center
-    @include mobile
-        min-height: 6em
-    div
-        margin: 0 auto
-        max-width: 1250px
+    .nav-logo
         width: 100%
+        @include mobile
+            padding-left: 1em
+footer
+    text-align: center
+
+footer > h6
+    font-weight: 400
+    font-size: 17px
+    &:last-child
+        margin-bottom: 30px
+
+footer > h6 > a
+    margin-top: 70px
+    margin-bottom: 20px
+    display: inline-block
+    color: $footer-link-color
+    text-decoration: none
+    &:active
+        color: $footer-link-color
+    &:visited
+        color: $footer-link-color
+
+// headers
+
+a
+    color: #000000
+    text-decoration: none
+    &:active
+        color: #000000
+    &:visited
+        color: #000000
+h1
+    font-size: 62px
+    @include mobile
+        font-size: 50px
+        line-height: 1em
+
+h2
+    font-size: 32px
+
+h5
+    font-size: 22px
+    font-weight: 400
+
+*
+    line-height: 34px
+
+// 404
+
+.missing-page
+    max-width: 824px
+    margin: 0 auto
+    text-align: center
+    padding-top: 100px
+    padding-bottom: 100px
+    h4
+        font-size: 20px
+        font-weight: 200
+
+// breadcrumbs
+
+.breadcrumbs
+    margin-bottom: 50px
+    ul
+        display: flex
+        li
+            padding-left: 1em
+            &:first-child
+                padding-left: 0
+
+// article footer
+
+footer.article-footer
+    text-align: left
+    min-height: 357px
+    width: 100%
+    background: #000000
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    color: #FFFFFF
+    div
+        max-width: 824px
+        display: block
+        width: 100%
+        margin: 0 auto
+        @include mobile
+            text-align: center
         h2
-            color: white
-            margin: 0
-            font-weight: 400
+            font-size: 44px 
+            @include mobile
+                font-size: 30px
+        .button
+            display: inline-block
+            background: $button-color
+            color: #FFFFFF
+            font-size: 16px
+            padding: 10px
+            border-radius: 4px
+            border: 0
+            width: 225px
+            text-align: center
+            margin-top: 70px
 
 // content
 
-.withsidebar
-    display: flex
-    flex-direction: row
+.center-wrap
+    max-width: 1300px
+    margin: 0 auto
     width: 100%
-    padding-bottom: 3em
-    @include mobile
-        flex-direction: column
+    display: block
+    height: 100%
+    margin: 0 auto
 
-.sidebar
-    min-width: 20.5em
-    font-size: 14px
-    margin-top: 29px
-    @include mobile
-        display: none
-    .sidebar-content
-        position: sticky
-        top: 20px
-        .sidebar-link
-            display: block
-            margin-bottom: 2em
-            color: $faq-sidebar-color
-            font-weight: 500              
-        .selected
-            font-weight: 700
-            color: $faq-text-color  
+.content
+    max-width: 824px
+    width: 100%
+    margin: 0 auto
 
-.content-container
-    h2,h3
+.content > h2
+    margin-bottom: 40px
+    margin-top: 70px
+    &:first-child
+        margin-top: 0
+
+.content > p
+    margin-bottom: 40px
+
+.wrapper > h1
+    margin-top: 100px
+    margin-bottom: 40px
+    text-align: center
+
+.wrapper > h5
+    margin-bottom: 100px
+    text-align: center
+
+.excerpt-box
+    border-bottom: 3px solid $grayish-stroke
+    div
         font-weight: 400
-    .content .toggle-header
-        border-top: 1px solid $faq-stroke
-        padding-bottom: 1em
-    .content .toggle-header:first-child
-        border-top: 0
-    .content .toggle-header:last-child
-        @include mobile
-            padding-bottom: 0
-    .content div h3
-        padding-top: 1em
-        padding-bottom: 0.62em
-        margin: 0
-        @include mobile
-            padding-bottom: 0
-    .content div:first-child h3
-        padding-top: 0
-        margin-top: 0
-    .content div
-        padding-top: 1.8em
-        @include mobile
-            padding-top: 1em
-    .content div:first-child
-        padding-top: 0em
-    h2
-        padding-top: 3em
-        font-size: 44px
-        padding-bottom: 0.5em
-        text-transform: uppercase
-        border-top: 1px solid $faq-stroke
-        @include mobile
-            font-size: 32px
-            margin-bottom: 1.3em
-    h2:first-child
-        padding-top: 0
-        font-size: 44px
-        border-top: 0
-        margin-top: 25px
-        margin-bottom: 0
-        @include mobile
-            font-size: 32px
-            margin-bottom: 1.3em
-    .answers
-        margin-bottom: 0
-        margin-top: 0
-        padding-bottom: 2em
-        @include mobile
-            display: none
-    .answers.open
-        @include mobile
-            display: flex
+        margin-bottom: 40px
 
-.faq-caret-up, .faq-caret-down
-    display: none
-    pointer-events: none
-    @include mobile
-        display: inline
-    
-.toggle-header
-    display: flex
-    justify-content: space-between
-    span
-        display: flex
-    @include mobile
-        cursor: pointer
-        h2
-            padding-right: 0.4em
-        h3
-            padding-right: 0.4em
-
-content
-    background: $content-bg-dark
-    color: $text-colour
-
-    .wrapper
-        padding: 4.25em 0 2.14em
-        @include mobile
-            padding: 1.85em 0 2.14em
-
-h2
-    color: $faq-text-color
-    font-weight: 600
-    font-size: 44px
-    margin-top: 0.5em
-    margin-bottom: 0.5em
-    @include mobile
-        font-size: 32px
-
-h3
-    color: $faq-text-color
-    font-weight: 600
-    line-height: 187.5%
-    font-size: 26px
-    margin-top: 0.5em
-    margin-bottom: 0.5em
-    @include mobile
-        font-size: 18px
-
-h4
-    color: $faq-text-color
-    font-weight: 600
-    line-height: 187.5%
-    margin-top: 0.5em
-    margin-bottom: 0.5em
-
-h5,
-h6
-    font-weight: 600
-
-p
-    color: $faq-text-color
-    font-size: 20px
-    margin-top: 1.2em
-    margin-bottom: 2em
-    line-height: 2.2em
-    @include mobile
-        font-size: 12px
-
-a
-    color: $primary-accent
-    font-weight: $semi-bold
-    text-decoration: none
-    transition: color 0.3s ease
-    &:hover
-        color: saturate(darken(#00FFEB, 10%), 10%)
-
-.button
-    background-color: $secondary-accent
-    border-radius: 4px
-    border: none
-    color: $light-text
-    cursor: pointer
-    display: inline-block
-    font-weight: $semi-bold
-    margin: 5px 32px 5px 0
-    text-align: center
-    width: 40%
-
-    &.primary
-        padding: 15px
-
-    &.large
-        padding: 25px
-
-    &.disabled
-        background-color: $disabled-accent
-
-    &.small
-        padding: 1px
-
-    &.inline
-        display: inline
-        padding: 0.9em
-        margin: 0 0 0 1em
-
-.fatbutton
-    display: block
-    width: 100%
-    padding: 1.65em 0
-    background: $secondary-accent
-    color: $light-text
-    font-size: 1.1em
-    text-align: center
-    border-radius: 0.3em
-    &.qualified
-        background-color: $primary-accent
-
-    &.pending
-        background: $disabled-colour
-        opacity: 0.7
-
-label
-    flex: 0 0 auto
-    width: 10em
-    text-align: right
-    padding-right: 2em
-    box-sizing: border-box
-    padding-top: 0.95em
-
-    &.error-text
-        color: $primary-accent
-
-input
-    flex: 1 1 auto
-    border: none
-    font-weight: $normal
-    color: $light-text
-    background: $primary-background
-    padding: 0.9em 1.9em
-    border-radius: 0.4em
-    width: 70%
-    font-size: 100%
-    margin: 0 0 22px
-    &.error
-        border: 1px solid $primary-accent
-
-subtitle
-    display: block
-    margin-top: 2em
-    font-size: 0.8em
-    font-weight: 300
-    line-height: 1.4
-    color: $light-text
-
-.inputfield.inline
-    color: red
+.social
+    margin-top: 40px
+    margin-bottom: 70px
     display: flex
     flex-direction: row
+    max-width: 200px
+    justify-content: space-between
+    li
+        display: inline-block
+    a
+        text-decoration: none
+    span
+        padding-left: 10px
+        font-size: 17px
 
-.seperator
-    border: 0.5px solid $dark-stroke
+// article
+
+.article
+    max-width: 824px
     width: 100%
-    margin: 2em 0 2em 0
+    margin: 0 auto
+    padding-top: 50px
+    h2
+        font-size: 44px
+        margin-bottom: 40px
+    .publish-date
+        margin-bottom: 40px
+    .social
+        margin-top: 70px
+        margin-bottom: 70px
