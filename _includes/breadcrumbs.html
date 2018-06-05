@@ -1,0 +1,8 @@
+<nav class="breadcrumbs">
+  {% assign current = page.path | downcase | split: '/' %}
+  <ul>
+    <li {% if current[0] == 'index.html' %}class="active"{% endif %}><a href="/">Blog</a></li>
+    <li>></li>
+    <li>Articles</li>
+  </ul>
+</nav>

@@ -1,21 +1,20 @@
 ---
-title: Handshake DOCS
-html_title: Handshake DOCS
+title: Handshake Blog
+html_title: Handshake Blog
 layout: default
 ---
 
-<div class="withsidebar">
-    <div class="sidebar">
-        {% include sidebar.html content=site.posts type='post'%}
-    </div>
-    <div class="content-container">
-    {% for post in site.posts reversed %}
-        <h2 id="section-#{{post.title}}" class="post-titles">
-            {{ post.title }}
-        </h2>
-        <div class="content">
-            {{ post.content }}
-        </div>
-        {% endfor %}
-    </div>
+<h1>Handshake Blog</h1>
+<h5>http://handshake.org</h5>
+<div class="content">
+{% for post in site.articles reversed %}
+	<h2>
+			{{ post.title }}
+	</h2>
+	<div class="excerpt-box">
+	  <p>{{ post.publish_date }} &middot; <strong>{{ post.author }}</strong></p>
+		{{ post.excerpt }}
+		<a href="{{ post.url }}">Read more...</a>
+	</div>
+{% endfor %}
 </div>
