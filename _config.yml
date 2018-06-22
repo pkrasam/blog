@@ -1,5 +1,5 @@
 name: Handshake Blog
-url: https://blog.handshake.org/
+url: https://blog.handshake.org
 description: Handshake Blog
 exclude:
   - README.md
