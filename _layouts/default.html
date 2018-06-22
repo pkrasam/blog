@@ -6,7 +6,7 @@ layout: compress
 <html lang='en-us'>
 <head>
     {% include favicon.html %}
-    <title>{% if page.html_title %}{{ page.html_title }}{% else %}{{ page.title }}{% endif %}</title>
+    <title>{% if page.html_title %}{{ page.html_title }}{% else %}Handshake Blog &mdash; {{ page.title }}{% endif %}</title>
     <link href='{{ '/css/style.css' | prepend:site.url }}' rel='stylesheet' type='text/css'/>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'>
