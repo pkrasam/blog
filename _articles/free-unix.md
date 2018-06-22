@@ -1,3 +1,14 @@
+---
+title: Free Unix!
+file: free-unix.md
+author: Richard Stallman
+twitter: 
+date: 2018-06-22
+publish_date: June 22nd, 2018
+collection: articles
+layout: article
+---
+
 ## Free Unix!
 
 Starting this Thanksgiving I am going to write a complete Unix-compatible software system called GNU (for Gnu's Not Unix), and give it away free(1) to everyone who can use it. Contributions of time, money, programs and equipment are greatly needed.
