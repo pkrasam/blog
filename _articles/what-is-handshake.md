@@ -52,21 +52,23 @@ help jump start Handshake and ensure that it’s owned by the community,
 we’re giving away these tokens, first to the open source developers of
 the world, and then to the world itself in what we call the ‘airdrop
 to humanity.’ Names are used across the globe, so the core naming
-service should be owned and operated by the world.  ​ VCs and other
-firms are publicly backing the Handshake system and its future impact
-on the internet by backing the value of these tokens. With this
-investment, obtaining publicly available names is given an inherent
-cost and value. Thanks to the blockchain powering it, concrete name
-ownership and censorship resilience is guaranteed.  ​ Handshake can
-work with the existing TLDs (e.g., com, net, org) to ensure existing
-names continue to work as expected. Handshake manages this by
-deprecating the need for the root DNS servers. Right now, anyone can
-point existing TLDs towards their respective nameservers. Eventually,
-we hope to provide the names currently associated with TLDs using
-Handshake's core protocols and are actively working to facilitate
-that. In addition to this, major privacy and security-focused TLDs
-such as onion are given first-class support within the Handshake
-system.
+service should be owned and operated by the world.
+
+VCs and other firms are publicly backing the Handshake system and its
+future impact on the internet by backing the value of these
+tokens. With this investment, obtaining publicly available names is
+given an inherent cost and value. Thanks to the blockchain powering
+it, concrete name ownership and censorship resilience is guaranteed.
+
+​Handshake can work with the existing TLDs (e.g., com, net, org) to
+ensure existing names continue to work as expected. Handshake manages
+this by deprecating the need for the root DNS servers. Right now,
+anyone can point existing TLDs towards their respective
+nameservers. Eventually, we hope to provide the names currently
+associated with TLDs using Handshake's core protocols and are actively
+working to facilitate that. In addition to this, major privacy and
+security-focused TLDs such as onion are given first-class support
+within the Handshake system.
  
 ## General information
 
