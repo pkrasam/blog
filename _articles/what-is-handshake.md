@@ -1,4 +1,13 @@
-# What is Handshake?
+---
+title: What is Handshake?
+file: what-is-handshake.md
+author: Handshake Developers
+twitter: 
+date: 2018-07-09
+publish_date: July 9th, 2018
+collection: articles
+layout: article
+---
 
 Handshake is building an alternative to digital certificate
 authorities using blockchain technology. It’s a new system for the
