@@ -175,7 +175,7 @@ permanently removed from the system (“burned coins”).
 
 If one owns a name directly, the current recipient can give the
 destination address/key of the new recipient. They create a
-transaction to send the domain to someone else and is minded in a
+transaction to send the domain to someone else and is mined in a
 block on the blockchain. After a week, the transaction is confirmed
 and the transfer is locked in. This transaction transferring ownership
 can also have payments embedded so that the recipient will receive
